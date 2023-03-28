@@ -60,7 +60,12 @@
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\LessonService.cs" />
     <Compile Include="Services\OutcomeService.cs" />
+    <Compile Include="Services\PupilGroupService.cs" />
+    <Compile Include="Services\PupilService.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Services\TeacherCourseService.cs" />
+    <Compile Include="Services\TeacherService.cs" />
+    <Compile Include="Services\TypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HTD.DataAccess\HTD.DataAccess.csproj">
