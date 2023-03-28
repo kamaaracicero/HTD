@@ -1,0 +1,40 @@
+﻿<Window x:Class="HTD.App.Dev.AddWindows.AddOutcome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.Dev.AddWindows"
+        mc:Ignorable="d"
+        Title="Add Outcome" Height="260" Width="150">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="20px"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Height="25px"
+                       Text="Pupil Id:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="PupilIdTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Group Id:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="GroupIdTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Order Number:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="OrderNumberTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Date:"
+                       TextAlignment="Center"/>
+            <DatePicker x:Name="DateDP"
+                        Height="25px"/>
+        </StackPanel>
+        <Button x:Name="AddB"
+                Grid.Row="1"
+                Content="Add"/>
+    </Grid>
+</Window>

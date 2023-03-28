@@ -1,0 +1,40 @@
+﻿<Window x:Class="HTD.App.Dev.AddWindows.AddPupil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.Dev.AddWindows"
+        mc:Ignorable="d"
+        Title="Add Pupil" Height="260" Width="150">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="20px"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Height="25px"
+                       Text="Name:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="NameTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Birth Day:"
+                       TextAlignment="Center"/>
+            <DatePicker x:Name="BirthDayDP"
+                        Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Parent Name:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="ParentNameTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Contact Phone:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="ContactPhoneTB"
+                     Height="25px"/>
+        </StackPanel>
+        <Button x:Name="AddB"
+                Grid.Row="1"
+                Content="Add"/>
+    </Grid>
+</Window>

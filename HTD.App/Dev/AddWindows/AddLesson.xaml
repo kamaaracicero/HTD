@@ -1,0 +1,50 @@
+﻿<Window x:Class="HTD.App.Dev.AddWindows.AddLesson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.Dev.AddWindows"
+        mc:Ignorable="d"
+        Title="Add Lesson" Height="360" Width="150">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="20px"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Height="25px"
+                       Text="Group Id:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="GroupIdTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Teacher Id:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="TeacherIdTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Begin:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="BeginTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="End:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="EndTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Place:"
+                       TextAlignment="Center"/>
+            <TextBox x:Name="PlaceTB"
+                     Height="25px"/>
+            <TextBlock Height="25px"
+                       Text="Date:"
+                       TextAlignment="Center"/>
+            <DatePicker x:Name="DateDP"
+                        Height="25px"/>
+        </StackPanel>
+        <Button x:Name="AddB"
+                Grid.Row="1"
+                Content="Add"/>
+    </Grid>
+</Window>

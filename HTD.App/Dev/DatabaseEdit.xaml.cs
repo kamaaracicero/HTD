@@ -1,6 +1,4 @@
-﻿using HTD.DataEntities;
-using System;
-using System.Collections.Generic;
+﻿using HTD.App.Dev.AddWindows;
 using System.Windows;
 
 namespace HTD.App.Dev
@@ -10,31 +8,12 @@ namespace HTD.App.Dev
         public DatabaseEdit()
         {
             InitializeComponent();
-            CoursesDG.ItemsSource = new List<Course>
-            {
-                new Course(1, "temp_1", 1, false),
-                new Course(2, "temp_2", 2, true),
-            };
-            GroupsDG.ItemsSource = new List<Group>
-            {
-                new Group(1, 1, "temp_1", 2012, true, true),
-                new Group(2, 2, "temp_2", 2013, false, true),
-            };
-            IncomesDG.ItemsSource = new List<Income>
-            {
-                new Income(1, 1, 1, "income_1", new DateTime(2020, 1, 1), false),
-                new Income(2, 2, 2, "income_2", new DateTime(2021, 2, 2), true),
-            };
-            LessonsDG.ItemsSource = new List<Lesson>
-            {
-                new Lesson(1, 1, 1, new DateTime(2022, 1, 1), new DateTime(2022, 2, 2), 104, new DateTime(2023, 2, 3)),
-                new Lesson(2, 2, 2, new DateTime(2012, 1, 1), new DateTime(2012, 2, 2), 12, new DateTime(2013, 2, 3)),
-            };
         }
 
         private void AddCourseMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddCourse window = new AddCourse();
+            window.ShowDialog();
         }
         private void DeleteCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +26,8 @@ namespace HTD.App.Dev
 
         private void AddGroupMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddGroup window = new AddGroup();
+            window.Show();
         }
         private void DeleteGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +40,8 @@ namespace HTD.App.Dev
 
         private void AddIncomeMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddIncome window = new AddIncome();
+            window.Show();
         }
         private void DeleteIncomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +54,8 @@ namespace HTD.App.Dev
 
         private void AddLessonMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddLesson window = new AddLesson();
+            window.Show();
         }
         private void DeleteLessonMI_Click(object sender, RoutedEventArgs e)
         {
@@ -86,7 +68,8 @@ namespace HTD.App.Dev
 
         private void AddOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddOutcome window = new AddOutcome();
+            window.Show();
         }
         private void DeleteOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -99,7 +82,8 @@ namespace HTD.App.Dev
 
         private void AddPupilMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddPupil window = new AddPupil();
+            window.Show();
         }
         private void DeletePupilMI_Click(object sender, RoutedEventArgs e)
         {
@@ -112,7 +96,8 @@ namespace HTD.App.Dev
 
         private void AddPupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddPupilGroup window = new AddPupilGroup();
+            window.Show();
         }
         private void DeletePupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -125,7 +110,8 @@ namespace HTD.App.Dev
 
         private void AddTeacherMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddTeacher window = new AddTeacher();
+            window.Show();
         }
         private void DeleteTeacherMI_Click(object sender, RoutedEventArgs e)
         {
@@ -138,7 +124,8 @@ namespace HTD.App.Dev
 
         private void AddTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddTeacherCourse window = new AddTeacherCourse();
+            window.Show();
         }
         private void DeleteTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -151,7 +138,8 @@ namespace HTD.App.Dev
 
         private void AddTypeMI_Click(object sender, RoutedEventArgs e)
         {
-
+            AddType window = new AddType();
+            window.Show();
         }
         private void DeleteTypeMI_Click(object sender, RoutedEventArgs e)
         {
