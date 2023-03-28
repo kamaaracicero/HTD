@@ -51,6 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Dev\AddWindowModels\AddCourseModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddGroupModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddIncomeModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddLessonModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddOutcomeModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddPupilGroupModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddPupilModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddTeacherCourseModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddTeacherModel.cs" />
+    <Compile Include="Models\Dev\AddWindowModels\AddTypeModel.cs" />
+    <Compile Include="Models\IModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceResults\ServiceException.cs" />
     <Compile Include="ServiceResults\ServiceResult.cs" />
@@ -81,9 +92,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Dev\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
