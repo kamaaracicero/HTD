@@ -1,6 +1,6 @@
 ﻿namespace HTD.BusinessLogic.Models.Dev.AddWindowModels
 {
-    internal class AddIncomeModel
+    public class AddIncomeModel : IModel
     {
         public string GroupIdTB { get; set; }
 

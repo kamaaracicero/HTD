@@ -1,17 +1,17 @@
 ﻿namespace HTD.BusinessLogic.Models.Dev.AddWindowModels
 {
-    internal class AddLessonModel
+    public class AddLessonModel : IModel
     {
-        public string GroupId { get; set; }
+        public string GroupIdTB { get; set; }
 
-        public string TeacherId { get; set; }
+        public string TeacherIdTB { get; set; }
 
-        public string Begin { get; set; }
+        public string BeginTB { get; set; }
 
-        public string End { get; set; }
+        public string EndTB { get; set; }
 
-        public string Place { get; set; }
+        public string PlaceTB { get; set; }
 
-        public string Date { get; set; }
+        public string DateDP { get; set; }
     }
 }

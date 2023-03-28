@@ -1,6 +1,6 @@
 ﻿namespace HTD.BusinessLogic.Models.Dev.AddWindowModels
 {
-    internal class AddCourseModel : IModel
+    public class AddCourseModel : IModel
     {
         public string NameTB { get; set; }
 

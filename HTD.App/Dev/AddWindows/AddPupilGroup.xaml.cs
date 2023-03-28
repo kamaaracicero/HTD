@@ -1,27 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HTD.BusinessLogic.ErrorMessageGenerators;
+using HTD.BusinessLogic.ModelConverters;
+using HTD.BusinessLogic.Models.Dev.AddWindowModels;
+using HTD.DataEntities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HTD.App.Dev.AddWindows
 {
-    /// <summary>
-    /// Interaction logic for AddPupilGroup.xaml
-    /// </summary>
     public partial class AddPupilGroup : Window
     {
-        public AddPupilGroup()
+        private readonly IModelConverter<AddPupilGroupModel, PupilGroup> _converter;
+
+        public AddPupilGroup(IModelConverter<AddPupilGroupModel, PupilGroup> converter)
         {
+            _converter = converter;
+
+            Model = new AddPupilGroupModel();
+            Value = null;
+
             InitializeComponent();
+        }
+
+        public AddPupilGroupModel Model { get; private set; }
+
+        public PupilGroup Value { get; private set; }
+
+        private void AddB_Click(object sender, RoutedEventArgs e)
+        {
+            Model.PupilIdTB = this.PupilIdTB.Text;
+            Model.GroupIdTB = this.GroupIdTB.Text;
+
+            var res = _converter.ConvertModel(Model);
+            if (res.IsError)
+            {
+                MessageBox.Show(MessageBoxListErrors.GenerateMessage("Error in convert", res.Errors));
+                return;
+            }
+            else
+            {
+                Value = res.Value;
+                DialogResult = true;
+                Close();
+            }
         }
     }
 }

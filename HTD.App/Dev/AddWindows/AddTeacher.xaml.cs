@@ -1,27 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HTD.BusinessLogic.ErrorMessageGenerators;
+using HTD.BusinessLogic.ModelConverters;
+using HTD.BusinessLogic.Models.Dev.AddWindowModels;
+using HTD.DataEntities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HTD.App.Dev.AddWindows
 {
-    /// <summary>
-    /// Interaction logic for AddTeacher.xaml
-    /// </summary>
     public partial class AddTeacher : Window
     {
-        public AddTeacher()
+        private readonly IModelConverter<AddTeacherModel, Teacher> _converter;
+
+        public AddTeacher(IModelConverter<AddTeacherModel, Teacher> converter)
         {
+            _converter = converter;
+
+            Model = new AddTeacherModel();
+            Value = null;
+
             InitializeComponent();
+        }
+
+        public AddTeacherModel Model { get; private set; }
+
+        public Teacher Value { get; private set; }
+
+        private void AddB_Click(object sender, RoutedEventArgs e)
+        {
+            Model.NameTB = this.NameTB.Text;
+            Model.PhoneTB = this.PhoneTB.Text;
+            Model.DateStartWorkDP = this.DateStartWorkDP.Text;
+            Model.DateEndWorkDP = this.DateEndWorkDP.Text;
+
+            var res = _converter.ConvertModel(Model);
+            if (res.IsError)
+            {
+                MessageBox.Show(MessageBoxListErrors.GenerateMessage("Error in convert", res.Errors));
+                return;
+            }
+            else
+            {
+                Value = res.Value;
+                DialogResult = true;
+                Close();
+            }
         }
     }
 }

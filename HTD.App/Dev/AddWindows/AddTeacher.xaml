@@ -34,7 +34,8 @@
                         Height="25px"/>
         </StackPanel>
         <Button x:Name="AddB"
-                    Grid.Row="1"
-                    Content="Add"/>
+                Grid.Row="1"
+                Content="Add"
+                Click="AddB_Click"/>
     </Grid>
 </Window>

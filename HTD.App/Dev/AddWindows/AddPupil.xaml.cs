@@ -1,27 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HTD.BusinessLogic.ErrorMessageGenerators;
+using HTD.BusinessLogic.ModelConverters;
+using HTD.BusinessLogic.Models.Dev.AddWindowModels;
+using HTD.DataEntities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HTD.App.Dev.AddWindows
 {
-    /// <summary>
-    /// Interaction logic for AddPupil.xaml
-    /// </summary>
     public partial class AddPupil : Window
     {
-        public AddPupil()
+        private readonly IModelConverter<AddPupilModel, Pupil> _converter;
+
+        public AddPupil(IModelConverter<AddPupilModel, Pupil> converter)
         {
+            _converter = converter;
+
+            Model = new AddPupilModel();
+            Value = null;
+
             InitializeComponent();
+        }
+
+        public AddPupilModel Model { get; private set; }
+
+        public Pupil Value { get; private set; }
+
+        private void AddB_Click(object sender, RoutedEventArgs e)
+        {
+            Model.NameTB = this.NameTB.Text;
+            Model.BirthDayDP = this.BirthDayDP.Text;
+            Model.ParentNameTB = this.ParentNameTB.Text;
+            Model.ContactPhoneTB = this.ContactPhoneTB.Text;
+
+            var res = _converter.ConvertModel(Model);
+            if (res.IsError)
+            {
+                MessageBox.Show(MessageBoxListErrors.GenerateMessage("Error in convert", res.Errors));
+                return;
+            }
+            else
+            {
+                Value = res.Value;
+                DialogResult = true;
+                Close();
+            }
         }
     }
 }

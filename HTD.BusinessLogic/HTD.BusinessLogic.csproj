@@ -51,6 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompilerConfig.cs" />
+    <Compile Include="ErrorMessageGenerators\MessageBoxListErrors.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddCourseModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddGroupModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddIncomeModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddLessonModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddOutcomeModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddPupilGroupModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddPupilModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddTeacherCourseModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddTeacherModelConverter.cs" />
+    <Compile Include="ModelConverters\Dev\AddWindowModels\AddTypeModelConverter.cs" />
+    <Compile Include="ModelConverters\IModelConverter.cs" />
+    <Compile Include="ModelConverters\ModelConvertResult.cs" />
     <Compile Include="Models\Dev\AddWindowModels\AddCourseModel.cs" />
     <Compile Include="Models\Dev\AddWindowModels\AddGroupModel.cs" />
     <Compile Include="Models\Dev\AddWindowModels\AddIncomeModel.cs" />

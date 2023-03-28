@@ -42,6 +42,7 @@
         </StackPanel>
         <Button x:Name="AddB"
                 Grid.Row="1"
-                Content="Add"/>
+                Content="Add"
+                Click="AddB_Click"/>
     </Grid>
 </Window>

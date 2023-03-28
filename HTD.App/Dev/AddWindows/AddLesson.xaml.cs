@@ -1,27 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HTD.BusinessLogic.ErrorMessageGenerators;
+using HTD.BusinessLogic.ModelConverters;
+using HTD.BusinessLogic.Models.Dev.AddWindowModels;
+using HTD.DataEntities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HTD.App.Dev.AddWindows
 {
-    /// <summary>
-    /// Interaction logic for AddLesson.xaml
-    /// </summary>
     public partial class AddLesson : Window
     {
-        public AddLesson()
+        private readonly IModelConverter<AddLessonModel, Lesson> _converter;
+
+        public AddLesson(IModelConverter<AddLessonModel, Lesson> converter)
         {
+            _converter = converter;
+
+            Model = new AddLessonModel();
+            Value = null;
+
             InitializeComponent();
+        }
+
+        public AddLessonModel Model { get; private set; }
+
+        public Lesson Value { get; private set; }
+
+        private void AddB_Click(object sender, RoutedEventArgs e)
+        {
+            Model.GroupIdTB = this.GroupIdTB.Text;
+            Model.TeacherIdTB = this.TeacherIdTB.Text;
+            Model.BeginTB = this.BeginTB.Text;
+            Model.EndTB = this.EndTB.Text;
+            Model.PlaceTB = this.PlaceTB.Text;
+            Model.DateDP = this.DateDP.Text;
+
+            var res = _converter.ConvertModel(Model);
+            if (res.IsError)
+            {
+                MessageBox.Show(MessageBoxListErrors.GenerateMessage("Error in convert", res.Errors));
+                return;
+            }
+            else
+            {
+                Value = res.Value;
+                DialogResult = true;
+                Close();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace HTD.BusinessLogic.Models
 {
-    internal interface IModel
+    public interface IModel
     {
     }
 }
