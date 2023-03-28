@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Type]
+(
+    [Id] INT NOT NULL IDENTITY(1,1),
+    [Name] NVARCHAR(MAX) NOT NULL,
+    CONSTRAINT pk_Type PRIMARY KEY([Id]),
+)
