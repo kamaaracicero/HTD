@@ -61,6 +61,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dev\DatabaseEdit.xaml.cs">
+      <DependentUpon>DatabaseEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +103,12 @@
     <Folder Include="AddWindows\" />
     <Folder Include="MonitoringWindows\" />
     <Folder Include="UpdateWindows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Dev\DatabaseEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

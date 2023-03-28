@@ -1,0 +1,351 @@
+﻿<Window x:Class="HTD.App.Dev.DatabaseEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.Dev"
+        mc:Ignorable="d"
+        Title="Database Edit" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Courses">
+                <DataGrid x:Name="CoursesDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddCourseMI"
+                                      Header="Add"
+                                      Click="AddCourseMI_Click"/>
+                            <MenuItem x:Name="DeleteCourseMI"
+                                      Header="Delete"
+                                      Click="DeleteCourseMI_Click"/>
+                            <MenuItem x:Name="UpdateCourseMI"
+                                      Header="Update"
+                                      Click="UpdateCourseMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Name"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Type Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=TypeId}"/>
+                        <DataGridTextColumn Header="Is Active"
+                                            Width=".1*"
+                                            Binding="{Binding Path=IsActive}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Groups">
+                <DataGrid x:Name="GroupsDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddGroupMI"
+                                      Header="Add"
+                                      Click="AddGroupMI_Click"/>
+                            <MenuItem x:Name="DeleteGroupMI"
+                                      Header="Delete"
+                                      Click="DeleteGroupMI_Click"/>
+                            <MenuItem x:Name="UpdateGroupMI"
+                                      Header="Update"
+                                      Click="UpdateGroupMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Course Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=CourseId}"/>
+                        <DataGridTextColumn Header="Name"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Year"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Year}"/>
+                        <DataGridTextColumn Header="Is Active"
+                                            Width=".1*"
+                                            Binding="{Binding Path=IsActive}"/>
+                        <DataGridTextColumn Header="Payment"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Payment}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Incomes">
+                <DataGrid x:Name="IncomesDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddIncomeMI"
+                                      Header="Add"
+                                      Click="AddIncomeMI_Click"/>
+                            <MenuItem x:Name="DeleteIncomeMI"
+                                      Header="Delete"
+                                      Click="DeleteIncomeMI_Click"/>
+                            <MenuItem x:Name="UpdateIncomeMI"
+                                      Header="Update"
+                                      Click="UpdateIncomeMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Group Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=GroupId}"/>
+                        <DataGridTextColumn Header="Pupil Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=PupilId}"/>
+                        <DataGridTextColumn Header="Order Number"
+                                            Width=".1*"
+                                            Binding="{Binding Path=OrderNumber}"/>
+                        <DataGridTextColumn Header="Date"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Date}"/>
+                        <DataGridTextColumn Header="Payment"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Payment}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Lessons">
+                <DataGrid x:Name="LessonsDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddLessonMI"
+                                      Header="Add"
+                                      Click="AddLessonMI_Click"/>
+                            <MenuItem x:Name="DeleteLessonMI"
+                                      Header="Delete"
+                                      Click="DeleteLessonMI_Click"/>
+                            <MenuItem x:Name="UpdateLessonMI"
+                                      Header="Update"
+                                      Click="UpdateLessonMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Group Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=GroupId}"/>
+                        <DataGridTextColumn Header="Teacher Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=TeacherId}"/>
+                        <DataGridTextColumn Header="Begin"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Begin}"/>
+                        <DataGridTextColumn Header="End"
+                                            Width=".1*"
+                                            Binding="{Binding Path=End}"/>
+                        <DataGridTextColumn Header="Place"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Place}"/>
+                        <DataGridTextColumn Header="Date"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Date}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Outcomes">
+                <DataGrid x:Name="OutcomesDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddOutcomeMI"
+                                      Header="Add"
+                                      Click="AddOutcomeMI_Click"/>
+                            <MenuItem x:Name="DeleteOutcomeMI"
+                                      Header="Delete"
+                                      Click="DeleteOutcomeMI_Click"/>
+                            <MenuItem x:Name="UpdateOutcomeMI"
+                                      Header="Update"
+                                      Click="UpdateOutcomeMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Group Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=GroupId}"/>
+                        <DataGridTextColumn Header="Pupil Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=PupilId}"/>
+                        <DataGridTextColumn Header="Order Number"
+                                            Width=".1*"
+                                            Binding="{Binding Path=OrderNumber}"/>
+                        <DataGridTextColumn Header="Date"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Date}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Pupils">
+                <DataGrid x:Name="PupilsDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddPupilMI"
+                                      Header="Add"
+                                      Click="AddPupilMI_Click"/>
+                            <MenuItem x:Name="DeletePupilMI"
+                                      Header="Delete"
+                                      Click="DeletePupilMI_Click"/>
+                            <MenuItem x:Name="UpdatePupilMI"
+                                      Header="Update"
+                                      Click="UpdatePupilMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Name"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Birth Date"
+                                            Width=".1*"
+                                            Binding="{Binding Path=BirthDate}"/>
+                        <DataGridTextColumn Header="Parent Name"
+                                            Width=".1*"
+                                            Binding="{Binding Path=ParentName}"/>
+                        <DataGridTextColumn Header="Contact Phone"
+                                            Width=".1*"
+                                            Binding="{Binding Path=ContactPhone}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="PupilGroups">
+                <DataGrid x:Name="PupilGroupsDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddPupilGroupMI"
+                                      Header="Add"
+                                      Click="AddPupilGroupMI_Click"/>
+                            <MenuItem x:Name="DeletePupilGroupMI"
+                                      Header="Delete"
+                                      Click="DeletePupilGroupMI_Click"/>
+                            <MenuItem x:Name="UpdatePupilGroupMI"
+                                      Header="Update"
+                                      Click="UpdatePupilGroupMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Pupil Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=PupilId}"/>
+                        <DataGridTextColumn Header="Group Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=GroupId}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Teachers">
+                <DataGrid x:Name="TeachersDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddTeacherMI"
+                                      Header="Add"
+                                      Click="AddTeacherMI_Click"/>
+                            <MenuItem x:Name="DeleteTeacherMI"
+                                      Header="Delete"
+                                      Click="DeleteTeacherMI_Click"/>
+                            <MenuItem x:Name="UpdateTeacherMI"
+                                      Header="Update"
+                                      Click="UpdateTeacherMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Name"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Phone"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Phone}"/>
+                        <DataGridTextColumn Header="Date Start Work"
+                                            Width=".1*"
+                                            Binding="{Binding Path=DateStartWork}"/>
+                        <DataGridTextColumn Header="Date End Work"
+                                            Width=".1*"
+                                            Binding="{Binding Path=DateEndWork}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="TeacherCourses">
+                <DataGrid x:Name="TeacherCoursesDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddTeacherCourseMI"
+                                      Header="Add"
+                                      Click="AddTeacherCourseMI_Click"/>
+                            <MenuItem x:Name="DeleteTeacherCourseMI"
+                                      Header="Delete"
+                                      Click="DeleteTeacherCourseMI_Click"/>
+                            <MenuItem x:Name="UpdateTeacherCourseMI"
+                                      Header="Update"
+                                      Click="UpdateTeacherCourseMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Teacher Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=TeacherId}"/>
+                        <DataGridTextColumn Header="Course Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=CourseId}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Types">
+                <DataGrid x:Name="TypesDG"
+                          AutoGenerateColumns="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddTypeMI"
+                                      Header="Add"
+                                      Click="AddTypeMI_Click"/>
+                            <MenuItem x:Name="DeleteTypeMI"
+                                      Header="Delete"
+                                      Click="DeleteTypeMI_Click"/>
+                            <MenuItem x:Name="UpdateTypeMI"
+                                      Header="Update"
+                                      Click="UpdateTypeMI_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Id}"/>
+                        <DataGridTextColumn Header="Name"
+                                            Width=".1*"
+                                            Binding="{Binding Path=Name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
