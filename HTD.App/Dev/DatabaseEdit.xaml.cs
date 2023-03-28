@@ -2,7 +2,9 @@
 using HTD.BusinessLogic.ModelConverters;
 using HTD.BusinessLogic.ModelConverters.Dev.AddWindowModels;
 using HTD.BusinessLogic.Models.Dev.AddWindowModels;
+using HTD.BusinessLogic.Services;
 using HTD.DataEntities;
+using System.Configuration;
 using System.Windows;
 
 namespace HTD.App.Dev
@@ -20,17 +22,58 @@ namespace HTD.App.Dev
         private readonly IModelConverter<AddTeacherModel, Teacher> _addTeacherModelConverter;
         private readonly IModelConverter<AddTypeModel, Type> _addTypeModelConverter;
 
+        private readonly IService<Course> _courseService;
+        private readonly IService<Group> _groupService;
+        private readonly IService<Income> _incomeService;
+        private readonly IService<Lesson> _lessonService;
+        private readonly IService<Outcome> _outcomeService;
+        private readonly IService<PupilGroup> _pupilGroupService;
+        private readonly IService<Pupil> _pupilService;
+        private readonly IService<TeacherCourse> _teacherCourseService;
+        private readonly IService<Teacher> _teacherService;
+        private readonly IService<Type> _typeService;
+
         public DatabaseEdit()
         {
+#if DEBUG
+            var connectionString = ConfigurationManager.ConnectionStrings["DevDB"].ConnectionString;
+#else
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultDB"].ConnectionString;
+#endif
             _addCourseModelConverter = new AddCourseModelConverter();
+            _addGroupModelConverter = new AddGroupModelConverter();
+            _addIncomeModelConverter = new AddIncomeModelConverter();
+            _addLessonModelConverter = new AddLessonModelConverter();
+            _addOutcomeModelConverter = new AddOutcomeModelConverter();
+            _addPupilGroupModelConverter = new AddPupilGroupModelConverter();
+            _addPupilModelConverter = new AddPupilModelConverter();
+            _addTeacherCourseModelConverter = new AddTeacherCourseModelConverter();
+            _addTeacherModelConverter = new AddTeacherModelConverter();
+            _addTypeModelConverter = new AddTypeModelConverter();
+
+            _courseService = new CourseService(connectionString);
+            _groupService = new GroupService(connectionString);
+            _incomeService = new IncomeService(connectionString);
+            _lessonService = new LessonService(connectionString);
+            _outcomeService = new OutcomeService(connectionString);
+            _pupilGroupService =new PupilGroupService(connectionString);
+            _pupilService = new PupilService(connectionString);
+            _teacherCourseService = new TeacherCourseService(connectionString);
+            _teacherService = new TeacherService(connectionString);
+            _typeService = new TypeService(connectionString);
 
             InitializeComponent();
         }
 
-        private void AddCourseMI_Click(object sender, RoutedEventArgs e)
+        private async void AddCourseMI_Click(object sender, RoutedEventArgs e)
         {
             AddCourse window = new AddCourse(_addCourseModelConverter);
-            window.ShowDialog();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _courseService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add course");
+            }
         }
         private void DeleteCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -41,10 +84,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddGroupMI_Click(object sender, RoutedEventArgs e)
+        private async void AddGroupMI_Click(object sender, RoutedEventArgs e)
         {
             AddGroup window = new AddGroup(_addGroupModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _groupService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add group");
+            }
         }
         private void DeleteGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -55,10 +103,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddIncomeMI_Click(object sender, RoutedEventArgs e)
+        private async void AddIncomeMI_Click(object sender, RoutedEventArgs e)
         {
             AddIncome window = new AddIncome(_addIncomeModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _incomeService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add group");
+            }
         }
         private void DeleteIncomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -69,10 +122,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddLessonMI_Click(object sender, RoutedEventArgs e)
+        private async void AddLessonMI_Click(object sender, RoutedEventArgs e)
         {
             AddLesson window = new AddLesson(_addLessonModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _lessonService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add lesson");
+            }
         }
         private void DeleteLessonMI_Click(object sender, RoutedEventArgs e)
         {
@@ -83,10 +141,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddOutcomeMI_Click(object sender, RoutedEventArgs e)
+        private async void AddOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
             AddOutcome window = new AddOutcome(_addOutcomeModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _outcomeService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add group");
+            }
         }
         private void DeleteOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -97,10 +160,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddPupilMI_Click(object sender, RoutedEventArgs e)
+        private async void AddPupilMI_Click(object sender, RoutedEventArgs e)
         {
             AddPupil window = new AddPupil(_addPupilModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _pupilService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add pupil");
+            }
         }
         private void DeletePupilMI_Click(object sender, RoutedEventArgs e)
         {
@@ -111,10 +179,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddPupilGroupMI_Click(object sender, RoutedEventArgs e)
+        private async void AddPupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
             AddPupilGroup window = new AddPupilGroup(_addPupilGroupModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _pupilGroupService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add pupil group");
+            }
         }
         private void DeletePupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -125,10 +198,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddTeacherMI_Click(object sender, RoutedEventArgs e)
+        private async void AddTeacherMI_Click(object sender, RoutedEventArgs e)
         {
             AddTeacher window = new AddTeacher(_addTeacherModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _teacherService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add teacher");
+            }
         }
         private void DeleteTeacherMI_Click(object sender, RoutedEventArgs e)
         {
@@ -139,10 +217,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddTeacherCourseMI_Click(object sender, RoutedEventArgs e)
+        private async void AddTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
             AddTeacherCourse window = new AddTeacherCourse(_addTeacherCourseModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _teacherCourseService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add teacher course");
+            }
         }
         private void DeleteTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -153,10 +236,15 @@ namespace HTD.App.Dev
 
         }
 
-        private void AddTypeMI_Click(object sender, RoutedEventArgs e)
+        private async void AddTypeMI_Click(object sender, RoutedEventArgs e)
         {
             AddType window = new AddType(_addTypeModelConverter);
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+                var res = await _typeService.Insert(window.Value);
+                if (!res.Successfully)
+                    MessageBox.Show("Error. Cannot add type");
+            }
         }
         private void DeleteTypeMI_Click(object sender, RoutedEventArgs e)
         {
