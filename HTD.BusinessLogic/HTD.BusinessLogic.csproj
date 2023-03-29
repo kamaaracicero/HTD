@@ -67,6 +67,7 @@
     <Compile Include="ModelConverters\Dev\AddWindowModels\AddTeacherModelConverter.cs" />
     <Compile Include="ModelConverters\Dev\AddWindowModels\AddTypeModelConverter.cs" />
     <Compile Include="ModelConverters\IModelConverter.cs" />
+    <Compile Include="ModelConverters\ModelConverter.cs" />
     <Compile Include="ModelConverters\ModelConvertResult.cs" />
     <Compile Include="Models\Dev\AddWindowModels\AddCourseModel.cs" />
     <Compile Include="Models\Dev\AddWindowModels\AddGroupModel.cs" />

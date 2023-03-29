@@ -26,7 +26,7 @@ namespace HTD.BusinessLogic.Loggers
         private static string GetTab(int stage)
         {
             StringBuilder @string = new StringBuilder();
-            for (int i = 0; i < stage; i++)
+            for (int i = 0; i < (stage * 2); i++)
                 @string.Append(' ');
 
             return @string.ToString();
