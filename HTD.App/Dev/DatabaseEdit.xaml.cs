@@ -6,6 +6,7 @@ using HTD.BusinessLogic.Models.Dev.AddWindowModels;
 using HTD.BusinessLogic.Services;
 using HTD.DataEntities;
 using System.Configuration;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace HTD.App.Dev
@@ -66,6 +67,156 @@ namespace HTD.App.Dev
             InitializeComponent();
         }
 
+        private async Task UpdateCoursesViewModel()
+        {
+            var temp = await _courseService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading courses");
+                DevLogger.AddLog("Failed to load courses", 0, LogClass.Error, LogItem.Course);
+                return;
+            }
+
+            CoursesDG.ItemsSource = temp.Value;
+            CoursesDG.Items.Refresh();
+            DevLogger.AddLog("Courses loaded", 0, LogClass.Success, LogItem.Course);
+        }
+
+        private async Task UpdateGroupsViewModel()
+        {
+            var temp = await _groupService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading groups");
+                DevLogger.AddLog("Failed to load groups", 0, LogClass.Error, LogItem.Group);
+                return;
+            }
+
+            GroupsDG.ItemsSource = temp.Value;
+            GroupsDG.Items.Refresh();
+            DevLogger.AddLog("Groups loaded", 0, LogClass.Success, LogItem.Group);
+        }
+
+        private async Task UpdateIncomesViewModel()
+        {
+            var temp = await _incomeService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading incomes");
+                DevLogger.AddLog("Failed to load incomes", 0, LogClass.Error, LogItem.Income);
+                return;
+            }
+
+            IncomesDG.ItemsSource = temp.Value;
+            IncomesDG.Items.Refresh();
+            DevLogger.AddLog("Incomes loaded", 0, LogClass.Success, LogItem.Income);
+        }
+
+        private async Task UpdateLessonsViewModel()
+        {
+            var temp = await _lessonService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading lessons");
+                DevLogger.AddLog("Failed to load lessons", 0, LogClass.Error, LogItem.Lesson);
+                return;
+            }
+
+            LessonsDG.ItemsSource = temp.Value;
+            LessonsDG.Items.Refresh();
+            DevLogger.AddLog("Lessons loaded", 0, LogClass.Success, LogItem.Lesson);
+        }
+
+        private async Task UpdateOutcomesViewModel()
+        {
+            var temp = await _outcomeService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading outcomes");
+                DevLogger.AddLog("Failed to load outcomes", 0, LogClass.Error, LogItem.Outcome);
+                return;
+            }
+
+            OutcomesDG.ItemsSource = temp.Value;
+            OutcomesDG.Items.Refresh();
+            DevLogger.AddLog("Outcomes loaded", 0, LogClass.Success, LogItem.Outcome);
+        }
+
+        private async Task UpdatePupilGroupsViewModel()
+        {
+            var temp = await _pupilGroupService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading pupil groups");
+                DevLogger.AddLog("Failed to load pupil groups", 0, LogClass.Error, LogItem.PupilGroup);
+                return;
+            }
+
+            PupilGroupsDG.ItemsSource = temp.Value;
+            PupilGroupsDG.Items.Refresh();
+            DevLogger.AddLog("Pupil groups loaded", 0, LogClass.Success, LogItem.PupilGroup);
+        }
+
+        private async Task UpdatePupilsViewModel()
+        {
+            var temp = await _pupilService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading pupils");
+                DevLogger.AddLog("Failed to load pupils", 0, LogClass.Error, LogItem.Pupil);
+                return;
+            }
+
+            PupilsDG.ItemsSource = temp.Value;
+            PupilsDG.Items.Refresh();
+            DevLogger.AddLog("Pupils loaded", 0, LogClass.Success, LogItem.Pupil);
+        }
+
+        private async Task UpdateTeacherCoursesViewModel()
+        {
+            var temp = await _teacherCourseService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading teacher courses");
+                DevLogger.AddLog("Failed to load teacher courses", 0, LogClass.Error, LogItem.TeacherCourse);
+                return;
+            }
+
+            TeacherCoursesDG.ItemsSource = temp.Value;
+            TeacherCoursesDG.Items.Refresh();
+            DevLogger.AddLog("Teacher courses loaded", 0, LogClass.Success, LogItem.TeacherCourse);
+        }
+
+        private async Task UpdateTeachersViewModel()
+        {
+            var temp = await _teacherService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading teachers");
+                DevLogger.AddLog("Failed to load teachers", 0, LogClass.Error, LogItem.Teacher);
+                return;
+            }
+
+            TeachersDG.ItemsSource = temp.Value;
+            TeachersDG.Items.Refresh();
+            DevLogger.AddLog("Teachers loaded", 0, LogClass.Success, LogItem.Teacher);
+        }
+
+        private async Task UpdateTypesViewModel()
+        {
+            var temp = await _typeService.Select();
+            if (!temp.Successfully)
+            {
+                MessageBox.Show("Error in loading types");
+                DevLogger.AddLog("Failed to load types", 0, LogClass.Error, LogItem.Type);
+                return;
+            }
+
+            TypesDG.ItemsSource = temp.Value;
+            TypesDG.Items.Refresh();
+            DevLogger.AddLog("Teachers loaded", 0, LogClass.Success, LogItem.Type);
+        }
+
         private async void AddCourseMI_Click(object sender, RoutedEventArgs e)
         {
             DevLogger.AddLog("AddCourseMI Click", 0, LogClass.Event, LogItem.Course);
@@ -89,6 +240,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Course);
             }
+
+            await UpdateCoursesViewModel();
         }
         private void DeleteCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -122,6 +275,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Group);
             }
+
+            await UpdateGroupsViewModel();
         }
         private void DeleteGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -155,6 +310,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Income);
             }
+
+            await UpdateIncomesViewModel();
         }
         private void DeleteIncomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -188,6 +345,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Lesson);
             }
+
+            await UpdateLessonsViewModel();
         }
         private void DeleteLessonMI_Click(object sender, RoutedEventArgs e)
         {
@@ -221,6 +380,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Outcome);
             }
+
+            await UpdateOutcomesViewModel();
         }
         private void DeleteOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -254,6 +415,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Pupil);
             }
+
+            await UpdatePupilsViewModel();
         }
         private void DeletePupilMI_Click(object sender, RoutedEventArgs e)
         {
@@ -287,6 +450,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.PupilGroup);
             }
+
+            await UpdatePupilGroupsViewModel();
         }
         private void DeletePupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -320,6 +485,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Teacher);
             }
+
+            await UpdateTeachersViewModel();
         }
         private void DeleteTeacherMI_Click(object sender, RoutedEventArgs e)
         {
@@ -353,6 +520,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.TeacherCourse);
             }
+
+            await UpdateTeacherCoursesViewModel();
         }
         private void DeleteTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -386,6 +555,8 @@ namespace HTD.App.Dev
             {
                 DevLogger.AddLog("Window closed", 0, LogClass.Event, LogItem.Type);
             }
+
+            await UpdateTypesViewModel();
         }
         private void DeleteTypeMI_Click(object sender, RoutedEventArgs e)
         {

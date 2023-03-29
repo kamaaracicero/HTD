@@ -2,6 +2,7 @@
 {
     public enum LogItem
     {
+        None = 0,
         Course,
         Group,
         Income,
