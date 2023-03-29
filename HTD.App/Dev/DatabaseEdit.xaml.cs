@@ -67,6 +67,20 @@ namespace HTD.App.Dev
             InitializeComponent();
         }
 
+        private async void Window_Initialized(object sender, System.EventArgs e)
+        {
+            await UpdateCoursesViewModel();
+            await UpdateGroupsViewModel();
+            await UpdateIncomesViewModel();
+            await UpdateLessonsViewModel();
+            await UpdateOutcomesViewModel();
+            await UpdatePupilsViewModel();
+            await UpdatePupilGroupsViewModel();
+            await UpdateTeachersViewModel();
+            await UpdateTeacherCoursesViewModel();
+            await UpdateTypesViewModel();
+        }
+
         private async Task UpdateCoursesViewModel()
         {
             var temp = await _courseService.Select();
@@ -243,9 +257,31 @@ namespace HTD.App.Dev
 
             await UpdateCoursesViewModel();
         }
-        private void DeleteCourseMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteCourseMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteCourseMI Click", 0, LogClass.Event, LogItem.Course);
 
+            if (CoursesDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Course);
+
+                return;
+            }
+
+            var item = CoursesDG.SelectedItem as Course;
+            var res = await _courseService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Course);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Course);
+            }
+
+            await UpdateCoursesViewModel();
         }
         private void UpdateCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -278,9 +314,31 @@ namespace HTD.App.Dev
 
             await UpdateGroupsViewModel();
         }
-        private void DeleteGroupMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteGroupMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteGroupMI Click", 0, LogClass.Event, LogItem.Group);
 
+            if (GroupsDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Group);
+
+                return;
+            }
+
+            var item = GroupsDG.SelectedItem as Group;
+            var res = await _groupService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Group);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Group);
+            }
+
+            await UpdateGroupsViewModel();
         }
         private void UpdateGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -313,9 +371,31 @@ namespace HTD.App.Dev
 
             await UpdateIncomesViewModel();
         }
-        private void DeleteIncomeMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteIncomeMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteIncomeMI Click", 0, LogClass.Event, LogItem.Income);
 
+            if (IncomesDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Income);
+
+                return;
+            }
+
+            var item = IncomesDG.SelectedItem as Income;
+            var res = await _incomeService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Income);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Income);
+            }
+
+            await UpdateIncomesViewModel();
         }
         private void UpdateIncomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -348,9 +428,31 @@ namespace HTD.App.Dev
 
             await UpdateLessonsViewModel();
         }
-        private void DeleteLessonMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteLessonMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteLessonMI Click", 0, LogClass.Event, LogItem.Lesson);
 
+            if (LessonsDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Lesson);
+
+                return;
+            }
+
+            var item = LessonsDG.SelectedItem as Lesson;
+            var res = await _lessonService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Lesson);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Lesson);
+            }
+
+            await UpdateLessonsViewModel();
         }
         private void UpdateLessonMI_Click(object sender, RoutedEventArgs e)
         {
@@ -383,9 +485,31 @@ namespace HTD.App.Dev
 
             await UpdateOutcomesViewModel();
         }
-        private void DeleteOutcomeMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteOutcomeMI Click", 0, LogClass.Event, LogItem.Outcome);
 
+            if (OutcomesDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Outcome);
+
+                return;
+            }
+
+            var item = OutcomesDG.SelectedItem as Outcome;
+            var res = await _outcomeService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Outcome);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Outcome);
+            }
+
+            await UpdateOutcomesViewModel();
         }
         private void UpdateOutcomeMI_Click(object sender, RoutedEventArgs e)
         {
@@ -418,9 +542,31 @@ namespace HTD.App.Dev
 
             await UpdatePupilsViewModel();
         }
-        private void DeletePupilMI_Click(object sender, RoutedEventArgs e)
+        private async void DeletePupilMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeletePupilMI Click", 0, LogClass.Event, LogItem.Pupil);
 
+            if (PupilsDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Pupil);
+
+                return;
+            }
+
+            var item = PupilsDG.SelectedItem as Pupil;
+            var res = await _pupilService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Pupil);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Pupil);
+            }
+
+            await UpdatePupilsViewModel();
         }
         private void UpdatePupilMI_Click(object sender, RoutedEventArgs e)
         {
@@ -453,9 +599,31 @@ namespace HTD.App.Dev
 
             await UpdatePupilGroupsViewModel();
         }
-        private void DeletePupilGroupMI_Click(object sender, RoutedEventArgs e)
+        private async void DeletePupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeletePupilGroupMI Click", 0, LogClass.Event, LogItem.PupilGroup);
 
+            if (PupilGroupsDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.PupilGroup);
+
+                return;
+            }
+
+            var item = PupilGroupsDG.SelectedItem as PupilGroup;
+            var res = await _pupilGroupService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.PupilGroup);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.PupilGroup);
+            }
+
+            await UpdatePupilGroupsViewModel();
         }
         private void UpdatePupilGroupMI_Click(object sender, RoutedEventArgs e)
         {
@@ -488,9 +656,31 @@ namespace HTD.App.Dev
 
             await UpdateTeachersViewModel();
         }
-        private void DeleteTeacherMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteTeacherMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteTeacherMI Click", 0, LogClass.Event, LogItem.Teacher);
 
+            if (TeachersDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Teacher);
+
+                return;
+            }
+
+            var item = TeachersDG.SelectedItem as Teacher;
+            var res = await _teacherService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Teacher);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Teacher);
+            }
+
+            await UpdateTeachersViewModel();
         }
         private void UpdateTeacherMI_Click(object sender, RoutedEventArgs e)
         {
@@ -523,9 +713,31 @@ namespace HTD.App.Dev
 
             await UpdateTeacherCoursesViewModel();
         }
-        private void DeleteTeacherCourseMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteTeacherMI Click", 0, LogClass.Event, LogItem.TeacherCourse);
 
+            if (TeacherCoursesDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.TeacherCourse);
+
+                return;
+            }
+
+            var item = TeacherCoursesDG.SelectedItem as TeacherCourse;
+            var res = await _teacherCourseService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.TeacherCourse);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.TeacherCourse);
+            }
+
+            await UpdateTeacherCoursesViewModel();
         }
         private void UpdateTeacherCourseMI_Click(object sender, RoutedEventArgs e)
         {
@@ -558,9 +770,31 @@ namespace HTD.App.Dev
 
             await UpdateTypesViewModel();
         }
-        private void DeleteTypeMI_Click(object sender, RoutedEventArgs e)
+        private async void DeleteTypeMI_Click(object sender, RoutedEventArgs e)
         {
+            DevLogger.AddLog("DeleteTypeMI Click", 0, LogClass.Event, LogItem.Type);
 
+            if (TypesDG.SelectedItem == null)
+            {
+                DevLogger.AddLog("Item is null", 1, LogClass.Event, LogItem.Type);
+
+                return;
+            }
+
+            var item = TypesDG.SelectedItem as Type;
+            var res = await _typeService.Delete(item);
+            if (res.Successfully)
+            {
+                MessageBox.Show("Item deleted");
+                DevLogger.AddLog("Item deleted", 1, LogClass.Success, LogItem.Type);
+            }
+            else
+            {
+                MessageBox.Show("Error");
+                DevLogger.AddLog("Delete is not completed", 1, LogClass.Error, LogItem.Type);
+            }
+
+            await UpdateTypesViewModel();
         }
         private void UpdateTypeMI_Click(object sender, RoutedEventArgs e)
         {

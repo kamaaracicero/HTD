@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.Dev"
         mc:Ignorable="d"
-        Title="Database Edit" Height="450" Width="800">
+        Title="Database Edit" Height="450" Width="800" Initialized="Window_Initialized">
     <Grid>
         <TabControl>
             <TabItem Header="Courses">
