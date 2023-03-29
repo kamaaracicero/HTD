@@ -40,6 +40,7 @@ namespace HTD.DataAccess.DbContexts
             modelBuilder.Configurations.Add(new LessonConfiguration());
             modelBuilder.Configurations.Add(new OutcomeConfiguration());
             modelBuilder.Configurations.Add(new PupilConfiguration());
+            modelBuilder.Configurations.Add(new PupilGroupConfiguration());
             modelBuilder.Configurations.Add(new TeacherConfiguration());
             modelBuilder.Configurations.Add(new TeacherCourseConfiguration());
             modelBuilder.Configurations.Add(new TypeConfiguration());
