@@ -1,0 +1,114 @@
+﻿<Window x:Class="HTD.App.MonitoringWindows.GroupMonitoring"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.MonitoringWindows"
+        mc:Ignorable="d"
+        Title="Работа со списком групп"
+        Height="550"
+        Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".6*"/>
+            <ColumnDefinition Width=".4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0"
+              Grid.Row="0"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.0*"/>
+                <RowDefinition Height="20px"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="GroupsDG"
+                      AutoGenerateColumns="False"
+                      Grid.Row="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"
+                                        Width=".1*"
+                                        Binding="{Binding Path=Id}"/>
+                    <DataGridTextColumn Header="Название группы"
+                                        Width=".6*"
+                                        Binding="{Binding Path=Name}"/>
+                    <DataGridTextColumn Header="Количество детей"
+                                        Width=".3*"
+                                        Binding="{Binding Path=PupilCount}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="RefreshTableB"
+                    Grid.Row="1"
+                    Click="RefreshTableB_Click">
+                <TextBlock TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Перезагрузить таблицу"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="1"
+              Grid.Row="0"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50px"/>
+                <RowDefinition Height="140px"/>
+                <RowDefinition Height="1.0*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="OpenNewGroupB"
+                    Grid.Row="0">
+                <TextBlock TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Text="Открыть новую группу"
+                           FontSize="14"/>
+            </Button>
+            <GroupBox Grid.Row="1"
+                      Header="Работа с конкретной группой"
+                      Margin="0,20,0,0">
+                <StackPanel Margin="0,10,0,0">
+                    <Label Content="Количество детей"/>
+                    <TextBox x:Name="PupilCountTB"
+                             FontSize="14"
+                             IsEnabled="False"/>
+                    <Button x:Name="CloseGroupB"
+                            Height="25px"
+                            Margin="0,5,0,5">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Закрыть группу"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+            <Grid Grid.Row="2" Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.0*"/>
+                    <RowDefinition Height="20px"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width=".5*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="PupilsLB"
+                         Grid.Row="0" Grid.Column="0"
+                         Grid.RowSpan="1" Grid.ColumnSpan="2">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="FindPupilByNameMI"
+                                      Header="Найти ученика по фамилии"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
+                <Button x:Name="AddPupilB"
+                        Grid.Row="1" Grid.Column="0"
+                        Margin="0,0,5,0">
+                    <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Добавить ученика"/>
+                </Button>
+                <Button x:Name="DeletePupilB"
+                        Grid.Row="1" Grid.Column="1"
+                        Margin="5,0,0,0">
+                    <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Удалить ученика"/>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

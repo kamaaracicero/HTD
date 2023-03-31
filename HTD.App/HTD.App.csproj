@@ -133,6 +133,9 @@
     <Compile Include="Dev\DatabaseEdit.xaml.cs">
       <DependentUpon>DatabaseEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MonitoringWindows\GroupMonitoring.xaml.cs">
+      <DependentUpon>GroupMonitoring.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MonitoringWindows\TeacherMonitoring.xaml.cs">
       <DependentUpon>TeacherMonitoring.xaml</DependentUpon>
     </Compile>
@@ -218,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dev\DatabaseEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MonitoringWindows\GroupMonitoring.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

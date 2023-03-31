@@ -13,20 +13,35 @@
             <ColumnDefinition Width="0.6*"/>
             <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Grid.Row="0"
-                      Margin="5">
-            <DataGrid x:Name="TeachersDG">
+        <Grid Grid.Column="0"
+              Grid.Row="0"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.0*"/>
+                <RowDefinition Height="20px"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="TeachersDG"
+                      AutoGenerateColumns="False"
+                      Grid.Row="0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id"
-                                        Width=".1*"/>
+                    <DataGridTextColumn Header="ID"
+                                        Width=".1*"
+                                        Binding="{Binding Path=Id}"/>
                     <DataGridTextColumn Header="Ф.И.О."
-                                        Width=".4*"/>
+                                        Width=".5*"
+                                        Binding="{Binding Path=Name}"/>
                     <DataGridTextColumn Header="Телефон"
-                                        Width=".3*"/>
-                    <DataGridTextColumn Header="Выбрать"
-                                        Width=".2*"/>
+                                        Width=".4*"
+                                        Binding="{Binding Path=Phone}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button x:Name="RefreshTableB"
+                    Grid.Row="1"
+                    Click="RefreshTableB_Click">
+                <TextBlock TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Перезагрузить таблицу"/>
+            </Button>
         </Grid>
         <Grid Grid.Column="1"
               Margin="5">
@@ -43,9 +58,11 @@
                 <TextBox x:Name="SearchTB"
                          Height="25px"
                          VerticalContentAlignment="Center"
-                         FontSize="14"/>
+                         FontSize="14"
+                         TextChanged="SearchTB_TextChanged"/>
             </StackPanel>
-            <GroupBox Grid.Row="1" Header="Подробности">
+            <GroupBox Grid.Row="1"
+                      Header="Подробности">
                 <Grid Margin="0,10,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60px"/>
@@ -54,8 +71,8 @@
                         <RowDefinition Height="50px"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".4*"/>
-                        <ColumnDefinition Width=".7*"/>
+                        <ColumnDefinition Width="100px"/>
+                        <ColumnDefinition Width="1.0*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Grid.Row="0">
                         <Label Content="Ф.И.О."
@@ -86,8 +103,8 @@
                                   Margin="5, 2, 5, 2"
                                   VerticalScrollBarVisibility="Hidden">
                         <RichTextBox x:Name="CoursesAndGroupsRTB"
-                                 IsEnabled="False"
-                                 FontSize="14">
+                                     IsEnabled="False"
+                                     FontSize="14">
                             <FlowDocument x:Name="CoursesAndGroupsFD"/>
                         </RichTextBox>
                     </ScrollViewer>
@@ -101,14 +118,18 @@
                              IsEnabled="False"
                              Height="25px"
                              FontSize="14"/>
-                    <Button Grid.Column="0" Grid.Row="3"
-                            Margin="5">
+                    <Button x:Name="UpdateTeacherB"
+                            Grid.Column="0" Grid.Row="3"
+                            Margin="5"
+                            Click="UpdateTeacherB_Click">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="Редактировать данные"/>
                     </Button>
-                    <Button Grid.Column="1" Grid.Row="3"
-                            Margin="5">
+                    <Button x:Name="FireTeacherB"
+                            Grid.Column="1" Grid.Row="3"
+                            Margin="5"
+                            Click="FireTeacherB_Click">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="Уволить педагога"/>
@@ -126,7 +147,8 @@
                         Height="40px"
                         Width="130px"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom">
+                        VerticalAlignment="Bottom"
+                        Click="AddTeacherB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Принять на работу нового педагога"/>
@@ -136,7 +158,8 @@
                         Height="25px"
                         Width="60px"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
+                        VerticalAlignment="Bottom"
+                        Click="CloseB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Закрыть"/>

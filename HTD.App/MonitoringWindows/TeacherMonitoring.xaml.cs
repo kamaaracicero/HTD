@@ -23,5 +23,35 @@ namespace HTD.App.MonitoringWindows
         {
             InitializeComponent();
         }
+
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void UpdateTeacherB_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FireTeacherB_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddTeacherB_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseB_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RefreshTableB_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
