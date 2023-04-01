@@ -4,7 +4,7 @@ namespace HTD.DataEntities
 {
     public class Lesson : IDataEntity
     {
-        public Lesson(int id, int groupId, int teacherId, DateTime begin, DateTime end, int place, DateTime date)
+        public Lesson(int id, int groupId, int teacherId, DateTime begin, DateTime end, int place, int date)
         {
             Id = id;
             GroupId = groupId;
@@ -12,11 +12,11 @@ namespace HTD.DataEntities
             Begin = begin;
             End = end;
             Place = place;
-            Date = date;
+            Day = date;
         }
 
         public Lesson()
-            : this(0, 0, 0, new DateTime(2000, 1, 1), new DateTime(2000, 1, 1), 0, new DateTime(2000, 1, 1))
+            : this(0, 0, 0, new DateTime(2000, 1, 1), new DateTime(2000, 1, 1), 0, 0)
         {
         }
 
@@ -32,7 +32,7 @@ namespace HTD.DataEntities
 
         public int Place { get; set; }
 
-        public DateTime Date { get; set; }
+        public int Day { get; set; }
 
         public void Update(object obj)
         {
@@ -47,7 +47,7 @@ namespace HTD.DataEntities
                 Begin = temp.Begin;
                 End = temp.End;
                 Place = temp.Place;
-                Date = temp.Date;
+                Day = temp.Day;
             }
         }
 
@@ -57,7 +57,7 @@ namespace HTD.DataEntities
             ^ Begin.GetHashCode()
             ^ End.GetHashCode()
             ^ Place.GetHashCode()
-            ^ Date.GetHashCode();
+            ^ Day.GetHashCode();
 
         public override bool Equals(object obj)
         {

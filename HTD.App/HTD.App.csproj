@@ -136,6 +136,9 @@
     <Compile Include="MonitoringWindows\GroupMonitoring.xaml.cs">
       <DependentUpon>GroupMonitoring.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MonitoringWindows\LessonMonitoring.xaml.cs">
+      <DependentUpon>LessonMonitoring.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MonitoringWindows\TeacherMonitoring.xaml.cs">
       <DependentUpon>TeacherMonitoring.xaml</DependentUpon>
     </Compile>
@@ -225,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonitoringWindows\GroupMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MonitoringWindows\LessonMonitoring.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

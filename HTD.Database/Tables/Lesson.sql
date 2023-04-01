@@ -6,6 +6,6 @@
     [Begin] TIME NOT NULL,
     [End] TIME NOT NULL,
     [Place] INT NOT NULL,
-    [Date] DATE NOT NULL,
+    [Day] INT NOT NULL,
     CONSTRAINT pk_Lesson PRIMARY KEY([Id]),
 )

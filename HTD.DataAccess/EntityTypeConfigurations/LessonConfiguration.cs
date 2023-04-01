@@ -15,7 +15,7 @@ namespace HTD.DataAccess.EntityTypeConfigurations
             Property(l => l.Begin).IsRequired().HasColumnName(nameof(Lesson.Begin));
             Property(l => l.End).IsRequired().HasColumnName(nameof(Lesson.End));
             Property(l => l.Place).IsRequired().HasColumnName(nameof(Lesson.Place));
-            Property(l => l.Date).IsRequired().HasColumnName(nameof(Lesson.Date));
+            Property(l => l.Day).IsRequired().HasColumnName(nameof(Lesson.Day));
         }
     }
 }

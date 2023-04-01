@@ -12,6 +12,6 @@
 
         public string PlaceTB { get; set; }
 
-        public string DateDP { get; set; }
+        public string DayTB { get; set; }
     }
 }
