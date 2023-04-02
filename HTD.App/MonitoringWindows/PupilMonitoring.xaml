@@ -113,8 +113,8 @@
                     <Button x:Name="ExpellPupilB"
                             Grid.Row="2">
                         <TextBlock TextAlignment="Center"
-                               TextWrapping="Wrap"
-                               Text="Отчислить учащегося"/>
+                                   TextWrapping="Wrap"
+                                   Text="Отчислить учащегося"/>
                     </Button>
                 </Grid>
             </GroupBox>
