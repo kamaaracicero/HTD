@@ -17,12 +17,23 @@
               Grid.Row="0"
               Margin="5">
             <Grid.RowDefinitions>
+                <RowDefinition Height="25px"/>
                 <RowDefinition Height="1.0*"/>
                 <RowDefinition Height="20px"/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100px"/>
+                    <ColumnDefinition Width="1.0*"  />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Название курса: "/>
+                <Label x:Name="CourseNameL"
+                       Grid.Column="1"
+                       Content="-Название курса-"/>
+            </Grid>
             <DataGrid x:Name="GroupsDG"
                       AutoGenerateColumns="False"
-                      Grid.Row="0">
+                      Grid.Row="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
                                         Width=".1*"
@@ -36,7 +47,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="RefreshTableB"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Click="RefreshTableB_Click">
                 <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"

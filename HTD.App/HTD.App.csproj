@@ -133,6 +133,13 @@
     <Compile Include="Dev\DatabaseEdit.xaml.cs">
       <DependentUpon>DatabaseEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Elements\ListBoxItems\ScheduleListBoxItem.cs" />
+    <Compile Include="Menu\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MonitoringWindows\CourseMonitoring.xaml.cs">
+      <DependentUpon>CourseMonitoring.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MonitoringWindows\GroupMonitoring.xaml.cs">
       <DependentUpon>GroupMonitoring.xaml</DependentUpon>
     </Compile>
@@ -227,6 +234,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menu\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MonitoringWindows\CourseMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MonitoringWindows\GroupMonitoring.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -251,6 +266,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\main_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

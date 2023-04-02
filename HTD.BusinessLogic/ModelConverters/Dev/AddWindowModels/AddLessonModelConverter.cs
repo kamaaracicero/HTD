@@ -116,7 +116,7 @@ namespace HTD.BusinessLogic.ModelConverters.Dev.AddWindowModels
 
         private void ConvertDate(AddLessonModel model, ModelConvertResult<Lesson> result)
         {
-            var convertRes = GetDateFromString(model.DayDP);
+            var convertRes = GetIntFromString(model.DayTB);
             if (!convertRes.success)
             {
                 result.IsError = true;

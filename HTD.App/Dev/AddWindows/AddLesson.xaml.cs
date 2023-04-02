@@ -34,7 +34,7 @@ namespace HTD.App.Dev.AddWindows
             Model.BeginTB = this.BeginTB.Text;
             Model.EndTB = this.EndTB.Text;
             Model.PlaceTB = this.PlaceTB.Text;
-            Model.DayDP = this.DateDP.Text;
+            Model.DayTB = this.DateDP.Text;
 
             var res = _converter.ConvertModel(Model);
             if (res.IsError)
