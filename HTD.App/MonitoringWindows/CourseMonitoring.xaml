@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.MonitoringWindows"
         mc:Ignorable="d"
-        Title="Работа с кружками" Height="450" Width="800">
+        Title="Работа с кружками" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>
@@ -83,10 +83,14 @@
                         <TextBox x:Name="GroupCountTB"
                              FontSize="14"
                              IsEnabled="False"/>
+                        <Label Content="-Teachers List Box-"/>
+                        <Button Content="-Add Teacher To Course Button-"/>
+                        <Button Content="-Delete Teacher From Course Button-"/>
                     </StackPanel>
                     <Button x:Name="ShowGroupsB"
                             Grid.Column="0" Grid.Row="1"
-                            Margin="5" Click="ShowGroupsB_Click">
+                            Margin="5"
+                            Click="ShowGroupsB_Click">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="Работа со списком групп"/>
@@ -110,7 +114,7 @@
                         Height="40px"
                         Width="130px"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom">
+                        VerticalAlignment="Bottom" Click="AddCourseB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Добавить новый кружок"/>

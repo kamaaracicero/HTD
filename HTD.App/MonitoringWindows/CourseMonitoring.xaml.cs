@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HTD.App.AddWindows;
+using HTD.App.Dev.AddWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,12 @@ namespace HTD.App.MonitoringWindows
         {
             GroupMonitoring groupMonitoring = new GroupMonitoring();
             groupMonitoring.Show();
+        }
+
+        private void AddCourseB_Click(object sender, RoutedEventArgs e)
+        {
+            AddCourseWindow window = new AddCourseWindow();
+            window.ShowDialog();
         }
     }
 }

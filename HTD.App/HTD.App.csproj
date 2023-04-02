@@ -94,6 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWindows\AddCourseWindow.xaml.cs">
+      <DependentUpon>AddCourseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddWindows\AddPupilWindow.xaml.cs">
       <DependentUpon>AddPupilWindow.xaml</DependentUpon>
     </Compile>
@@ -196,6 +199,10 @@
     <Folder Include="UpdateWindows\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddWindows\AddCourseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddWindows\AddPupilWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

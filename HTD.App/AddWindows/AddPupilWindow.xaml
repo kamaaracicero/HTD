@@ -46,7 +46,7 @@
                         FirstDayOfWeek="Monday"
                         Loaded="BirthDayDP_Loaded"/>
         </StackPanel>
-        <Grid Grid.Row="2"
+        <Grid Grid.Row="1"
               Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
