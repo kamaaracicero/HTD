@@ -82,7 +82,7 @@
                             Margin="0,5,0,5">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
-                                   Text="Закрыть группу"/>
+                                   Text="Отправить группу в архив"/>
                     </Button>
                 </StackPanel>
             </GroupBox>

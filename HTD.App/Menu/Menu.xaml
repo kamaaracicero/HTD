@@ -56,6 +56,15 @@
                        TextWrapping="Wrap"
                        Text="Работа с расписанием занятий"/>
         </Button>
+        <Button x:Name="StatisticsB"
+                Grid.Column="2" Grid.Row="1"
+                Margin="5"
+                Height="50px"
+                Click="StatisticsB_Click">
+            <TextBlock TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Text="Статистика центра"/>
+        </Button>
         <Button x:Name="CloseB"
                 Grid.Column="2" Grid.Row="2"
                 Margin="5"

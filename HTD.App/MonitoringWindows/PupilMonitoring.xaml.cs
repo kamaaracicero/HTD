@@ -14,17 +14,14 @@ using System.Windows.Shapes;
 
 namespace HTD.App.MonitoringWindows
 {
-    public partial class CourseMonitoring : Window
+    /// <summary>
+    /// Interaction logic for PupilMonitoring.xaml
+    /// </summary>
+    public partial class PupilMonitoring : Window
     {
-        public CourseMonitoring()
+        public PupilMonitoring()
         {
             InitializeComponent();
-        }
-
-        private void ShowGroupsB_Click(object sender, RoutedEventArgs e)
-        {
-            GroupMonitoring groupMonitoring = new GroupMonitoring();
-            groupMonitoring.Show();
         }
     }
 }

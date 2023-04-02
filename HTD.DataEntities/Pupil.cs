@@ -28,6 +28,8 @@ namespace HTD.DataEntities
 
         public string ContactPhone { get; set; }
 
+        // public bool IsExpelled { get; set; }
+
         public void Update(object obj)
         {
             if (obj == null || !(obj is Pupil))
