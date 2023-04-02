@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace HTD.App.Elements.ListBoxItems
 {
-    internal class ScheduleListBoxItem : ListBoxItem
+    internal class ScheduleListBoxItem
     {
         private const string TimeFormat = "{0}-{1}";
 
@@ -15,7 +15,7 @@ namespace HTD.App.Elements.ListBoxItems
             TeacherValue = teacher;
             GroupValue = group;
 
-            Init();
+            // Init();
         }
 
         public Lesson LessonValue { get; set; }

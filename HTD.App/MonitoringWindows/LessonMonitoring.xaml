@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Работа с расписанием" Height="450" Width="800">
     <Window.Resources>
-        <Style x:Key="ScheduleItemStyle" TargetType="ListBoxItem">
+        <Style x:Name="LessonConflictItemStyle" TargetType="ListBoxItem">
             <Setter Property="Padding" Value="5"/>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
@@ -32,31 +32,93 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".7*"/>
-            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width=".6*"/>
+            <ColumnDefinition Width=".4*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Margin="5, 0, 5, 5">
+        <TabControl Margin="5">
             <TabItem Header="Понедельник">
-                <ListBox x:Name="MondayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="MondayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
             <TabItem Header="Вторник">
-                <ListBox x:Name="TuesdayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="TuesdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
             <TabItem Header="Среда">
-                <ListBox x:Name="WednesdayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="WednesdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
             <TabItem Header="Четверг">
-                <ListBox x:Name="ThursdayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="ThursdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
             <TabItem Header="Пятница">
-                <ListBox x:Name="FridayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="FridayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
             <TabItem Header="Суббота">
-                <ListBox x:Name="SaturdayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="SaturdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
             <TabItem Header="Воскресенье">
-                <ListBox x:Name="SundayLB" ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
+                <ListBox x:Name="SundayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
             </TabItem>
         </TabControl>
+        <Grid Grid.Column="1"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120px"/>
+                <RowDefinition Height="1.0*"/>
+                <RowDefinition Height="50px"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Поиск по названию группы:"
+                           FontSize="14"
+                           Height="25px"/>
+                <TextBox x:Name="SearchGroupNameTB"
+                         Height="25px"
+                         VerticalContentAlignment="Center"
+                         FontSize="14"/>
+                <TextBlock Text="Поиск по фамилии преподавателя:"
+                           FontSize="14"
+                           Height="25px"/>
+                <TextBox x:Name="SearchTeacherNameTB"
+                         Height="25px"
+                         VerticalContentAlignment="Center"
+                         FontSize="14"/>
+            </StackPanel>
+            <GroupBox Grid.Row="1"
+                      Header="Конфликтующие занятия">
+                <ListBox x:Name="ConflictLessonsLB"
+                         ItemContainerStyle="{StaticResource ConflictLesssonItemStyle}"/>
+            </GroupBox>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="AddCourseB"
+                        Grid.Column="0"
+                        Height="40px"
+                        Width="130px"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom">
+                    <TextBlock TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Добавить новое занятие"/>
+                </Button>
+                <Button x:Name="CloseB"
+                        Grid.Column="1"
+                        Height="25px"
+                        Width="60px"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                    <TextBlock TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Закрыть"/>
+                </Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
