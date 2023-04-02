@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:HTD.App.MonitoringWindows"
         mc:Ignorable="d"
         Title="PupilMonitoring"
-        Height="600"
-        Width="800">
+        Height="650" MinHeight="600"
+        Width="800" MinWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>
@@ -102,7 +102,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="25px"/>
                         <RowDefinition Height="1.0*"/>
-                        <RowDefinition Height="20px"/>
+                        <RowDefinition Height="30px"/>
+                        <RowDefinition Height="5px"/>
+                        <RowDefinition Height="30px"/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="Кружки ученика:"
                                FontSize="14"
@@ -110,8 +112,14 @@
                                Grid.Row="0"/>
                     <ListBox x:Name="PupilGroupsLB"
                              Grid.Row="1"/>
-                    <Button x:Name="ExpellPupilB"
+                    <Button x:Name="UpdatePupilB"
                             Grid.Row="2">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Редактировать данные"/>
+                    </Button>
+                    <Button x:Name="ExpellPupilB"
+                            Grid.Row="4">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="Отчислить учащегося"/>
@@ -128,7 +136,7 @@
                         Height="40px"
                         Width="130px"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom">
+                        VerticalAlignment="Bottom" Click="AddPupilB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Зачислить учащегося"/>

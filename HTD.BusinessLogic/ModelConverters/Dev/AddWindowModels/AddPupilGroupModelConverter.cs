@@ -1,4 +1,5 @@
 ﻿using HTD.BusinessLogic.Loggers;
+using HTD.BusinessLogic.Loggers.Dev;
 using HTD.BusinessLogic.Models.Dev.AddWindowModels;
 using HTD.DataEntities;
 using System;

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace HTD.BusinessLogic.Loggers
+namespace HTD.BusinessLogic.Loggers.Dev
 {
     public static class DevLogger
     {

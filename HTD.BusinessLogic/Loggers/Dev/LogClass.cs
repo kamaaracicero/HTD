@@ -1,4 +1,4 @@
-﻿namespace HTD.BusinessLogic.Loggers
+﻿namespace HTD.BusinessLogic.Loggers.Dev
 {
     public enum LogClass
     {

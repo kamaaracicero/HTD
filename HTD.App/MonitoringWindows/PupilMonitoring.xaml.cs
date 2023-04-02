@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HTD.App.AddWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,17 @@ using System.Windows.Shapes;
 
 namespace HTD.App.MonitoringWindows
 {
-    /// <summary>
-    /// Interaction logic for PupilMonitoring.xaml
-    /// </summary>
     public partial class PupilMonitoring : Window
     {
         public PupilMonitoring()
         {
             InitializeComponent();
+        }
+
+        private void AddPupilB_Click(object sender, RoutedEventArgs e)
+        {
+            AddPupilWindow window = new AddPupilWindow();
+            window.ShowDialog();
         }
     }
 }

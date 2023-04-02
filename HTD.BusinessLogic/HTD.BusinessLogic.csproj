@@ -53,9 +53,9 @@
   <ItemGroup>
     <Compile Include="CompilerConfig.cs" />
     <Compile Include="ErrorMessageGenerators\MessageBoxListErrors.cs" />
-    <Compile Include="Loggers\DevLogger.cs" />
-    <Compile Include="Loggers\LogItem.cs" />
-    <Compile Include="Loggers\LogClass.cs" />
+    <Compile Include="Loggers\Dev\DevLogger.cs" />
+    <Compile Include="Loggers\Dev\LogItem.cs" />
+    <Compile Include="Loggers\Dev\LogClass.cs" />
     <Compile Include="ModelConverters\Dev\AddWindowModels\AddCourseModelConverter.cs" />
     <Compile Include="ModelConverters\Dev\AddWindowModels\AddGroupModelConverter.cs" />
     <Compile Include="ModelConverters\Dev\AddWindowModels\AddIncomeModelConverter.cs" />

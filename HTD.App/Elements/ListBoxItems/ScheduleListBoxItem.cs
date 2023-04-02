@@ -1,5 +1,4 @@
 ﻿using HTD.DataEntities;
-using System.Windows.Controls;
 
 namespace HTD.App.Elements.ListBoxItems
 {
