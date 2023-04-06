@@ -3,7 +3,7 @@ using System.Text;
 
 namespace HTD.BusinessLogic.ErrorMessageGenerators
 {
-    public static class MessageBoxListErrors
+    public static class ErrorsListGenerator
     {
         public static string GenerateMessage(string title, IEnumerable<string> messages)
         {

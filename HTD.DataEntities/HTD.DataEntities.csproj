@@ -46,9 +46,7 @@
     <Compile Include="PupilGroup.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="Income.cs" />
     <Compile Include="Lesson.cs" />
-    <Compile Include="Outcome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pupil.cs" />
     <Compile Include="Teacher.cs" />

@@ -8,7 +8,8 @@
         Title="Просмотр учителей"
         Height="500" MinHeight="500"
         Width="800" MinWidth="800"
-        Icon="/Icons/logo.ico">
+        Icon="/Icons/logo.ico"
+        Initialized="Window_Initialized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.6*"/>
@@ -23,7 +24,8 @@
             </Grid.RowDefinitions>
             <DataGrid x:Name="TeachersDG"
                       AutoGenerateColumns="False"
-                      Grid.Row="0">
+                      Grid.Row="0"
+                      SelectionChanged="TeachersDG_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
                                         Width=".1*"
@@ -89,7 +91,7 @@
                                  IsEnabled="False"
                                  Height="25px"
                                  FontSize="14"/>
-                        <TextBox x:Name="NumberTB"
+                        <TextBox x:Name="PhoneTB"
                                  Margin="5, 2, 5, 0"
                                  IsEnabled="False"
                                  Height="25px"
@@ -105,9 +107,7 @@
                                   VerticalScrollBarVisibility="Hidden">
                         <RichTextBox x:Name="CoursesAndGroupsRTB"
                                      IsEnabled="False"
-                                     FontSize="14">
-                            <FlowDocument x:Name="CoursesAndGroupsFD"/>
-                        </RichTextBox>
+                                     FontSize="14"/>
                     </ScrollViewer>
                     <Label Content="Принят с"
                            Grid.Row="2" Grid.Column="0"

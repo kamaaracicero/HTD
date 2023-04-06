@@ -1,9 +1,6 @@
 ﻿using HTD.BusinessLogic.Services;
 using HTD.DataEntities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 
 namespace HTD.App.Configuration
 {
@@ -11,7 +8,16 @@ namespace HTD.App.Configuration
     {
         static AppServicesConfiguration()
         {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultDB"].ConnectionString;
 
+            CourseService = new CourseService(connectionString);
+            GroupService = new GroupService(connectionString);
+            LessonService = new LessonService(connectionString);
+            PupilService = new PupilService(connectionString);
+            PupilGroupService = new PupilGroupService(connectionString);
+            TeacherService = new TeacherService(connectionString);
+            TeacherCourseService = new TeacherCourseService(connectionString);
+            TypeService = new CourseTypeService(connectionString);
         }
 
         public static IService<Course> CourseService { get; }
@@ -26,7 +32,7 @@ namespace HTD.App.Configuration
 
         public static IService<Teacher> TeacherService { get; }
 
-        public static IService<TeacherCourse> TeacherCouserService { get; }
+        public static IService<TeacherCourse> TeacherCourseService { get; }
 
         public static IService<CourseType> TypeService { get; }
     }

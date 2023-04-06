@@ -55,9 +55,7 @@
     <Compile Include="DbContexts\MainDbContext.cs" />
     <Compile Include="EntityTypeConfigurations\CourseConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\GroupConfiguration.cs" />
-    <Compile Include="EntityTypeConfigurations\IncomeConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\LessonConfiguration.cs" />
-    <Compile Include="EntityTypeConfigurations\OutcomeConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\PupilConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\PupilGroupConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\TeacherConfiguration.cs" />

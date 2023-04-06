@@ -22,14 +22,16 @@
             <TextBox x:Name="NameTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                     FontSize="14"
+                     KeyDown="NameTB_KeyDown"/>
             <TextBlock Text="Номер мобильного телефона:"
                        FontSize="14"
                        Height="25px"/>
             <TextBox x:Name="PhoneTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                     FontSize="14"
+                     KeyDown="PhoneTB_KeyDown"/>
             <TextBlock Text="Дата принятия на работу (ММ/ДД/ГГГГ):"
                        FontSize="14"
                        Height="25px"/>
@@ -37,7 +39,7 @@
                         FontSize="14"
                         Height="25px"
                         FirstDayOfWeek="Monday"
-                        Loaded="StartWorkDateDP_Loaded"/>
+                        Loaded="StartWorkDateDP_Loaded" KeyDown="StartWorkDateDP_KeyDown"/>
         </StackPanel>
         <Grid Grid.Row="1"
               Margin="5">
@@ -50,7 +52,7 @@
                     Height="40px"
                     Width="130px"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Click="AddB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Добавить преподавателя"/>
@@ -60,7 +62,7 @@
                     Height="25px"
                     Width="60px"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Click="CloseB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Закрыть"/>
