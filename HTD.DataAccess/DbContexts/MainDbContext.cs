@@ -30,7 +30,7 @@ namespace HTD.DataAccess.DbContexts
 
         public DbSet<TeacherCourse> TeacherCourses { get; set; }
 
-        public DbSet<DataEntities.Type> Types { get; set; }
+        public DbSet<CourseType> Types { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,7 +43,7 @@ namespace HTD.DataAccess.DbContexts
             modelBuilder.Configurations.Add(new PupilGroupConfiguration());
             modelBuilder.Configurations.Add(new TeacherConfiguration());
             modelBuilder.Configurations.Add(new TeacherCourseConfiguration());
-            modelBuilder.Configurations.Add(new TypeConfiguration());
+            modelBuilder.Configurations.Add(new CourseTypeConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

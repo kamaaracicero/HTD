@@ -5,13 +5,13 @@ using HTD.DataEntities;
 
 namespace HTD.BusinessLogic.ModelConverters.Dev.AddWindowModels
 {
-    internal class AddTypeModelConverter : ModelConverter, IModelConverter<AddTypeModel, Type>
+    internal class AddTypeModelConverter : ModelConverter, IModelConverter<AddTypeModel, CourseType>
     {
-        public ModelConvertResult<Type> ConvertModel(AddTypeModel model)
+        public ModelConvertResult<CourseType> ConvertModel(AddTypeModel model)
         {
             DevLogger.AddLog("Convert start", 4, LogClass.Event, LogItem.Type);
 
-            ModelConvertResult<Type> result = new ModelConvertResult<Type>();
+            ModelConvertResult<CourseType> result = new ModelConvertResult<CourseType>();
 
             ConvertName(model, result);
 
@@ -20,7 +20,7 @@ namespace HTD.BusinessLogic.ModelConverters.Dev.AddWindowModels
             return result;
         }
 
-        private void ConvertName(AddTypeModel model, ModelConvertResult<Type> result)
+        private void ConvertName(AddTypeModel model, ModelConvertResult<CourseType> result)
         {
             result.Value.Name = model.NameTB;
             DevLogger.AddLog("Name converted", 5, LogClass.Success, LogItem.Type);

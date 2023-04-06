@@ -68,10 +68,10 @@
     <Build Include="Tables\Outcome.sql" />
     <Build Include="Tables\Lesson.sql" />
     <Build Include="Tables\Pupil.sql" />
-    <Build Include="Tables\Type.sql" />
+    <Build Include="Tables\CourseType.sql" />
     <Build Include="Tables\PupilGroup.sql" />
     <Build Include="Tables\TeacherCourse.sql" />
-    <Build Include="ForeignKeys\FK_Course_Type_TypeId.sql" />
+    <Build Include="ForeignKeys\FK_Course_CourseType_TypeId.sql" />
     <Build Include="ForeignKeys\FK_Group_Course_CourseId.sql" />
     <Build Include="ForeignKeys\FK_Income_Pupil_PupilId.sql" />
     <Build Include="ForeignKeys\FK_Income_Group_GroupId.sql" />

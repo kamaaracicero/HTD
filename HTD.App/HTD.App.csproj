@@ -118,6 +118,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\AppConfiguration.cs" />
     <Compile Include="Dev\AddWindows\AddCourse.xaml.cs">
       <DependentUpon>AddCourse.xaml</DependentUpon>
     </Compile>

@@ -1,5 +1,6 @@
 ﻿using HTD.BusinessLogic.ServiceResults;
 using HTD.DataAccess.DbContexts;
+using HTD.DataEntities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace HTD.BusinessLogic.Services
 {
-    internal class TypeService : Service, IService<DataEntities.Type>
+    internal class CourseTypeService : Service, IService<CourseType>
     {
-        public const string NotFoundExceptionMessage = "Type not found!";
+        public const string NotFoundExceptionMessage = "CourseType not found!";
 
-        public TypeService(string connectionString)
+        public CourseTypeService(string connectionString)
             : base(connectionString)
         {
         }
 
-        public async Task<ServiceResult> Delete(DataEntities.Type entity)
+        public async Task<ServiceResult> Delete(CourseType entity)
         {
             ServiceResult result = new ServiceResult();
             using (MainDbContext dbContext = new MainDbContext(ConnectionString))
@@ -39,7 +40,7 @@ namespace HTD.BusinessLogic.Services
             }
         }
 
-        public async Task<ServiceResult<int>> Insert(DataEntities.Type entity)
+        public async Task<ServiceResult<int>> Insert(CourseType entity)
         {
             ServiceResult<int> result = new ServiceResult<int>();
             using (MainDbContext dbContext = new MainDbContext(ConnectionString))
@@ -61,9 +62,9 @@ namespace HTD.BusinessLogic.Services
             }
         }
 
-        public async Task<ServiceResult<IList<DataEntities.Type>>> Select()
+        public async Task<ServiceResult<IList<CourseType>>> Select()
         {
-            ServiceResult<IList<DataEntities.Type>> result = new ServiceResult<IList<DataEntities.Type>>();
+            ServiceResult<IList<CourseType>> result = new ServiceResult<IList<CourseType>>();
             using (MainDbContext dbContext = new MainDbContext(ConnectionString))
             {
                 try
@@ -80,7 +81,7 @@ namespace HTD.BusinessLogic.Services
             }
         }
 
-        public async Task<ServiceResult> Update(DataEntities.Type entity)
+        public async Task<ServiceResult> Update(CourseType entity)
         {
             ServiceResult result = new ServiceResult();
             using (MainDbContext dbContext = new MainDbContext(ConnectionString))

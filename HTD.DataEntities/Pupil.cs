@@ -28,7 +28,7 @@ namespace HTD.DataEntities
 
         public string ContactPhone { get; set; }
 
-        // public bool IsExpelled { get; set; }
+        public bool IsExpelled { get; set; }
 
         public void Update(object obj)
         {
@@ -42,6 +42,7 @@ namespace HTD.DataEntities
                 BirthDay = temp.BirthDay;
                 ParentName = temp.ParentName;
                 ContactPhone = temp.ContactPhone;
+                IsExpelled = temp.IsExpelled;
             }
         }
 
@@ -49,7 +50,8 @@ namespace HTD.DataEntities
             ^ Name.GetHashCode()
             ^ BirthDay.GetHashCode()
             ^ ParentName.GetHashCode()
-            ^ ContactPhone.GetHashCode();
+            ^ ContactPhone.GetHashCode()
+            ^ IsExpelled.GetHashCode();
 
         public override bool Equals(object obj)
         {

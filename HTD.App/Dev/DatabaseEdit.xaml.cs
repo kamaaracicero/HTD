@@ -23,7 +23,7 @@ namespace HTD.App.Dev
         private readonly IModelConverter<AddPupilModel, Pupil> _addPupilModelConverter;
         private readonly IModelConverter<AddTeacherCourseModel, TeacherCourse> _addTeacherCourseModelConverter;
         private readonly IModelConverter<AddTeacherModel, Teacher> _addTeacherModelConverter;
-        private readonly IModelConverter<AddTypeModel, Type> _addTypeModelConverter;
+        private readonly IModelConverter<AddTypeModel, CourseType> _addTypeModelConverter;
 
         private readonly IService<Course> _courseService;
         private readonly IService<Group> _groupService;
@@ -34,7 +34,7 @@ namespace HTD.App.Dev
         private readonly IService<Pupil> _pupilService;
         private readonly IService<TeacherCourse> _teacherCourseService;
         private readonly IService<Teacher> _teacherService;
-        private readonly IService<Type> _typeService;
+        private readonly IService<CourseType> _typeService;
 
         public DatabaseEdit()
         {
@@ -63,7 +63,7 @@ namespace HTD.App.Dev
             _pupilService = new PupilService(connectionString);
             _teacherCourseService = new TeacherCourseService(connectionString);
             _teacherService = new TeacherService(connectionString);
-            _typeService = new TypeService(connectionString);
+            _typeService = new CourseTypeService(connectionString);
 
             InitializeComponent();
         }
@@ -782,7 +782,7 @@ namespace HTD.App.Dev
                 return;
             }
 
-            var item = TypesDG.SelectedItem as Type;
+            var item = TypesDG.SelectedItem as CourseType;
             var res = await _typeService.Delete(item);
             if (res.Successfully)
             {

@@ -62,7 +62,7 @@
     <Compile Include="EntityTypeConfigurations\PupilGroupConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\TeacherConfiguration.cs" />
     <Compile Include="EntityTypeConfigurations\TeacherCourseConfiguration.cs" />
-    <Compile Include="EntityTypeConfigurations\TypeConfiguration.cs" />
+    <Compile Include="EntityTypeConfigurations\CourseTypeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

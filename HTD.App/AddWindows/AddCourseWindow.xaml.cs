@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HTD.DataEntities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Collections.Generic;
 
 namespace HTD.App.AddWindows
 {
@@ -18,13 +8,22 @@ namespace HTD.App.AddWindows
     {
         public AddCourseWindow()
         {
+            AddedTeachers = new List<Teacher>();
+
             InitializeComponent();
         }
+
+        public List<Teacher> AddedTeachers { get; private set; }
+
+        public Course Value { get; private set; }
 
         private void AddNewTypeB_Click(object sender, RoutedEventArgs e)
         {
             AddTypeWindow window = new AddTypeWindow();
-            window.Show();
+            if (window.ShowDialog().Value)
+            {
+
+            }
         }
     }
 }

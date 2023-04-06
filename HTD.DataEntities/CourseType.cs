@@ -1,14 +1,14 @@
 ﻿namespace HTD.DataEntities
 {
-    public class Type : IDataEntity
+    public class CourseType : IDataEntity
     {
-        public Type(int id, string name)
+        public CourseType(int id, string name)
         {
             Id = id;
             Name = name;
         }
 
-        public Type()
+        public CourseType()
             : this(0, string.Empty)
         {
         }
@@ -19,10 +19,10 @@
 
         public void Update(object obj)
         {
-            if (obj == null || !(obj is Type))
+            if (obj == null || !(obj is CourseType))
                 return;
 
-            Type temp = obj as Type;
+            CourseType temp = obj as CourseType;
             if (temp != null)
             {
                 Name = temp.Name;
@@ -34,12 +34,12 @@
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Type))
+            if (obj == null || !(obj is CourseType))
                 return false;
 
             return obj.GetHashCode() == GetHashCode();
         }
 
-        public override string ToString() => nameof(Type) + ": " + Name;
+        public override string ToString() => nameof(CourseType) + ": " + Name;
     }
 }
