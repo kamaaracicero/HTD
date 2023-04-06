@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="AddCourseWindow"
         Height="450" MinHeight="450"
-        Width="300" MinWidth="300">
+        Width="300" MinWidth="300"
+        Icon="/Icons/logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.0*"/>

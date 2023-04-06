@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.AddWindows"
         mc:Ignorable="d"
-        Title="Добавить группу" Height="225" Width="300">
+        Title="Добавить группу"
+        Height="225" MinHeight="225"
+        Width="300" MinWidth="300"
+        Icon="/Icons/logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.0*"/>

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.MonitoringWindows"
         mc:Ignorable="d"
-        Title="Работа с кружками" Height="600" Width="800">
+        Title="Работа с кружками"
+        Height="600"
+        Width="800"
+        Icon="/Icons/logo.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>

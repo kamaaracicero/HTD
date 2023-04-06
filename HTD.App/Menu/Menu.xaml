@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.Menu"
         mc:Ignorable="d"
-        Title="Menu" Height="300" Width="600">
+        Title="Menu"
+        Height="300" MinHeight="300"
+        Width="600" MinWidth="600"
+        Icon="/Icons/logo.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150px"/>

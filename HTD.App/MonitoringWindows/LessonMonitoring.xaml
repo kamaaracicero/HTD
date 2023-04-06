@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.MonitoringWindows"
         mc:Ignorable="d"
-        Title="Работа с расписанием" Height="450" Width="800">
+        Title="Работа с расписанием"
+        Height="450"
+        Width="800"
+        Icon="/Icons/logo.ico">
     <Window.Resources>
         <Style x:Name="LessonConflictItemStyle" TargetType="ListBoxItem">
             <Setter Property="Padding" Value="5"/>
