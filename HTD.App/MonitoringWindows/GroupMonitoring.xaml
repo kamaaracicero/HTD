@@ -63,7 +63,7 @@
                 <RowDefinition Height="1.0*"/>
             </Grid.RowDefinitions>
             <Button x:Name="OpenNewGroupB"
-                    Grid.Row="0">
+                    Grid.Row="0" Click="OpenNewGroupB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Открыть новую группу"

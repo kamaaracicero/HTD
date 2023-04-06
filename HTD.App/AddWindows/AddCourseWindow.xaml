@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.AddWindows"
         mc:Ignorable="d"
-        Title="AddCourseWindow" Height="450" Width="300">
+        Title="AddCourseWindow"
+        Height="450" MinHeight="450"
+        Width="300" MinWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.0*"/>

@@ -97,6 +97,9 @@
     <Compile Include="AddWindows\AddCourseWindow.xaml.cs">
       <DependentUpon>AddCourseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddWindows\AddGroupWindow.xaml.cs">
+      <DependentUpon>AddGroupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddWindows\AddPupilWindow.xaml.cs">
       <DependentUpon>AddPupilWindow.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddWindows\AddCourseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddWindows\AddGroupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

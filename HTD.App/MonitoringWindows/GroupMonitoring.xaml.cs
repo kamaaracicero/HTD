@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HTD.App.AddWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,12 @@ namespace HTD.App.MonitoringWindows
         private void RefreshTableB_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void OpenNewGroupB_Click(object sender, RoutedEventArgs e)
+        {
+            AddGroupWindow window = new AddGroupWindow();
+            window.Show();
         }
     }
 }
