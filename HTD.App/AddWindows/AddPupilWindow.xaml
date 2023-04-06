@@ -26,14 +26,14 @@
             <TextBlock Text="Ф.И.О. представителя:"
                        FontSize="14"
                        Height="25px"/>
-            <TextBox x:Name="ParentTB"
+            <TextBox x:Name="ParentNameTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
                      FontSize="14"/>
             <TextBlock Text="Мобильный номер представителя:"
                        FontSize="14"
                        Height="25px"/>
-            <TextBox x:Name="PhoneTB"
+            <TextBox x:Name="ContactPhoneTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
                      FontSize="14"/>

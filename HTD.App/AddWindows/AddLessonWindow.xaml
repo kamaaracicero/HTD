@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HTD.App.AddWindows"
         mc:Ignorable="d"
         Title="Добавить занятие"
-        Height="300" MinHeight="300"
+        Height="350" MinHeight="350"
         Width="300" MinWidth="300"
         Icon="/Icons/logo.ico">
     <Grid>
@@ -60,6 +60,13 @@
             <ComboBox x:Name="DayCB"
                       Height="25px"
                       FontSize="14"/>
+            <TextBlock Text="Номер кабинета:"
+                       FontSize="14"
+                       Height="25px"/>
+            <TextBox x:Name="PlaceTB"
+                     Height="25px"
+                     VerticalContentAlignment="Center"
+                     FontSize="14"/>
         </StackPanel>
         <Grid Grid.Row="1"
               Margin="5">

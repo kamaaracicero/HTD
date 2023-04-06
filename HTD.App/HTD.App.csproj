@@ -94,6 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddWindows\AddCourseTypeWindow.xaml.cs">
+      <DependentUpon>AddCourseTypeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddWindows\AddCourseWindow.xaml.cs">
       <DependentUpon>AddCourseWindow.xaml</DependentUpon>
     </Compile>
@@ -109,16 +112,15 @@
     <Compile Include="AddWindows\AddTeacherWindow.xaml.cs">
       <DependentUpon>AddTeacherWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddWindows\AddTypeWindow.xaml.cs">
-      <DependentUpon>AddTypeWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\AppConfiguration.cs" />
+    <Compile Include="Configuration\AppConvertersConfiguration.cs" />
+    <Compile Include="Configuration\AppServicesConfiguration.cs" />
+    <Compile Include="Configuration\AppTextConfiguration.cs" />
     <Compile Include="Elements\ListBoxItems\ConflictLessonListBoxItem.cs" />
     <Compile Include="Elements\ListBoxItems\ScheduleListBoxItem.cs" />
     <Compile Include="Menu\Menu.xaml.cs">
@@ -179,6 +181,10 @@
     <Folder Include="UpdateWindows\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddWindows\AddCourseTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddWindows\AddCourseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,10 +202,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddWindows\AddTeacherWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddWindows\AddTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace HTD.App.Configuration
 {
-    internal static class AppConfiguration
+    internal static class AppServicesConfiguration
     {
-        static AppConfiguration()
+        static AppServicesConfiguration()
         {
 
         }

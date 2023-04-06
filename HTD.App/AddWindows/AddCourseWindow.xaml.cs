@@ -19,7 +19,7 @@ namespace HTD.App.AddWindows
 
         private void AddNewTypeB_Click(object sender, RoutedEventArgs e)
         {
-            AddTypeWindow window = new AddTypeWindow();
+            AddCourseTypeWindow window = new AddCourseTypeWindow();
             if (window.ShowDialog().Value)
             {
 
