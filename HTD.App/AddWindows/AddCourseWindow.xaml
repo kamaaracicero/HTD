@@ -26,9 +26,9 @@
                            FontSize="14"
                            Height="25px"/>
                 <TextBox x:Name="NameTB"
-                     Height="25px"
-                     VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                         Height="25px"
+                         VerticalContentAlignment="Center"
+                         FontSize="14"/>
             </StackPanel>
             <Grid Grid.Row="1"
                   Margin="0,10,0,10">
