@@ -16,11 +16,7 @@ namespace HTD.DataAccess.DbContexts
 
         public DbSet<Group> Groups { get; set; }
 
-        public DbSet<Income> Incomes { get; set; }
-
         public DbSet<Lesson> Lessons { get; set; }
-
-        public DbSet<Outcome> Outcomes { get; set; }
 
         public DbSet<Pupil> Pupils { get; set; }
 
@@ -36,9 +32,7 @@ namespace HTD.DataAccess.DbContexts
         {
             modelBuilder.Configurations.Add(new CourseConfiguration());
             modelBuilder.Configurations.Add(new GroupConfiguration());
-            modelBuilder.Configurations.Add(new IncomeConfiguration());
             modelBuilder.Configurations.Add(new LessonConfiguration());
-            modelBuilder.Configurations.Add(new OutcomeConfiguration());
             modelBuilder.Configurations.Add(new PupilConfiguration());
             modelBuilder.Configurations.Add(new PupilGroupConfiguration());
             modelBuilder.Configurations.Add(new TeacherConfiguration());
