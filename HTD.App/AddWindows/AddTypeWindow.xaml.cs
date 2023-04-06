@@ -14,17 +14,14 @@ using System.Windows.Shapes;
 
 namespace HTD.App.AddWindows
 {
-    public partial class AddCourseWindow : Window
+    /// <summary>
+    /// Interaction logic for AddTypeWindow.xaml
+    /// </summary>
+    public partial class AddTypeWindow : Window
     {
-        public AddCourseWindow()
+        public AddTypeWindow()
         {
             InitializeComponent();
-        }
-
-        private void AddNewTypeB_Click(object sender, RoutedEventArgs e)
-        {
-            AddTypeWindow window = new AddTypeWindow();
-            window.Show();
         }
     }
 }
