@@ -53,32 +53,11 @@
   <ItemGroup>
     <Compile Include="CompilerConfig.cs" />
     <Compile Include="ErrorMessageGenerators\MessageBoxListErrors.cs" />
-    <Compile Include="Loggers\Dev\DevLogger.cs" />
-    <Compile Include="Loggers\Dev\LogItem.cs" />
-    <Compile Include="Loggers\Dev\LogClass.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddCourseModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddGroupModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddIncomeModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddLessonModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddOutcomeModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddPupilGroupModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddPupilModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddTeacherCourseModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddTeacherModelConverter.cs" />
-    <Compile Include="ModelConverters\Dev\AddWindowModels\AddTypeModelConverter.cs" />
+    <Compile Include="ModelConverters\AddWindows\CourseTypeConverter.cs" />
     <Compile Include="ModelConverters\IModelConverter.cs" />
     <Compile Include="ModelConverters\ModelConverter.cs" />
     <Compile Include="ModelConverters\ModelConvertResult.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddCourseModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddGroupModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddIncomeModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddLessonModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddOutcomeModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddPupilGroupModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddPupilModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddTeacherCourseModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddTeacherModel.cs" />
-    <Compile Include="Models\Dev\AddWindowModels\AddTypeModel.cs" />
+    <Compile Include="Models\AddWindows\CourseTypeModel.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceResults\ServiceException.cs" />
@@ -94,7 +73,7 @@
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\TeacherCourseService.cs" />
     <Compile Include="Services\TeacherService.cs" />
-    <Compile Include="Services\TypeService.cs" />
+    <Compile Include="Services\CourseTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HTD.DataAccess\HTD.DataAccess.csproj">
@@ -110,7 +89,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Loggers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -119,39 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\AppConfiguration.cs" />
-    <Compile Include="Dev\AddWindows\AddCourse.xaml.cs">
-      <DependentUpon>AddCourse.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddGroup.xaml.cs">
-      <DependentUpon>AddGroup.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddIncome.xaml.cs">
-      <DependentUpon>AddIncome.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddLesson.xaml.cs">
-      <DependentUpon>AddLesson.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddOutcome.xaml.cs">
-      <DependentUpon>AddOutcome.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddPupil.xaml.cs">
-      <DependentUpon>AddPupil.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddPupilGroup.xaml.cs">
-      <DependentUpon>AddPupilGroup.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddTeacher.xaml.cs">
-      <DependentUpon>AddTeacher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddTeacherCourse.xaml.cs">
-      <DependentUpon>AddTeacherCourse.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\AddWindows\AddType.xaml.cs">
-      <DependentUpon>AddType.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dev\DatabaseEdit.xaml.cs">
-      <DependentUpon>DatabaseEdit.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Elements\ListBoxItems\ConflictLessonListBoxItem.cs" />
     <Compile Include="Elements\ListBoxItems\ScheduleListBoxItem.cs" />
     <Compile Include="Menu\Menu.xaml.cs">
@@ -233,50 +200,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddWindows\AddTypeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddCourse.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddGroup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddIncome.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddLesson.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddOutcome.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddPupil.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddPupilGroup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddTeacher.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddTeacherCourse.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\AddWindows\AddType.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dev\DatabaseEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

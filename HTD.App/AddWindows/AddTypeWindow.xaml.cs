@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace HTD.App.AddWindows
 {
-    /// <summary>
-    /// Interaction logic for AddTypeWindow.xaml
-    /// </summary>
     public partial class AddTypeWindow : Window
     {
         public AddTypeWindow()
