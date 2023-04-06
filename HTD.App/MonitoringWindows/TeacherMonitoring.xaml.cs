@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HTD.App.AddWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,8 @@ namespace HTD.App.MonitoringWindows
 
         private void AddTeacherB_Click(object sender, RoutedEventArgs e)
         {
-
+            AddTeacherWindow window = new AddTeacherWindow();
+            window.Show();
         }
 
         private void CloseB_Click(object sender, RoutedEventArgs e)
