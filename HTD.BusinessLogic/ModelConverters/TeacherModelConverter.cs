@@ -1,7 +1,7 @@
-﻿using HTD.BusinessLogic.Models.AddWindows;
+﻿using HTD.BusinessLogic.Models;
 using HTD.DataEntities;
 
-namespace HTD.BusinessLogic.ModelConverters.AddWindows
+namespace HTD.BusinessLogic.ModelConverters
 {
     internal class TeacherModelConverter : ModelConverter, IModelConverter<TeacherModel, Teacher>
     {

@@ -1,4 +1,4 @@
-﻿namespace HTD.BusinessLogic.Models.AddWindows
+﻿namespace HTD.BusinessLogic.Models
 {
     internal class PupilModel : IModel
     {

@@ -1,6 +1,5 @@
 ﻿using HTD.BusinessLogic.ModelConverters;
-using HTD.BusinessLogic.ModelConverters.AddWindows;
-using HTD.BusinessLogic.Models.AddWindows;
+using HTD.BusinessLogic.Models;
 using HTD.DataEntities;
 
 namespace HTD.App.Configuration

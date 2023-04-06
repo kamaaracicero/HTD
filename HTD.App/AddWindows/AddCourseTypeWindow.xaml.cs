@@ -1,7 +1,7 @@
 ﻿using HTD.App.Configuration;
 using HTD.BusinessLogic.ErrorMessageGenerators;
 using HTD.BusinessLogic.ModelConverters;
-using HTD.BusinessLogic.Models.AddWindows;
+using HTD.BusinessLogic.Models;
 using HTD.DataEntities;
 using System.Windows;
 using System.Windows.Input;

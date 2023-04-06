@@ -1,6 +1,6 @@
 ﻿using HTD.DataEntities;
 
-namespace HTD.BusinessLogic.Models.AddWindows
+namespace HTD.BusinessLogic.Models
 {
     internal class LessonModel : IModel
     {
