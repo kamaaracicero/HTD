@@ -146,12 +146,34 @@ namespace HTD.App.MonitoringWindows
 
         private void UpdateTeacherB_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TeachersDG.SelectedItem == null)
+                return;
         }
 
-        private void FireTeacherB_Click(object sender, RoutedEventArgs e)
+        private async void FireTeacherB_Click(object sender, RoutedEventArgs e)
         {
+            if (TeachersDG.SelectedItem == null)
+                return;
 
+            Teacher teacher = (TeachersDG.SelectedItem as TeacherDataGridRow).Instance;
+            if (MessageBox.Show($"Уволить {teacher.Name}?", "Предупреждение",
+                MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                var res = await _teacherService.Delete(teacher);
+                if (res.Successfully)
+                {
+                    await LoadTeacherCoursesData();
+                    await LoadTeachersData();
+                    UpdateTeachersView();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось уволить преподавателя", "Ошибка");
+                    await LoadTeacherCoursesData();
+                    await LoadTeachersData();
+                    UpdateTeachersView();
+                }
+            }
         }
 
         private async void AddTeacherB_Click(object sender, RoutedEventArgs e)

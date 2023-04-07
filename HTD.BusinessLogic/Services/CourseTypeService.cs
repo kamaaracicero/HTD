@@ -26,7 +26,8 @@ namespace HTD.BusinessLogic.Services
             {
                 try
                 {
-                    dbContext.Types.Remove(entity);
+                    var tempEntity = dbContext.CourseTypes.First(e => e.Id == entity.Id);
+                    dbContext.CourseTypes.Remove(tempEntity);
 
                     await dbContext.SaveChangesAsync();
                     result.Successfully = true;
@@ -47,7 +48,7 @@ namespace HTD.BusinessLogic.Services
             {
                 try
                 {
-                    dbContext.Types.Add(entity);
+                    dbContext.CourseTypes.Add(entity);
 
                     await dbContext.SaveChangesAsync();
                     result.Value = entity.Id;
@@ -69,7 +70,7 @@ namespace HTD.BusinessLogic.Services
             {
                 try
                 {
-                    result.Value = await dbContext.Types.Select(a => a).ToListAsync();
+                    result.Value = await dbContext.CourseTypes.Select(a => a).ToListAsync();
                     result.Successfully = true;
                 }
                 catch (Exception ex)
@@ -88,7 +89,7 @@ namespace HTD.BusinessLogic.Services
             {
                 try
                 {
-                    var update = await dbContext.Types.FirstOrDefaultAsync(a => a.Id == entity.Id);
+                    var update = await dbContext.CourseTypes.FirstOrDefaultAsync(a => a.Id == entity.Id);
                     if (update != null)
                     {
                         update.Update(entity);

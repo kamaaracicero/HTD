@@ -26,7 +26,7 @@ namespace HTD.DataAccess.DbContexts
 
         public DbSet<TeacherCourse> TeacherCourses { get; set; }
 
-        public DbSet<CourseType> Types { get; set; }
+        public DbSet<CourseType> CourseTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

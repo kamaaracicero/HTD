@@ -25,7 +25,8 @@ namespace HTD.BusinessLogic.Services
             {
                 try
                 {
-                    dbContext.TeacherCourses.Remove(entity);
+                    var tempEntity = dbContext.TeacherCourses.First(e => e.Id == entity.Id);
+                    dbContext.TeacherCourses.Remove(tempEntity);
 
                     await dbContext.SaveChangesAsync();
                     result.Successfully = true;
