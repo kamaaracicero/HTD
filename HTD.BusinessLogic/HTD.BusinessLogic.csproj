@@ -55,10 +55,13 @@
     <Compile Include="DataSearchs\DependencySearch.cs" />
     <Compile Include="ErrorMessageGenerators\ErrorsListGenerator.cs" />
     <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="Filters\PupilFullFilter.cs" />
     <Compile Include="Filters\Settings\IFilterSettings.cs" />
+    <Compile Include="Filters\Settings\PupilsFullFilterSettings.cs" />
     <Compile Include="Filters\Settings\TeacherNameFilterSettings.cs" />
     <Compile Include="Filters\TeacherNameFilter.cs" />
     <Compile Include="ModelConverters\CourseTypeModelConverter.cs" />
+    <Compile Include="ModelConverters\PupilModelConverter.cs" />
     <Compile Include="ModelConverters\TeacherModelConverter.cs" />
     <Compile Include="ModelConverters\IModelConverter.cs" />
     <Compile Include="ModelConverters\ModelConverter.cs" />

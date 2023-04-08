@@ -46,7 +46,8 @@ namespace HTD.DataEntities
         public override int GetHashCode() => Id.GetHashCode()
             ^ Name.GetHashCode()
             ^ Phone.GetHashCode()
-            ^ DateStartWork.GetHashCode();
+            ^ DateStartWork.GetHashCode()
+            ^ DateEndWork.GetHashCode();
 
         public override bool Equals(object obj)
         {

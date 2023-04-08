@@ -1,6 +1,7 @@
 ﻿using HTD.App.AddWindows;
 using HTD.App.Configuration;
 using HTD.App.Elements.TeacherMonitoring;
+using HTD.App.UpdateWindows;
 using HTD.BusinessLogic.DataSearchs;
 using HTD.BusinessLogic.Filters;
 using HTD.BusinessLogic.Filters.Settings;
@@ -33,19 +34,18 @@ namespace HTD.App.MonitoringWindows
             _teacherNameFilter = AppFilerConfiguration.TeacherNameFilter;
 
             Teachers = new List<Teacher>();
+            TeacherCourses = new List<TeacherCourse>();
             Courses = new List<Course>();
+            Groups = new List<Group>();
 
             InitializeComponent();
             TeachersDG.BeginningEdit += (s, ss) => ss.Cancel = true;
         }
 
         public List<Teacher> Teachers { get; set; }
-
-        public List<Course> Courses { get; set; }
-
-        public List<Group> Groups { get; set; }
-
         public List<TeacherCourse> TeacherCourses { get; set; }
+        public List<Course> Courses { get; set; }
+        public List<Group> Groups { get; set; }
 
         private async void Window_Initialized(object sender, EventArgs e)
         {
@@ -115,18 +115,18 @@ namespace HTD.App.MonitoringWindows
 
         private void UpdateTeachersView()
         {
-            var temp = Teachers;
-            if (!string.IsNullOrEmpty(SearchTB.Text))
-                temp = _teacherNameFilter.Filter(Teachers, new TeacherNameFilterSettings
-                    { SearchName = SearchTB.Text }).ToList();
+            var temp = _teacherNameFilter.Filter(Teachers, new TeacherNameFilterSettings
+            {
+                SearchName = SearchTB.Text
+            }).ToList();
 
-            UpdateTeacherView();
+            UpdateDetailsView();
 
             TeachersDG.ItemsSource = temp.Select(t => new TeacherDataGridRow(t));
             TeachersDG.Items.Refresh();
         }
 
-        private void UpdateTeacherView()
+        private void UpdateDetailsView()
         {
             NameTB.Text = string.Empty;
             PhoneTB.Text = string.Empty;
@@ -134,7 +134,7 @@ namespace HTD.App.MonitoringWindows
             StartWorkDateTB.Text = string.Empty;
         }
 
-        private void UpdateTeacherView(Teacher teacher)
+        private void UpdateDetailsView(Teacher teacher)
         {
             NameTB.Text = teacher.Name;
             PhoneTB.Text = teacher.Phone;
@@ -144,10 +144,22 @@ namespace HTD.App.MonitoringWindows
 
         private void SearchTB_TextChanged(object sender, TextChangedEventArgs e) => UpdateTeachersView();
 
-        private void UpdateTeacherB_Click(object sender, RoutedEventArgs e)
+        private async void UpdateTeacherB_Click(object sender, RoutedEventArgs e)
         {
             if (TeachersDG.SelectedItem == null)
                 return;
+
+            var teacher = (TeachersDG.SelectedItem as TeacherDataGridRow).Instance;
+            UpdateTeacherWindow window = new UpdateTeacherWindow(teacher);
+            if (window.ShowDialog().Value)
+            {
+                var res = await _teacherService.Update(window.Value);
+                if (res.Successfully)
+                {
+                    await LoadTeachersData();
+                    UpdateTeachersView();
+                }
+            }
         }
 
         private async void FireTeacherB_Click(object sender, RoutedEventArgs e)
@@ -214,7 +226,7 @@ namespace HTD.App.MonitoringWindows
             if (TeachersDG.SelectedItem != null)
             {
                 var temp = TeachersDG.SelectedItem as TeacherDataGridRow;
-                UpdateTeacherView(temp.Instance);
+                UpdateDetailsView(temp.Instance);
             }
         }
 

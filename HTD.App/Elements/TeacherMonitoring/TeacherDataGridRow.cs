@@ -4,9 +4,9 @@ namespace HTD.App.Elements.TeacherMonitoring
 {
     public class TeacherDataGridRow
     {
-        public TeacherDataGridRow(Teacher value)
+        public TeacherDataGridRow(Teacher instance)
         {
-            Instance = value;
+            Instance = instance;
 
             Init();
         }

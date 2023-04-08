@@ -22,21 +22,24 @@
             <TextBox x:Name="NameTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                     FontSize="14"
+                     KeyDown="NameTB_KeyDown"/>
             <TextBlock Text="Ф.И.О. представителя:"
                        FontSize="14"
                        Height="25px"/>
             <TextBox x:Name="ParentNameTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                     FontSize="14"
+                     KeyDown="ParentNameTB_KeyDown"/>
             <TextBlock Text="Мобильный номер представителя:"
                        FontSize="14"
                        Height="25px"/>
             <TextBox x:Name="ContactPhoneTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                     FontSize="14"
+                     KeyDown="ContactPhoneTB_KeyDown"/>
             <TextBlock Text="Дата рождения (ММ/ДД/ГГГГ):"
                        FontSize="14"
                        Height="25px"/>
@@ -44,7 +47,8 @@
                         FontSize="14"
                         Height="25px"
                         FirstDayOfWeek="Monday"
-                        Loaded="BirthDayDP_Loaded"/>
+                        Loaded="BirthDayDP_Loaded"
+                        KeyDown="BirthDayDP_KeyDown"/>
         </StackPanel>
         <Grid Grid.Row="1"
               Margin="5">
@@ -57,7 +61,7 @@
                     Height="40px"
                     Width="130px"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Click="AddB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Добавить ученика"/>
@@ -67,7 +71,7 @@
                     Height="25px"
                     Width="60px"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Click="CloseB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Закрыть"/>

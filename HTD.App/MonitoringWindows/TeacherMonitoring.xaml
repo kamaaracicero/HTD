@@ -103,7 +103,7 @@
                            HorizontalContentAlignment="Center"
                            VerticalAlignment="Top"/>
                     <ScrollViewer Grid.Column="1" Grid.Row="1"
-                                  Margin="5, 2, 5, 2"
+                                  Margin="5"
                                   VerticalScrollBarVisibility="Hidden">
                         <RichTextBox x:Name="CoursesAndGroupsRTB"
                                      IsEnabled="False"

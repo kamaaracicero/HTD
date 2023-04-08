@@ -19,12 +19,13 @@ namespace HTD.App.UpdateWindows
         {
             _converter = AppModelConvertersConfiguration.AddTeacherConverter;
 
-            InitializeComponent();
+            Original = teacher;
 
-            NameTB.Text = teacher.Name;
-            PhoneTB.Text = teacher.Phone;
-            StartWorkDateDP.Text = teacher.DateStartWork.ToShortDateString();
+            InitializeComponent();
+            InitializeModel();
         }
+
+        private Teacher Original { get; }
 
         public Teacher Value { get; private set; }
 
@@ -41,6 +42,8 @@ namespace HTD.App.UpdateWindows
             if (!res.IsError)
             {
                 Value = res.Value;
+                Value.Id = Original.Id;
+
                 DialogResult = true;
                 Close();
             }
@@ -49,6 +52,13 @@ namespace HTD.App.UpdateWindows
                 var message = ErrorsListGenerator.GenerateMessage("Ошибка в обработке данных:", res.Errors);
                 MessageBox.Show(message, "Ошибка");
             }
+        }
+
+        private void InitializeModel()
+        {
+            NameTB.Text = Original.Name;
+            PhoneTB.Text = Original.Phone;
+            StartWorkDateDP.Text = Original.DateStartWork.ToShortDateString();
         }
 
         private void StartWorkDateDP_Loaded(object sender, RoutedEventArgs e)

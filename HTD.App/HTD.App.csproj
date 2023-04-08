@@ -122,6 +122,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Elements\PupilMonitoring\CourseListBoxItem.cs" />
+    <Compile Include="Elements\PupilMonitoring\CourseTypeComboBoxItem.cs" />
+    <Compile Include="Elements\PupilMonitoring\GroupComboBoxItem.cs" />
+    <Compile Include="Elements\PupilMonitoring\PupilDataGridRow.cs" />
     <Compile Include="UpdateWindows\UpdateTeacherWindow.xaml.cs">
       <DependentUpon>UpdateTeacherWindow.xaml</DependentUpon>
     </Compile>
@@ -131,8 +135,8 @@
     <Compile Include="Configuration\AppModelConvertersConfiguration.cs" />
     <Compile Include="Configuration\AppServicesConfiguration.cs" />
     <Compile Include="Configuration\AppTextConfiguration.cs" />
-    <Compile Include="Elements\ListBoxItems\ConflictLessonListBoxItem.cs" />
-    <Compile Include="Elements\ListBoxItems\ScheduleListBoxItem.cs" />
+    <Compile Include="Elements\LessonMonitoring\ConflictLessonListBoxItem.cs" />
+    <Compile Include="Elements\LessonMonitoring\LessonListBoxItem.cs" />
     <Compile Include="Elements\TeacherMonitoring\TeacherDataGridRow.cs" />
     <Compile Include="Menu\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>

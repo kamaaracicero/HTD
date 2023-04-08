@@ -8,8 +8,11 @@ namespace HTD.App.Configuration
         static AppFilerConfiguration()
         {
             TeacherNameFilter = new TeacherNameFilter();
+            PupilFullFilter = new PupilFullFilter();
         }
 
         public static IFilter<Teacher> TeacherNameFilter { get; }
+
+        public static IFilter<Pupil> PupilFullFilter { get; }
     }
 }

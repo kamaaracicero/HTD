@@ -10,6 +10,7 @@ namespace HTD.App.Configuration
         {
             AddCourseTypeConverter = new CourseTypeModelConverter();
             AddTeacherConverter = new TeacherModelConverter();
+            AddPupilConverter = new PupilModelConverter();
         }
 
         public static IModelConverter<CourseModel, Course> AddCourseConverter { get; }

@@ -55,7 +55,7 @@
                     VerticalAlignment="Bottom" Click="AddB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
-                           Text="Добавить преподавателя"/>
+                           Text="Обновить информацию"/>
             </Button>
             <Button x:Name="CloseB"
                     Grid.Column="1"

@@ -17,7 +17,7 @@ namespace HTD.App.Configuration
             PupilGroupService = new PupilGroupService(connectionString);
             TeacherService = new TeacherService(connectionString);
             TeacherCourseService = new TeacherCourseService(connectionString);
-            TypeService = new CourseTypeService(connectionString);
+            CourseTypeService = new CourseTypeService(connectionString);
         }
 
         public static IService<Course> CourseService { get; }
@@ -34,6 +34,6 @@ namespace HTD.App.Configuration
 
         public static IService<TeacherCourse> TeacherCourseService { get; }
 
-        public static IService<CourseType> TypeService { get; }
+        public static IService<CourseType> CourseTypeService { get; }
     }
 }

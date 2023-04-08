@@ -1,12 +1,12 @@
 ﻿using HTD.DataEntities;
 
-namespace HTD.App.Elements.ListBoxItems
+namespace HTD.App.Elements.LessonMonitoring
 {
-    internal class ScheduleListBoxItem
+    internal class LessonListBoxItem
     {
         private const string TimeFormat = "{0}-{1}";
 
-        public ScheduleListBoxItem(Lesson lesson, Course course, Teacher teacher, Group group)
+        public LessonListBoxItem(Lesson lesson, Course course, Teacher teacher, Group group)
             : base()
         {
             LessonValue = lesson;
@@ -14,7 +14,7 @@ namespace HTD.App.Elements.ListBoxItems
             TeacherValue = teacher;
             GroupValue = group;
 
-            // Init();
+            Init();
         }
 
         public Lesson LessonValue { get; set; }

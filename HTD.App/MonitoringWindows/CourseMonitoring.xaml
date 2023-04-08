@@ -72,10 +72,11 @@
                         <ColumnDefinition Width="1.0*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="110px"/>
                         <RowDefinition Height="1.0*"/>
                         <RowDefinition Height="50px"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Margin="0,10,0,0"
+                    <StackPanel Margin="5,10,5,5"
                             Grid.Column="0" Grid.Row="0"
                             Grid.ColumnSpan="2" Grid.RowSpan="1">
                         <Label Content="Количество детей"/>
@@ -86,12 +87,30 @@
                         <TextBox x:Name="GroupCountTB"
                              FontSize="14"
                              IsEnabled="False"/>
-                        <Label Content="-Teachers List Box-"/>
-                        <Button Content="-Add Teacher To Course Button-"/>
-                        <Button Content="-Delete Teacher From Course Button-"/>
                     </StackPanel>
+                    <Grid Grid.Column="0" Grid.Row="1"
+                          Grid.ColumnSpan="2" Grid.RowSpan="1"
+                          Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25px"/>
+                            <RowDefinition Height="1.0*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Ведущие кружок преподаватели:"
+                               Grid.Row="0" Grid.Column="0"/>
+                        <ListBox x:Name="CourseTeachersLB"
+                                 Grid.Row="1" Grid.Column="0">
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="AddTeacherMI"
+                                              Header="Добавить преподавателя"/>
+                                    <MenuItem x:Name="DeleteTeacherMI"
+                                              Header="Удалить преподавателя"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
+                        </ListBox>
+                    </Grid>
                     <Button x:Name="ShowGroupsB"
-                            Grid.Column="0" Grid.Row="1"
+                            Grid.Column="0" Grid.Row="2"
                             Margin="5"
                             Click="ShowGroupsB_Click">
                         <TextBlock TextAlignment="Center"
@@ -99,7 +118,7 @@
                                    Text="Работа со списком групп"/>
                     </Button>
                     <Button x:Name="ArchiveCourseB"
-                            Grid.Column="1" Grid.Row="1"
+                            Grid.Column="1" Grid.Row="2"
                             Margin="5">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
