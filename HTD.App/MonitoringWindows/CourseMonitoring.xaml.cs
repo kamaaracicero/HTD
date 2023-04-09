@@ -259,18 +259,22 @@ namespace HTD.App.MonitoringWindows
                 == MessageBoxResult.Yes)
             {
                 course.IsActive = false;
-                var res = await _courseService.Update(course);
-                if (res.Successfully)
-                {
-                    await LoadCoursesData();
-                    UpdateCoursesView();
-                }
-                else
-                {
+                var courseRes = await _courseService.Update(course);
+                if (!courseRes.Successfully)
                     MessageBox.Show("Не удалось архивировать кружок", "Ошибка");
-                    await LoadCoursesData();
-                    UpdateCoursesView();
+
+                var groups = DependencyHelper.FindCourseGroups(course, Groups);
+                foreach (var group in groups)
+                {
+                    group.IsActive = false;
+                    var groupRes = await _groupService.Update(group);
+                    if (!groupRes.Successfully)
+                        MessageBox.Show("Не удалось архивировать группу кружка", "Ошибка");
                 }
+
+                await LoadCoursesData();
+                await LoadGroupsData();
+                UpdateCoursesView();
             }
         }
 

@@ -134,7 +134,7 @@ namespace HTD.BusinessLogic.DataSearchs
             IEnumerable<Pupil> pupils)
         {
             var tempGroups = FindCourseGroups(course, groups);
-            return FindGroupsPupils(groups, dependencies, pupils);
+            return FindGroupsPupils(tempGroups, dependencies, pupils);
         }
 
         public static IEnumerable<Teacher> FindCourseTeachers(Course course,
