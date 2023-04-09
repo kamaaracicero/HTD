@@ -52,15 +52,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerConfig.cs" />
-    <Compile Include="DataSearchs\DependencySearch.cs" />
+    <Compile Include="DataSearchs\DependencyHelper.cs" />
     <Compile Include="ErrorMessageGenerators\ErrorsListGenerator.cs" />
+    <Compile Include="Filters\CourseFilter.cs" />
     <Compile Include="Filters\IFilter.cs" />
-    <Compile Include="Filters\PupilFullFilter.cs" />
+    <Compile Include="Filters\PupilFilter.cs" />
+    <Compile Include="Filters\Settings\CourseFilterSettings.cs" />
     <Compile Include="Filters\Settings\IFilterSettings.cs" />
-    <Compile Include="Filters\Settings\PupilsFullFilterSettings.cs" />
-    <Compile Include="Filters\Settings\TeacherNameFilterSettings.cs" />
-    <Compile Include="Filters\TeacherNameFilter.cs" />
+    <Compile Include="Filters\Settings\PupilFilterSettings.cs" />
+    <Compile Include="Filters\Settings\TeacherFilterSettings.cs" />
+    <Compile Include="Filters\TeacherFilter.cs" />
+    <Compile Include="ModelConverters\CourseModelConverter.cs" />
     <Compile Include="ModelConverters\CourseTypeModelConverter.cs" />
+    <Compile Include="ModelConverters\GroupModelConverter.cs" />
     <Compile Include="ModelConverters\PupilModelConverter.cs" />
     <Compile Include="ModelConverters\TeacherModelConverter.cs" />
     <Compile Include="ModelConverters\IModelConverter.cs" />

@@ -23,7 +23,8 @@ namespace HTD.App.MonitoringWindows
         private readonly IService<Group> _groupService;
         private readonly IService<Teacher> _teacherService;
         private readonly IService<TeacherCourse> _teacherCourseService;
-        private readonly IFilter<Teacher> _teacherNameFilter;
+
+        private readonly IFilter<Teacher> _filter;
 
         public TeacherMonitoring()
         {
@@ -31,7 +32,7 @@ namespace HTD.App.MonitoringWindows
             _groupService = AppServicesConfiguration.GroupService;
             _teacherService = AppServicesConfiguration.TeacherService;
             _teacherCourseService = AppServicesConfiguration.TeacherCourseService;
-            _teacherNameFilter = AppFilerConfiguration.TeacherNameFilter;
+            _filter = AppFilterConfiguration.TeacherFilter;
 
             Teachers = new List<Teacher>();
             TeacherCourses = new List<TeacherCourse>();
@@ -48,6 +49,16 @@ namespace HTD.App.MonitoringWindows
         public List<Group> Groups { get; set; }
 
         private async void Window_Initialized(object sender, EventArgs e)
+        {
+            await LoadTeachersData();
+            await LoadCoursesData();
+            await LoadGroupsData();
+            await LoadTeacherCoursesData();
+
+            UpdateTeachersView();
+        }
+
+        private async void RefreshTableB_Click(object sender, RoutedEventArgs e)
         {
             await LoadTeachersData();
             await LoadCoursesData();
@@ -81,7 +92,7 @@ namespace HTD.App.MonitoringWindows
             }
             else
             {
-                Courses = res.Value.ToList();
+                Courses = res.Value.Where(c => c.IsActive == true).ToList();
             }
         }
 
@@ -95,7 +106,7 @@ namespace HTD.App.MonitoringWindows
             }
             else
             {
-                Groups = res.Value.ToList();
+                Groups = res.Value.Where(g => g.IsActive == true).ToList();
             }
         }
 
@@ -115,7 +126,7 @@ namespace HTD.App.MonitoringWindows
 
         private void UpdateTeachersView()
         {
-            var temp = _teacherNameFilter.Filter(Teachers, new TeacherNameFilterSettings
+            var temp = _filter.Filter(Teachers, new TeacherFilterSettings
             {
                 SearchName = SearchTB.Text
             }).ToList();
@@ -211,16 +222,6 @@ namespace HTD.App.MonitoringWindows
             Close();
         }
 
-        private async void RefreshTableB_Click(object sender, RoutedEventArgs e)
-        {
-            await LoadTeachersData();
-            await LoadCoursesData();
-            await LoadGroupsData();
-            await LoadTeacherCoursesData();
-
-            UpdateTeachersView();
-        }
-
         private void TeachersDG_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TeachersDG.SelectedItem != null)
@@ -232,13 +233,13 @@ namespace HTD.App.MonitoringWindows
 
         private FlowDocument CreateDocument(Teacher teacher)
         {
-            var teacherCourses = DependencySearch.FindTeacherCourses(teacher, TeacherCourses, Courses);
+            var teacherCourses = DependencyHelper.FindTeacherCourses(teacher, TeacherCourses, Courses);
             FlowDocument document = new FlowDocument();
             foreach (var course in teacherCourses)
             {
                 Paragraph paragraph = new Paragraph();
                 paragraph.Inlines.Add(new Bold(new Run($"{course.Name}\n")));
-                var groups = DependencySearch.FindCourseGroups(course, Groups);
+                var groups = DependencyHelper.FindCourseGroups(course, Groups);
                 foreach (var group in groups)
                     paragraph.Inlines.Add(new Span(new Run($"    - {group.Name}\n")));
 

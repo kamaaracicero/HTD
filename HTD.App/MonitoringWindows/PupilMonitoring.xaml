@@ -97,7 +97,8 @@
                            Height="25px"/>
                 <ComboBox x:Name="GroupsCB"
                           Height="25px"
-                          FontSize="14" SelectionChanged="GroupsCB_SelectionChanged"/>
+                          FontSize="14"
+                          SelectionChanged="GroupsCB_SelectionChanged"/>
                 <TextBlock Text="Выбор типа кружка:"
                            FontSize="14"
                            Height="25px"/>

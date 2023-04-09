@@ -8,9 +8,11 @@ namespace HTD.App.Configuration
     {
         static AppModelConvertersConfiguration()
         {
+            AddCourseConverter = new CourseModelConverter();
             AddCourseTypeConverter = new CourseTypeModelConverter();
             AddTeacherConverter = new TeacherModelConverter();
             AddPupilConverter = new PupilModelConverter();
+            AddGroupConverter = new GroupModelConverter();
         }
 
         public static IModelConverter<CourseModel, Course> AddCourseConverter { get; }

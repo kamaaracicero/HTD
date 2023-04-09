@@ -122,16 +122,33 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Elements\AddCourseWindow\CourseTypeComboBoxItem.cs" />
+    <Compile Include="Elements\AddCourseWindow\TeacherComboBoxItem.cs" />
+    <Compile Include="Elements\AddCourseWindow\TeacherListBoxItem.cs" />
+    <Compile Include="Elements\CourseMonitoring\CourseDataGridRow.cs" />
+    <Compile Include="Elements\CourseMonitoring\TeacherListBoxItem.cs" />
+    <Compile Include="Elements\GroupsMonitoring\GroupDataGridRow.cs" />
+    <Compile Include="Elements\GroupsMonitoring\PupilListBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\CourseListBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\CourseTypeComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\GroupComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\PupilDataGridRow.cs" />
+    <Compile Include="Elements\UpdatePupilsListWindow\PupilListBoxItem.cs" />
+    <Compile Include="UpdateWindows\UpdatePupilsListWindow.xaml.cs">
+      <DependentUpon>UpdatePupilsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateWindows\UpdatePupilWindow.xaml.cs">
+      <DependentUpon>UpdatePupilWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateWindows\UpdateTeachersListWindow.xaml.cs">
+      <DependentUpon>UpdateTeachersListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateWindows\UpdateTeacherWindow.xaml.cs">
       <DependentUpon>UpdateTeacherWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\AppFilerConfiguration.cs" />
+    <Compile Include="Configuration\AppFilterConfiguration.cs" />
     <Compile Include="Configuration\AppModelConvertersConfiguration.cs" />
     <Compile Include="Configuration\AppServicesConfiguration.cs" />
     <Compile Include="Configuration\AppTextConfiguration.cs" />
@@ -239,6 +256,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonitoringWindows\TeacherMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateWindows\UpdatePupilsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateWindows\UpdatePupilWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateWindows\UpdateTeachersListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

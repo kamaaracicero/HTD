@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HTD.BusinessLogic.Filters.Settings
 {
-    internal class PupilsFullFilterSettings : IFilterSettings<Pupil>
+    internal class PupilFilterSettings : IFilterSettings<Pupil>
     {
         public string PupilNameTB { get; set; }
 

@@ -1,0 +1,73 @@
+﻿<Window x:Class="HTD.App.UpdateWindows.UpdatePupilsListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.UpdateWindows"
+        mc:Ignorable="d"
+        Title="Обновить список учеников"
+        Height="450"
+        Width="300"
+        Initialized="Window_Initialized" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height="30px"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25px"/>
+                <RowDefinition Height="1.0*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Добавленные ученики:"
+                       FontSize="14"
+                       Height="25px"
+                       Grid.Row="0"/>
+            <ListBox x:Name="AddedPupilsLB"
+                     Grid.Row="1">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="DeleteAddedPupilMI"
+                                  Header="Удалить" Click="DeleteAddedPupilMI_Click"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </Grid>
+        <Grid Grid.Row="1"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25px"/>
+                <RowDefinition Height="25px"/>
+                <RowDefinition Height="1.0*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Все ученики:"
+                       FontSize="14"
+                       Height="25px"
+                       Grid.Row="0"/>
+            <TextBox x:Name="SearchByPupilNameTB"
+                     Height="25px"
+                     VerticalContentAlignment="Center"
+                     FontSize="14"
+                     Grid.Row="1" TextChanged="SearchByPupilNameTB_TextChanged"/>
+            <ListBox x:Name="PupilsLB"
+                     Grid.Row="2"
+                     Margin="0,5,0,0">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="AddPupilB"
+                                  Header="Добавить" Click="AddPupilB_Click"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </Grid>
+        <Button x:Name="CloseB"
+                Grid.Row="2"
+                Margin="5" Click="CloseB_Click">
+            <TextBlock TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Text="Закрыть"/>
+        </Button>
+    </Grid>
+</Window>

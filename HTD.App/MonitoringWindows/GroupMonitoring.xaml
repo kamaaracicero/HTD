@@ -8,7 +8,8 @@
         Title="Работа со списком групп"
         Height="550"
         Width="800"
-        Icon="/Icons/logo.ico">
+        Icon="/Icons/logo.ico"
+        Initialized="Window_Initialized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>
@@ -29,12 +30,11 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="Название курса: "/>
                 <Label x:Name="CourseNameL"
-                       Grid.Column="1"
-                       Content="-Название курса-"/>
+                       Grid.Column="1"/>
             </Grid>
             <DataGrid x:Name="GroupsDG"
                       AutoGenerateColumns="False"
-                      Grid.Row="1">
+                      Grid.Row="1" SelectionChanged="GroupsDG_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
                                         Width=".1*"
@@ -60,7 +60,7 @@
               Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50px"/>
-                <RowDefinition Height="140px"/>
+                <RowDefinition Height="150px"/>
                 <RowDefinition Height="1.0*"/>
             </Grid.RowDefinitions>
             <Button x:Name="OpenNewGroupB"
@@ -72,53 +72,86 @@
             </Button>
             <GroupBox Grid.Row="1"
                       Header="Работа с конкретной группой"
-                      Margin="0,20,0,0">
-                <StackPanel Margin="0,10,0,0">
-                    <Label Content="Количество детей"/>
-                    <TextBox x:Name="PupilCountTB"
-                             FontSize="14"
-                             IsEnabled="False"/>
-                    <Button x:Name="CloseGroupB"
-                            Height="25px"
-                            Margin="0,5,0,5">
+                      Margin="0,10,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5px"/>
+                        <RowDefinition Height="1.0*"/>
+                        <RowDefinition Height="20px"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120px"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="1.0*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="1">
+                        <TextBlock Text="Кол-во детей:"
+                                   FontSize="14"
+                                   Height="25px"
+                                   HorizontalAlignment="Right"
+                                   Padding="0,2,0,0"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock Text="Год:"
+                                   FontSize="14"
+                                   Height="25px"
+                                   HorizontalAlignment="Right"
+                                   Padding="0,2,0,0"
+                                   Margin="0,0,0,5"/>
+                        <TextBlock Text="Платная группа:"
+                                   FontSize="14"
+                                   Height="25px"
+                                   HorizontalAlignment="Right"
+                                   Padding="0,2,0,0"
+                                   Margin="0,0,0,5"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Grid.Row="1">
+                        <TextBox x:Name="PupilCountTB"
+                                 Height="25px"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="14"
+                                 Margin="0,0,0,5"
+                                 IsEnabled="False"/>
+                        <TextBox x:Name="YearTB"
+                                 Height="25px"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="14"
+                                 Margin="0,0,0,5"
+                                 IsEnabled="False"/>
+                        <TextBox x:Name="PaymentTB"
+                                 Height="25px"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="14"
+                                 Margin="0,0,0,5"
+                                 IsEnabled="False"/>
+                    </StackPanel>
+                    <Button x:Name="ArchiveGroupB"
+                            Grid.Column="0" Grid.Row="2"
+                            Grid.ColumnSpan="3" Grid.RowSpan="1"
+                            Click="ArchiveGroupB_Click">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="Отправить группу в архив"/>
                     </Button>
-                </StackPanel>
+                </Grid>
             </GroupBox>
             <Grid Grid.Row="2" Margin="0,10,0,0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="25px"/>
                     <RowDefinition Height="1.0*"/>
                     <RowDefinition Height="20px"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".5*"/>
-                    <ColumnDefinition Width=".5*"/>
-                </Grid.ColumnDefinitions>
+                <TextBlock Text="Список учеников:"
+                           Grid.Row="0"
+                           FontSize="14"
+                           Height="25px"/>
                 <ListBox x:Name="PupilsLB"
-                         Grid.Row="0" Grid.Column="0"
-                         Grid.RowSpan="1" Grid.ColumnSpan="2">
-                    <ListBox.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem x:Name="FindPupilByNameMI"
-                                      Header="Найти ученика по фамилии"/>
-                        </ContextMenu>
-                    </ListBox.ContextMenu>
-                </ListBox>
-                <Button x:Name="AddPupilB"
-                        Grid.Row="1" Grid.Column="0"
-                        Margin="0,0,5,0">
+                         Grid.Row="1" Grid.Column="0"/>
+                <Button x:Name="RedactPupilB"
+                        Grid.Row="2" Grid.Column="0"
+                        Click="RedactPupilB_Click">
                     <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
-                                   Text="Добавить ученика"/>
-                </Button>
-                <Button x:Name="DeletePupilB"
-                        Grid.Row="1" Grid.Column="1"
-                        Margin="5,0,0,0">
-                    <TextBlock TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="Удалить ученика"/>
+                                   Text="Редактировать список"/>
                 </Button>
             </Grid>
         </Grid>

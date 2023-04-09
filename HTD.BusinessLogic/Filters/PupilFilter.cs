@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace HTD.BusinessLogic.Filters
 {
-    internal class PupilFullFilter : IFilter<Pupil>
+    internal class PupilFilter : IFilter<Pupil>
     {
         public IEnumerable<Pupil> Filter(IEnumerable<Pupil> values, IFilterSettings<Pupil> settings)
         {
             IEnumerable<Pupil> res = null;
-            var config = settings as PupilsFullFilterSettings;
+            var config = settings as PupilFilterSettings;
             if (config != null)
             {
                 res = values.Where(p => p.IsExpelled == false);
@@ -25,7 +25,7 @@ namespace HTD.BusinessLogic.Filters
             return res;
         }
 
-        private IEnumerable<Pupil> FilterByName(PupilsFullFilterSettings settings, IEnumerable<Pupil> pupils)
+        private IEnumerable<Pupil> FilterByName(PupilFilterSettings settings, IEnumerable<Pupil> pupils)
         {
             if (string.IsNullOrEmpty(settings.PupilNameTB))
                 return pupils;
@@ -33,7 +33,7 @@ namespace HTD.BusinessLogic.Filters
                 return pupils.Where(p => p.Name.StartsWith(settings.PupilNameTB, StringComparison.OrdinalIgnoreCase));
         }
 
-        private IEnumerable<Pupil> FilterByTeacherName(PupilsFullFilterSettings settings, IEnumerable<Pupil> pupils)
+        private IEnumerable<Pupil> FilterByTeacherName(PupilFilterSettings settings, IEnumerable<Pupil> pupils)
         {
             if (string.IsNullOrEmpty(settings.TeacherNameTB))
                 return pupils;
@@ -44,62 +44,62 @@ namespace HTD.BusinessLogic.Filters
                 if (teachers.Count() == 0)
                     return new Pupil[0];
 
-                var courses = DependencySearch.FindTeachersCourses(teachers,
+                var courses = DependencyHelper.FindTeachersCourses(teachers,
                     settings.TeacherCourses, settings.Courses);
                 if (courses.Count() == 0)
                     return new Pupil[0];
 
-                var groups = DependencySearch.FindCoursesGroups(courses, settings.Groups);
+                var groups = DependencyHelper.FindCoursesGroups(courses, settings.Groups);
                 if (groups.Count() == 0)
                     return new Pupil[0];
 
-                return DependencySearch.FindGroupsPupils(groups, settings.PupilGroups, pupils);
+                return DependencyHelper.FindGroupsPupils(groups, settings.PupilGroups, pupils);
             }
         }
 
-        private IEnumerable<Pupil> FilterByPayment(PupilsFullFilterSettings settings, IEnumerable<Pupil> pupils)
+        private IEnumerable<Pupil> FilterByPayment(PupilFilterSettings settings, IEnumerable<Pupil> pupils)
         {
             if (settings.PaymentTrueCB && settings.PaymentFalseCB)
                 return pupils;
             else if (settings.PaymentTrueCB && !settings.PaymentFalseCB)
             {
                 var groups = settings.Groups.Where(g => g.Payment == true);
-                return DependencySearch.FindGroupsPupils(groups, settings.PupilGroups, pupils);
+                return DependencyHelper.FindGroupsPupils(groups, settings.PupilGroups, pupils);
             }
             else if (!settings.PaymentTrueCB && settings.PaymentFalseCB)
             {
                 var groups = settings.Groups.Where(g => g.Payment == false);
-                return DependencySearch.FindGroupsPupils(groups, settings.PupilGroups, pupils);
+                return DependencyHelper.FindGroupsPupils(groups, settings.PupilGroups, pupils);
             }
             else
                 return new Pupil[0];
         }
 
-        private IEnumerable<Pupil> FilterBySelectedGroup(PupilsFullFilterSettings settings, IEnumerable<Pupil> pupils)
+        private IEnumerable<Pupil> FilterBySelectedGroup(PupilFilterSettings settings, IEnumerable<Pupil> pupils)
         {
             if (settings.SelectedGroupCB == null)
                 return pupils;
             else
             {
                 var group = settings.Groups.FirstOrDefault(g => g.Id == settings.SelectedGroupCB.Id);
-                return DependencySearch.FindGroupPupils(group, settings.PupilGroups, pupils);
+                return DependencyHelper.FindGroupPupils(group, settings.PupilGroups, pupils);
             }
         }
 
-        private IEnumerable<Pupil> FilterBySelectedCourseType(PupilsFullFilterSettings settings,
+        private IEnumerable<Pupil> FilterBySelectedCourseType(PupilFilterSettings settings,
             IEnumerable<Pupil> pupils)
         {
-            if (settings.SelectedGroupCB == null)
+            if (settings.SelectedCourseTypeCB == null)
                 return pupils;
             else
             {
                 var courses = settings.Courses.Where(c => c.TypeId == settings.SelectedCourseTypeCB.Id);
 
-                var groups = DependencySearch.FindCoursesGroups(courses, settings.Groups);
+                var groups = DependencyHelper.FindCoursesGroups(courses, settings.Groups);
                 if (groups.Count() == 0)
                     return new Pupil[0];
 
-                return DependencySearch.FindGroupsPupils(groups, settings.PupilGroups, pupils);
+                return DependencyHelper.FindGroupsPupils(groups, settings.PupilGroups, pupils);
             }
         }
     }

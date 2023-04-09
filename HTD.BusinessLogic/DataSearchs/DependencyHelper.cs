@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace HTD.BusinessLogic.DataSearchs
 {
-    internal static class DependencySearch
+    internal static class DependencyHelper
     {
         /// <summary>
         /// Найти все кружки одного преподавателя.
@@ -95,6 +95,13 @@ namespace HTD.BusinessLogic.DataSearchs
             return pupils.Where(p => ids.Contains(p.Id));
         }
 
+        /// <summary>
+        /// Найти все группы ученика
+        /// </summary>
+        /// <param name="pupil"></param>
+        /// <param name="dependencies"></param>
+        /// <param name="groups"></param>
+        /// <returns></returns>
         public static IEnumerable<Group> FindPupilGroups(Pupil pupil,
             IEnumerable<PupilGroup> dependencies, IEnumerable<Group> groups)
         {
@@ -103,6 +110,14 @@ namespace HTD.BusinessLogic.DataSearchs
             return groups.Where(g => ids.Contains(g.Id));
         }
 
+        /// <summary>
+        /// Найти все кружки ученика
+        /// </summary>
+        /// <param name="pupil"></param>
+        /// <param name="dependencies"></param>
+        /// <param name="groups"></param>
+        /// <param name="courses"></param>
+        /// <returns></returns>
         public static IEnumerable<Course> FindPupilCourses(Pupil pupil,
             IEnumerable<PupilGroup> dependencies,
             IEnumerable<Group> groups,
@@ -111,6 +126,23 @@ namespace HTD.BusinessLogic.DataSearchs
             var ids = FindPupilGroups(pupil, dependencies, groups)
                 .Select(g => g.CourseId).Distinct();
             return courses.Where(c => ids.Contains(c.Id));
+        }
+
+        public static IEnumerable<Pupil> FindCoursePupils(Course course,
+            IEnumerable<Group> groups,
+            IEnumerable<PupilGroup> dependencies,
+            IEnumerable<Pupil> pupils)
+        {
+            var tempGroups = FindCourseGroups(course, groups);
+            return FindGroupsPupils(groups, dependencies, pupils);
+        }
+
+        public static IEnumerable<Teacher> FindCourseTeachers(Course course,
+            IEnumerable<TeacherCourse> dependencies, IEnumerable<Teacher> teachers)
+        {
+            var dependencySearch = dependencies.Where(d => d.CourseId == course.Id);
+            var ids = dependencySearch.Select(d => d.TeacherId);
+            return teachers.Where(t => ids.Contains(t.Id));
         }
     }
 }

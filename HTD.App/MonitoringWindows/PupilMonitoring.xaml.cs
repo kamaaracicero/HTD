@@ -1,7 +1,6 @@
 ﻿using HTD.App.AddWindows;
 using HTD.App.Configuration;
 using HTD.App.Elements.PupilMonitoring;
-using HTD.App.Elements.TeacherMonitoring;
 using HTD.BusinessLogic.DataSearchs;
 using HTD.BusinessLogic.Filters;
 using HTD.BusinessLogic.Filters.Settings;
@@ -25,7 +24,7 @@ namespace HTD.App.MonitoringWindows
         private readonly IService<TeacherCourse> _teacherCourseService;
         private readonly IService<Teacher> _teacherService;
 
-        private readonly IFilter<Pupil> _pupilFullFilter;
+        private readonly IFilter<Pupil> _filter;
 
         public PupilMonitoring()
         {
@@ -37,9 +36,10 @@ namespace HTD.App.MonitoringWindows
             _teacherCourseService = AppServicesConfiguration.TeacherCourseService;
             _teacherService = AppServicesConfiguration.TeacherService;
 
-            _pupilFullFilter = AppFilerConfiguration.PupilFullFilter;
+            _filter = AppFilterConfiguration.PupilFilter;
 
             InitializeComponent();
+            PupilsDG.BeginningEdit += (s, ss) => ss.Cancel = true;
         }
 
         public List<Pupil> Pupils { get; set; }
@@ -85,7 +85,7 @@ namespace HTD.App.MonitoringWindows
             if (GroupsCB.SelectedItem == null || CourseTypesCB.SelectedItem == null)
                 return;
 
-            var temp = _pupilFullFilter.Filter(Pupils, new PupilsFullFilterSettings
+            var temp = _filter.Filter(Pupils, new PupilFilterSettings
             {
                 PupilNameTB = SearchNameTB.Text,
                 TeacherNameTB = SearchTeacherNameTB.Text,
@@ -147,7 +147,7 @@ namespace HTD.App.MonitoringWindows
             PupilNameTB.Text = pupil.Name;
             ParentNameTB.Text = pupil.ParentName;
             ContactPhoneTB.Text = pupil.ContactPhone;
-            PupilCoursesLB.ItemsSource = DependencySearch
+            PupilCoursesLB.ItemsSource = DependencyHelper
                 .FindPupilCourses(pupil, PupilGroups, Groups, Courses)
                 .Select(p => new CourseListBoxItem(p));
             PupilCoursesLB.Items.Refresh();
@@ -163,7 +163,7 @@ namespace HTD.App.MonitoringWindows
             }
             else
             {
-                Pupils = res.Value.ToList();
+                Pupils = res.Value.Where(p => p.IsExpelled == false).ToList();
             }
         }
 
@@ -191,7 +191,7 @@ namespace HTD.App.MonitoringWindows
             }
             else
             {
-                Courses = res.Value.ToList();
+                Courses = res.Value.Where(c => c.IsActive == true).ToList();
             }
         }
 
@@ -219,7 +219,7 @@ namespace HTD.App.MonitoringWindows
             }
             else
             {
-                Groups = res.Value.ToList();
+                Groups = res.Value.Where(g => g.IsActive == true).ToList();
             }
         }
 

@@ -2,7 +2,7 @@
 
 namespace HTD.BusinessLogic.Filters.Settings
 {
-    public class TeacherNameFilterSettings : IFilterSettings<Teacher>
+    public class TeacherFilterSettings : IFilterSettings<Teacher>
     {
         public string SearchName { get; set; }
     }

@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace HTD.BusinessLogic.Filters
 {
-    internal class TeacherNameFilter : IFilter<Teacher>
+    internal class TeacherFilter : IFilter<Teacher>
     {
         public IEnumerable<Teacher> Filter(IEnumerable<Teacher> values, IFilterSettings<Teacher> settings)
         {
             IEnumerable<Teacher> res = null;
-            var config = settings as TeacherNameFilterSettings;
+            var config = settings as TeacherFilterSettings;
             if (config != null)
                 if (string.IsNullOrEmpty(config.SearchName))
                     res = values;

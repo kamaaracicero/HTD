@@ -8,7 +8,7 @@
         Title="Работа с кружками"
         Height="600"
         Width="800"
-        Icon="/Icons/logo.ico">
+        Icon="/Icons/logo.ico" Initialized="Window_Initialized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>
@@ -21,21 +21,20 @@
                 <RowDefinition Height="20px"/>
             </Grid.RowDefinitions>
             <DataGrid x:Name="CoursesDG"
-                      AutoGenerateColumns="False">
+                      AutoGenerateColumns="False"
+                      SelectionChanged="CoursesDG_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
                                         Width=".1*"
                                         Binding="{Binding Path=Id}"/>
                     <DataGridTextColumn Header="Название"
-                                        Width=".5*"
+                                        Width=".9*"
                                         Binding="{Binding Path=Name}"/>
-                    <DataGridTextColumn Header="Педагог(и)"
-                                        Width=".4*"
-                                        Binding="{Binding Path=Teachers}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="RefreshTableB"
-                    Grid.Row="1">
+                    Grid.Row="1"
+                    Click="RefreshTableB_Click">
                 <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Перезагрузить таблицу"/>
@@ -55,14 +54,16 @@
                 <TextBox x:Name="SearchCourseNameTB"
                          Height="25px"
                          VerticalContentAlignment="Center"
-                         FontSize="14"/>
+                         FontSize="14"
+                         TextChanged="SearchCourseNameTB_TextChanged"/>
                 <TextBlock Text="Поиск по фамилии преподавателя:"
                            FontSize="14"
                            Height="25px"/>
                 <TextBox x:Name="SearchTeacherNameTB"
                          Height="25px"
                          VerticalContentAlignment="Center"
-                         FontSize="14"/>
+                         FontSize="14"
+                         TextChanged="SearchTeacherNameTB_TextChanged"/>
             </StackPanel>
             <GroupBox Grid.Row="1"
                       Header="Подробности">
@@ -101,10 +102,9 @@
                                  Grid.Row="1" Grid.Column="0">
                             <ListBox.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem x:Name="AddTeacherMI"
-                                              Header="Добавить преподавателя"/>
-                                    <MenuItem x:Name="DeleteTeacherMI"
-                                              Header="Удалить преподавателя"/>
+                                    <MenuItem x:Name="RedactTeachersMI"
+                                              Header="Редактировать список преподавателей"
+                                              Click="RedactTeachersMI_Click"/>
                                 </ContextMenu>
                             </ListBox.ContextMenu>
                         </ListBox>
@@ -119,7 +119,8 @@
                     </Button>
                     <Button x:Name="ArchiveCourseB"
                             Grid.Column="1" Grid.Row="2"
-                            Margin="5">
+                            Margin="5"
+                            Click="ArchiveCourseB_Click">
                         <TextBlock TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="Отправить в архив"/>
@@ -136,7 +137,8 @@
                         Height="40px"
                         Width="130px"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom" Click="AddCourseB_Click">
+                        VerticalAlignment="Bottom"
+                        Click="AddCourseB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Добавить новый кружок"/>
