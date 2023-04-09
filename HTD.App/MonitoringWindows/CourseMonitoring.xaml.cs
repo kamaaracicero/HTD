@@ -31,14 +31,14 @@ namespace HTD.App.MonitoringWindows
 
         public CourseMonitoring()
         {
-            _courseService = AppServicesConfiguration.CourseService;
-            _groupService = AppServicesConfiguration.GroupService;
-            _teacherService = AppServicesConfiguration.TeacherService;
-            _teacherCourseService = AppServicesConfiguration.TeacherCourseService;
-            _pupilService = AppServicesConfiguration.PupilService;
-            _pupilGroupService = AppServicesConfiguration.PupilGroupService;
+            _courseService = AppConfiguration.CourseService;
+            _groupService = AppConfiguration.GroupService;
+            _teacherService = AppConfiguration.TeacherService;
+            _teacherCourseService = AppConfiguration.TeacherCourseService;
+            _pupilService = AppConfiguration.PupilService;
+            _pupilGroupService = AppConfiguration.PupilGroupService;
 
-            _filter = AppFilterConfiguration.CourseFilter;
+            _filter = AppConfiguration.CourseFilter;
 
             InitializeComponent();
             CoursesDG.BeginningEdit += (s, ss) => ss.Cancel = true;

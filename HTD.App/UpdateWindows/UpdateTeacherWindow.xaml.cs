@@ -17,7 +17,7 @@ namespace HTD.App.UpdateWindows
 
         public UpdateTeacherWindow(Teacher teacher)
         {
-            _converter = AppModelConvertersConfiguration.AddTeacherConverter;
+            _converter = AppConfiguration.AddTeacherConverter;
 
             Original = teacher;
 

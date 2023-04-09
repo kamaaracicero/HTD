@@ -22,9 +22,9 @@ namespace HTD.App.MonitoringWindows
 
         public GroupMonitoring(Course course)
         {
-            _pupilService = AppServicesConfiguration.PupilService;
-            _pupilGroupService = AppServicesConfiguration.PupilGroupService;
-            _groupService = AppServicesConfiguration.GroupService;
+            _pupilService = AppConfiguration.PupilService;
+            _pupilGroupService = AppConfiguration.PupilGroupService;
+            _groupService = AppConfiguration.GroupService;
 
             SelectedCourse = course;
 

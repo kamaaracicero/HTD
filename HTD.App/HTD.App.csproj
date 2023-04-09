@@ -149,10 +149,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\AppFilterConfiguration.cs" />
-    <Compile Include="Configuration\AppModelConvertersConfiguration.cs" />
-    <Compile Include="Configuration\AppServicesConfiguration.cs" />
-    <Compile Include="Configuration\AppTextConfiguration.cs" />
+    <Compile Include="Configuration\AppConfiguration.cs" />
     <Compile Include="Elements\LessonMonitoring\ConflictLessonListBoxItem.cs" />
     <Compile Include="Elements\LessonMonitoring\LessonListBoxItem.cs" />
     <Compile Include="Elements\TeacherMonitoring\TeacherDataGridRow.cs" />

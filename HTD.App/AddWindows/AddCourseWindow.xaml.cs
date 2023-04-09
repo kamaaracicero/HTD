@@ -23,10 +23,10 @@ namespace HTD.App.AddWindows
 
         public AddCourseWindow()
         {
-            _courseTypeService = AppServicesConfiguration.CourseTypeService;
-            _teacherService = AppServicesConfiguration.TeacherService;
+            _courseTypeService = AppConfiguration.CourseTypeService;
+            _teacherService = AppConfiguration.TeacherService;
 
-            _converter = AppModelConvertersConfiguration.AddCourseConverter;
+            _converter = AppConfiguration.AddCourseConverter;
 
             AssignedTeachers = new List<Teacher>();
 

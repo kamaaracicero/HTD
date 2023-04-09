@@ -29,15 +29,15 @@ namespace HTD.App.MonitoringWindows
 
         public PupilMonitoring()
         {
-            _pupilService = AppServicesConfiguration.PupilService;
-            _pupilGroupService = AppServicesConfiguration.PupilGroupService;
-            _groupService = AppServicesConfiguration.GroupService;
-            _courseService = AppServicesConfiguration.CourseService;
-            _courseTypeService = AppServicesConfiguration.CourseTypeService;
-            _teacherCourseService = AppServicesConfiguration.TeacherCourseService;
-            _teacherService = AppServicesConfiguration.TeacherService;
+            _pupilService = AppConfiguration.PupilService;
+            _pupilGroupService = AppConfiguration.PupilGroupService;
+            _groupService = AppConfiguration.GroupService;
+            _courseService = AppConfiguration.CourseService;
+            _courseTypeService = AppConfiguration.CourseTypeService;
+            _teacherCourseService = AppConfiguration.TeacherCourseService;
+            _teacherService = AppConfiguration.TeacherService;
 
-            _filter = AppFilterConfiguration.PupilFilter;
+            _filter = AppConfiguration.PupilFilter;
 
             InitializeComponent();
             PupilsDG.BeginningEdit += (s, ss) => ss.Cancel = true;

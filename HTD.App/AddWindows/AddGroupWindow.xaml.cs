@@ -15,7 +15,7 @@ namespace HTD.App.AddWindows
 
         public AddGroupWindow(Course course)
         {
-            _converter = AppModelConvertersConfiguration.AddGroupConverter;
+            _converter = AppConfiguration.AddGroupConverter;
             _course = course;
 
             InitializeComponent();

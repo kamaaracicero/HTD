@@ -17,7 +17,7 @@ namespace HTD.App.UpdateWindows
 
         public UpdatePupilWindow(Pupil original)
         {
-            _converter = AppModelConvertersConfiguration.AddPupilConverter;
+            _converter = AppConfiguration.AddPupilConverter;
 
             Original = original;
 

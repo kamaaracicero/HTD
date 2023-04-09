@@ -28,11 +28,11 @@ namespace HTD.App.MonitoringWindows
 
         public TeacherMonitoring()
         {
-            _courseService = AppServicesConfiguration.CourseService;
-            _groupService = AppServicesConfiguration.GroupService;
-            _teacherService = AppServicesConfiguration.TeacherService;
-            _teacherCourseService = AppServicesConfiguration.TeacherCourseService;
-            _filter = AppFilterConfiguration.TeacherFilter;
+            _courseService = AppConfiguration.CourseService;
+            _groupService = AppConfiguration.GroupService;
+            _teacherService = AppConfiguration.TeacherService;
+            _teacherCourseService = AppConfiguration.TeacherCourseService;
+            _filter = AppConfiguration.TeacherFilter;
 
             Teachers = new List<Teacher>();
             TeacherCourses = new List<TeacherCourse>();

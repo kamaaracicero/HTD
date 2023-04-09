@@ -19,8 +19,8 @@ namespace HTD.App.UpdateWindows
 
         public UpdatePupilsListWindow(Group group)
         {
-            _pupilService = AppServicesConfiguration.PupilService;
-            _pupilGroupService = AppServicesConfiguration.PupilGroupService;
+            _pupilService = AppConfiguration.PupilService;
+            _pupilGroupService = AppConfiguration.PupilGroupService;
 
             Group = group;
 

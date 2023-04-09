@@ -19,8 +19,8 @@ namespace HTD.App.UpdateWindows
 
         public UpdateTeachersListWindow(Course course)
         {
-            _teacherService = AppServicesConfiguration.TeacherService;
-            _teacherCourseService = AppServicesConfiguration.TeacherCourseService;
+            _teacherService = AppConfiguration.TeacherService;
+            _teacherCourseService = AppConfiguration.TeacherCourseService;
 
             Course = course;
 

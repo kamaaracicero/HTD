@@ -17,7 +17,7 @@ namespace HTD.App.AddWindows
 
         public AddTeacherWindow()
         {
-            _converter = AppModelConvertersConfiguration.AddTeacherConverter;
+            _converter = AppConfiguration.AddTeacherConverter;
 
             InitializeComponent();
         }

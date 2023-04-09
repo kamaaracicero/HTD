@@ -17,7 +17,7 @@ namespace HTD.App.AddWindows
 
         public AddPupilWindow()
         {
-            _converter = AppModelConvertersConfiguration.AddPupilConverter;
+            _converter = AppConfiguration.AddPupilConverter;
 
             InitializeComponent();
         }
