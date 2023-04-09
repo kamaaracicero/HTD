@@ -1,8 +1,10 @@
 ﻿using HTD.App.AddWindows;
 using HTD.App.Configuration;
 using HTD.App.Elements.CourseMonitoring;
+using HTD.App.Elements.GroupsMonitoring;
 using HTD.App.Elements.PupilMonitoring;
 using HTD.App.Elements.TeacherMonitoring;
+using HTD.App.UpdateWindows;
 using HTD.BusinessLogic.DataSearchs;
 using HTD.BusinessLogic.Filters;
 using HTD.BusinessLogic.Filters.Settings;
@@ -272,9 +274,18 @@ namespace HTD.App.MonitoringWindows
             }
         }
 
-        private void RedactTeachersMI_Click(object sender, RoutedEventArgs e)
+        private async void RedactTeachersMI_Click(object sender, RoutedEventArgs e)
         {
+            if (CoursesDG.SelectedItem == null)
+                return;
 
+            var course = (CoursesDG.SelectedItem as CourseDataGridRow).Instance;
+            UpdateTeachersListWindow window = new UpdateTeachersListWindow(course);
+            if (window.ShowDialog().Value)
+            {
+                await LoadTeacherCoursesData();
+                UpdateCoursesView();
+            }
         }
     }
 }

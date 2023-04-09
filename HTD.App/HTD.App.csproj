@@ -134,6 +134,7 @@
     <Compile Include="Elements\PupilMonitoring\GroupComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\PupilDataGridRow.cs" />
     <Compile Include="Elements\UpdatePupilsListWindow\PupilListBoxItem.cs" />
+    <Compile Include="Elements\UpdateTeachersListWindow\TeacherListBoxItem.cs" />
     <Compile Include="UpdateWindows\UpdatePupilsListWindow.xaml.cs">
       <DependentUpon>UpdatePupilsListWindow.xaml</DependentUpon>
     </Compile>

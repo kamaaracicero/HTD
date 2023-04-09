@@ -170,6 +170,12 @@ namespace HTD.App.MonitoringWindows
                     await LoadTeachersData();
                     UpdateTeachersView();
                 }
+                else
+                {
+                    MessageBox.Show("Не удалось редактировать преподавателя", "Ошибка");
+                    await LoadTeachersData();
+                    UpdateTeachersView();
+                }
             }
         }
 

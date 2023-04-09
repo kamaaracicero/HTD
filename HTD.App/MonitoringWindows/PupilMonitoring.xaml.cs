@@ -1,6 +1,7 @@
 ﻿using HTD.App.AddWindows;
 using HTD.App.Configuration;
 using HTD.App.Elements.PupilMonitoring;
+using HTD.App.UpdateWindows;
 using HTD.BusinessLogic.DataSearchs;
 using HTD.BusinessLogic.Filters;
 using HTD.BusinessLogic.Filters.Settings;
@@ -286,9 +287,28 @@ namespace HTD.App.MonitoringWindows
 
         private void CourseTypesCB_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdatePupilsView();
 
-        private void UpdatePupilB_Click(object sender, RoutedEventArgs e)
+        private async void UpdatePupilB_Click(object sender, RoutedEventArgs e)
         {
-            // Fix it
+            if (PupilsDG.SelectedItem == null)
+                return;
+
+            var pupil = (PupilsDG.SelectedItem as PupilDataGridRow).Instance;
+            UpdatePupilWindow window = new UpdatePupilWindow(pupil);
+            if (window.ShowDialog().Value)
+            {
+                var res = await _pupilService.Update(window.Value);
+                if (res.Successfully)
+                {
+                    await LoadPupilsData();
+                    UpdatePupilsView();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось редактировать ученика", "Ошибка");
+                    await LoadPupilsData();
+                    UpdatePupilsView();
+                }
+            }
         }
 
         private async void ExpellPupilB_Click(object sender, RoutedEventArgs e)

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Обновить список преподавателей"
         Height="450"
-        Width="300">
+        Width="300" Initialized="Window_Initialized" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".4*"/>
@@ -29,7 +29,8 @@
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem x:Name="DeleteAddedTeacherMI"
-                                  Header="Удалить"/>
+                                  Header="Удалить"
+                                  Click="DeleteAddedTeacherMI_Click"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
@@ -41,29 +42,32 @@
                 <RowDefinition Height="25px"/>
                 <RowDefinition Height="1.0*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Все ученики:"
+            <TextBlock Text="Все преподаватели:"
                        FontSize="14"
                        Height="25px"
                        Grid.Row="0"/>
-            <TextBox x:Name="SearchByPupilNameTB"
+            <TextBox x:Name="SearchByTeacherNameTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
                      FontSize="14"
-                     Grid.Row="1" TextChanged="SearchByPupilNameTB_TextChanged"/>
-            <ListBox x:Name="PupilsLB"
+                     Grid.Row="1"
+                     TextChanged="SearchByTeacherNameTB_TextChanged"/>
+            <ListBox x:Name="TeachersLB"
                      Grid.Row="2"
                      Margin="0,5,0,0">
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem x:Name="AddPupilB"
-                                  Header="Добавить" Click="AddPupilB_Click"/>
+                        <MenuItem x:Name="AddTeacherB"
+                                  Header="Добавить"
+                                  Click="AddTeacherB_Click"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
         </Grid>
         <Button x:Name="CloseB"
                 Grid.Row="2"
-                Margin="5" Click="CloseB_Click">
+                Margin="5"
+                Click="CloseB_Click">
             <TextBlock TextAlignment="Center"
                        TextWrapping="Wrap"
                        Text="Закрыть"/>

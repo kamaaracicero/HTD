@@ -88,8 +88,11 @@ namespace HTD.App.UpdateWindows
 
         private void UpdatePupilsView()
         {
-            var temp = Pupils.Where(p => p.Name.StartsWith(SearchByPupilNameTB.Text, StringComparison.OrdinalIgnoreCase));
-            PupilsLB.ItemsSource = temp.Where(p => !AddedPupils.Contains(p)).Select(p => new PupilListBoxItem(p));
+            var temp = Pupils.Where(p => p.Name.StartsWith(SearchByPupilNameTB.Text,
+                StringComparison.OrdinalIgnoreCase));
+            PupilsLB.ItemsSource = temp
+                .Where(p => !AddedPupils.Contains(p))
+                .Select(p => new PupilListBoxItem(p));
             PupilsLB.Items.Refresh();
         }
 
