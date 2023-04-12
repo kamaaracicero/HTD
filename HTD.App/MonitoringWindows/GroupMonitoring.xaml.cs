@@ -30,6 +30,7 @@ namespace HTD.App.MonitoringWindows
 
             InitializeComponent();
 
+            GroupsDG.BeginningEdit += (s, ss) => ss.Cancel = true;
             CourseNameL.Content = course.Name;
         }
 

@@ -28,10 +28,10 @@ namespace HTD.App.AddWindows
         {
             PupilModel model = new PupilModel
             {
-                NameTB = NameTB.Text,
-                ParentNameTB = ParentNameTB.Text,
-                ContactPhoneTB = ContactPhoneTB.Text,
-                BirthDayDP = BirthDayDP.Text,
+                NameTB = NameTB.Text.Trim(),
+                ParentNameTB = ParentNameTB.Text.Trim(),
+                ContactPhoneTB = ContactPhoneTB.Text.Trim(),
+                BirthDayDP = BirthDayDP.Text.Trim(),
             };
 
             var res = _converter.ConvertModel(model);

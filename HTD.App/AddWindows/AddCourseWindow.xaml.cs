@@ -174,7 +174,7 @@ namespace HTD.App.AddWindows
 
             CourseModel model = new CourseModel
             {
-                NameTB = NameTB.Text,
+                NameTB = NameTB.Text.Trim(),
                 TypeCB = (CourseTypesCB.SelectedItem as CourseTypeComboBoxItem).Instance,
             };
 

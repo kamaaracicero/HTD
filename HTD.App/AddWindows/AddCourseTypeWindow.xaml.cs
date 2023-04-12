@@ -25,7 +25,7 @@ namespace HTD.App.AddWindows
         {
             CourseTypeModel model = new CourseTypeModel
             {
-                NameTB = NameTB.Text,
+                NameTB = NameTB.Text.Trim(),
             };
 
             var res = _converter.ConvertModel(model);

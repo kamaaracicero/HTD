@@ -27,8 +27,8 @@ namespace HTD.App.AddWindows
         {
             GroupModel model = new GroupModel
             {
-                NameTB = NameTB.Text,
-                YearTB = YearTB.Text,
+                NameTB = NameTB.Text.Trim(),
+                YearTB = YearTB.Text.Trim(),
                 PaymentCB = PaymentCB.IsChecked.Value,
                 Course = _course,
             };

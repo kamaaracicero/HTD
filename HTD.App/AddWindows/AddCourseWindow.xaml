@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HTD.App.AddWindows"
         mc:Ignorable="d"
-        Title="AddCourseWindow"
+        Title="Добавить кружок"
         Height="450" MinHeight="450"
         Width="300" MinWidth="300"
         Icon="/Icons/logo.ico" Initialized="Window_Initialized">
