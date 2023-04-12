@@ -79,14 +79,26 @@ namespace HTD.App.Elements.LessonMonitoring
             FirstLessonTimeTB = string.Format(TimeFormat,
                 Lesson1.Begin.Hours, Lesson1.Begin.Minutes,
                 Lesson1.End.Hours, Lesson1.End.Minutes);
-            FirstLessonNameTB = string.Format(NameFormat, Group1.Name, Group1.Year);
-            FirstLessonTeacherTB = Teacher1.Name;
+            if (Group1 == null)
+                FirstLessonNameTB = "Группа архивирована. Занятие невозможно";
+            else
+                FirstLessonNameTB = string.Format(NameFormat, Group1.Name, Group1.Year);
+            if (Teacher1 == null)
+                FirstLessonTeacherTB = "Преподаватель удалён. Занятие невозможно";
+            else
+                FirstLessonTeacherTB = Teacher1.Name;
 
             SecondLessonTimeTB = string.Format(TimeFormat,
                 Lesson2.Begin.Hours, Lesson2.Begin.Minutes,
                 Lesson2.End.Hours, Lesson2.End.Minutes);
-            SecondLessonNameTB = string.Format(NameFormat, Group1.Name, Group1.Year);
-            SecondLessonTeacherTB = Teacher2.Name;
+            if (Group2 == null)
+                SecondLessonNameTB = "Группа архивирована. Занятие невозможно";
+            else
+                SecondLessonNameTB = string.Format(NameFormat, Group1.Name, Group1.Year);
+            if (Teacher2 == null)
+                SecondLessonTeacherTB = "Преподаватель удалён. Занятие невозможно";
+            else
+                SecondLessonTeacherTB = Teacher2.Name;
         }
     }
 }

@@ -5,6 +5,7 @@ namespace HTD.App.Elements.LessonMonitoring
     internal class LessonListBoxItem
     {
         private const string TimeFormat = "{0:00}:{1:00}-{2:00}:{3:00}";
+        private const string PlaceFormat = "Кабинет: {0}";
 
         public LessonListBoxItem(Lesson lesson, Course course, Teacher teacher, Group group)
             : base()
@@ -58,7 +59,7 @@ namespace HTD.App.Elements.LessonMonitoring
             else
                 Group = GroupValue.Name;
 
-            Place = Instance.Place.ToString();
+            Place = string.Format(PlaceFormat, Instance.Place.ToString());
         }
     }
 }
