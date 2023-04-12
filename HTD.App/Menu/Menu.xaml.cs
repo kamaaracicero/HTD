@@ -45,7 +45,9 @@ namespace HTD.App.Menu
 
         private void StatisticsB_Click(object sender, RoutedEventArgs e)
         {
-
+            StatisticsMonitoring window = new StatisticsMonitoring();
+            window.Show();
+            WindowState = WindowState.Minimized;
         }
     }
 }

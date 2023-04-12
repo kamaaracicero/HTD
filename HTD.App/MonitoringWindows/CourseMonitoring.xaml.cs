@@ -264,13 +264,16 @@ namespace HTD.App.MonitoringWindows
                     MessageBox.Show("Не удалось архивировать кружок", "Ошибка");
 
                 var groups = DependencyHelper.FindCourseGroups(course, Groups);
+                var flag = false;
                 foreach (var group in groups)
                 {
                     group.IsActive = false;
                     var groupRes = await _groupService.Update(group);
                     if (!groupRes.Successfully)
-                        MessageBox.Show("Не удалось архивировать группу кружка", "Ошибка");
+                        flag = true;
                 }
+                if (flag)
+                    MessageBox.Show("Не удалось архивировать группы кружка", "Ошибка");
 
                 await LoadCoursesData();
                 await LoadGroupsData();

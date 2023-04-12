@@ -138,8 +138,15 @@
     <Compile Include="Elements\PupilMonitoring\CourseTypeComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\GroupComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\PupilDataGridRow.cs" />
+    <Compile Include="Elements\StatisticsMonitoring\CourseListBoxItem.cs" />
+    <Compile Include="Elements\StatisticsMonitoring\CourseTypeListBoxItem.cs" />
+    <Compile Include="Elements\StatisticsMonitoring\GroupListBoxItem.cs" />
+    <Compile Include="Elements\StatisticsMonitoring\PupilListBoxItem.cs" />
     <Compile Include="Elements\UpdatePupilsListWindow\PupilListBoxItem.cs" />
     <Compile Include="Elements\UpdateTeachersListWindow\TeacherListBoxItem.cs" />
+    <Compile Include="MonitoringWindows\StatisticsMonitoring.xaml.cs">
+      <DependentUpon>StatisticsMonitoring.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateWindows\UpdatePupilsListWindow.xaml.cs">
       <DependentUpon>UpdatePupilsListWindow.xaml</DependentUpon>
     </Compile>
@@ -255,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonitoringWindows\PupilMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MonitoringWindows\StatisticsMonitoring.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

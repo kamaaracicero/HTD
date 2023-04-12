@@ -1,0 +1,363 @@
+﻿<Window x:Class="HTD.App.MonitoringWindows.StatisticsMonitoring"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTD.App.MonitoringWindows"
+        mc:Ignorable="d"
+        Title="StatisticsMonitoring"
+        Height="450"
+        Width="400"
+        Initialized="Window_Initialized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.0*"/>
+            <RowDefinition Height="20px"/>
+        </Grid.RowDefinitions>
+        <TabControl Margin="5"
+                    Grid.Row="0">
+            <TabItem Header="Общая статистика">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150px"/>
+                        <ColumnDefinition Width="1.0*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во учеников: "/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во преподавателей: "/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во кружков: "/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во групп: "/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock x:Name="TotalPupilCountTB"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,0,0"/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock x:Name="TotalTeachersCountTB"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,0,0"/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock x:Name="TotalCoursesCountTB"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,0,0"/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock x:Name="TotalGroupsCountTB"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,0,0"/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отчисленные ученики">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="105px"/>
+                        <RowDefinition Height="20px"/>
+                        <RowDefinition Height="20px"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="PupilsLB"
+                             Grid.Row="0"
+                             SelectionChanged="PupilsLB_SelectionChanged"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110px"/>
+                            <ColumnDefinition Width="1.0*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Кол-во групп: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Ф.И.О.: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Представитель: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Телефон: "/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock x:Name="PupilGroupsCountTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="PupilNameTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="PupilParentNameTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="PupilContactPhoneTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Button x:Name="RestorePupilB"
+                            Grid.Row="2"
+                            Click="RestorePupilB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Восстановить ученика"/>
+                    </Button>
+                    <Button x:Name="DeletePupilB"
+                            Grid.Row="3"
+                            Click="DeletePupilB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Удалить ученика"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Архивированные кружки">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.0*"/>
+                        <RowDefinition Height="25px"/>
+                        <RowDefinition Height="20px"/>
+                        <RowDefinition Height="20px"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="CoursesLB"
+                             Grid.Row="0"
+                             SelectionChanged="CoursesLB_SelectionChanged"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110px"/>
+                            <ColumnDefinition Width="1.0*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во групп: "/>
+                        <TextBlock x:Name="CourseGroupsCountTB"
+                                   Grid.Column="1"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,0,0"/>
+                    </Grid>
+                    <Button x:Name="RestoreCourseB"
+                            Grid.Row="2"
+                            Click="RestoreCourseB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Восстановить кружок"/>
+                    </Button>
+                    <Button x:Name="DeleteCourseB"
+                            Grid.Row="3"
+                            Click="DeleteCourseB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Удалить кружок"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Архивированные группы">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.0*"/>
+                        <RowDefinition Height="130px"/>
+                        <RowDefinition Height="20px"/>
+                        <RowDefinition Height="20px"/>
+                        <RowDefinition Height="20px"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="GroupsLB"
+                             Grid.Row="0"
+                             SelectionChanged="GroupsLB_SelectionChanged"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130px"/>
+                            <ColumnDefinition Width="1.0*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Кол-во учеников: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Название: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Год обучения: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Платная группа: "/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock TextAlignment="Right"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,5,0"
+                                       Text="Кружок архивирован: "/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock x:Name="GroupPupilCountTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="GroupNameTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="GroupYearTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="GroupPaymentTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                            <Border BorderBrush="Black"
+                                    BorderThickness="0,1,0,0"/>
+                            <TextBlock x:Name="GroupCourseIsActiveTB"
+                                       TextWrapping="Wrap"
+                                       Height="25px"
+                                       Padding="0,2,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Button x:Name="RestoreGroupB"
+                            Grid.Row="2"
+                            Click="RestoreGroupB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Восстановить группу"/>
+                    </Button>
+                    <Button x:Name="DeleteGroupB"
+                            Grid.Row="3"
+                            Click="DeleteGroupB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Удалить группу"/>
+                    </Button>
+                    <Button x:Name="FullDeleteGroupB"
+                            Grid.Row="4"
+                            Click="FullDeleteGroupB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Удалить группу с учениками"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Типы кружков">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.0*"/>
+                        <RowDefinition Height="25px"/>
+                        <RowDefinition Height="20px"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="CourseTypesLB"
+                             Grid.Row="0"
+                             SelectionChanged="CourseTypesLB_SelectionChanged"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110px"/>
+                            <ColumnDefinition Width="1.0*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во кружков: "/>
+                        <TextBlock x:Name="CourseTypeCoursesCountTB"
+                                   Grid.Column="1"
+                                   TextWrapping="Wrap"
+                                   Height="25px"
+                                   Padding="0,2,0,0"/>
+                    </Grid>
+                    <Button x:Name="DeleteCourseTypeB"
+                            Grid.Row="2"
+                            Click="DeleteCourseTypeB_Click">
+                        <TextBlock TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="Удалить тип кружка"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="RefreshB"
+                Grid.Row="1"
+                Background="Green" Click="RefreshB_Click">
+            <TextBlock TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Text="Перезагрузить"/>
+        </Button>
+    </Grid>
+</Window>
