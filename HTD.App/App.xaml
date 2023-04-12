@@ -11,27 +11,32 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120px"/>
+                                <ColumnDefinition Width="80px"/>
                                 <ColumnDefinition Width="1.0*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1.0*"/>
-                                <RowDefinition Height="1.0*"/>
-                                <RowDefinition Height="1.0*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0"
-                                       Text="Конфликт на время:"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0"
-                                       Text="{Binding Time}"
-                                       FontWeight="Bold"/>
-                            <TextBlock Grid.Column="0" Grid.Row="1"
-                                       Grid.ColumnSpan="2" Grid.RowSpan="1"
-                                       Text="{Binding Lesson1}"
-                                       Margin="20,0,0,0"/>
-                            <TextBlock Grid.Column="0" Grid.Row="2"
-                                       Grid.ColumnSpan="2" Grid.RowSpan="1"
-                                       Text="{Binding Lesson2}"
-                                       Margin="20,0,0,0"/>
+                            <TextBlock Text="День:"
+                                       Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock Text="{Binding Path=Day}"
+                                       Grid.Column="1" Grid.Row="0"/>
+                            
+                            <TextBlock Text="{Binding Path=FirstLessonTimeTB}"
+                                       Grid.Column="0" Grid.Row="1"/>
+                            <StackPanel Grid.Column="1" Grid.Row="1">
+                                <TextBlock Text="{Binding Path=FirstLessonNameTB}"/>
+                                <TextBlock Text="{Binding Path=FirstLessonTeacherTB}"/>
+                            </StackPanel>
+                            
+                            <TextBlock Text="{Binding Path=SecondLessonTimeTB}"
+                                       Grid.Column="0" Grid.Row="2"/>
+                            <StackPanel Grid.Column="1" Grid.Row="2">
+                                <TextBlock Text="{Binding Path=SecondLessonNameTB}"/>
+                                <TextBlock Text="{Binding Path=SecondLessonTeacherTB}"/>
+                            </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>
@@ -44,8 +49,8 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="80px" />
+                                <ColumnDefinition Width="1.0*" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Time}" Margin="5"/>
                             <StackPanel Grid.Column="1">

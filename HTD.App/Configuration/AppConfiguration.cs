@@ -14,12 +14,14 @@ namespace HTD.App.Configuration
             TeacherFilter = new TeacherFilter();
             PupilFilter = new PupilFilter();
             CourseFilter = new CourseFilter();
+            LessonFilter = new LessonFilter();
 
             AddCourseConverter = new CourseModelConverter();
             AddCourseTypeConverter = new CourseTypeModelConverter();
             AddTeacherConverter = new TeacherModelConverter();
             AddPupilConverter = new PupilModelConverter();
             AddGroupConverter = new GroupModelConverter();
+            AddLessonConverter = new LessonModelConverter();
 
             var connectionString = ConfigurationManager.ConnectionStrings["DefaultDB"].ConnectionString;
 
@@ -38,6 +40,8 @@ namespace HTD.App.Configuration
         public static IFilter<Teacher> TeacherFilter { get; }
 
         public static IFilter<Pupil> PupilFilter { get; }
+
+        public static IFilter<Lesson> LessonFilter { get; }
 
         public static IModelConverter<CourseModel, Course> AddCourseConverter { get; }
 

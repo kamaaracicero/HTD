@@ -8,66 +8,112 @@
         Title="Работа с расписанием"
         Height="450"
         Width="800"
-        Icon="/Icons/logo.ico">
-    <Window.Resources>
-        <Style x:Name="LessonConflictItemStyle" TargetType="ListBoxItem">
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Time}" Margin="5"/>
-                            <StackPanel Grid.Column="1">
-                                <TextBlock Text="{Binding Course}" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Teacher}"/>
-                                <TextBlock Text="{Binding Group}"/>
-                                <TextBlock Text="{Binding Place}"/>
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        Icon="/Icons/logo.ico" Initialized="Window_Initialized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>
             <ColumnDefinition Width=".4*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Margin="5">
-            <TabItem Header="Понедельник">
-                <ListBox x:Name="MondayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-            <TabItem Header="Вторник">
-                <ListBox x:Name="TuesdayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-            <TabItem Header="Среда">
-                <ListBox x:Name="WednesdayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-            <TabItem Header="Четверг">
-                <ListBox x:Name="ThursdayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-            <TabItem Header="Пятница">
-                <ListBox x:Name="FridayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-            <TabItem Header="Суббота">
-                <ListBox x:Name="SaturdayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-            <TabItem Header="Воскресенье">
-                <ListBox x:Name="SundayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}"/>
-            </TabItem>
-        </TabControl>
+        <Grid Grid.Column="0"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.0*"/>
+                <RowDefinition Height="20px"/>
+            </Grid.RowDefinitions>
+            <TabControl Grid.Row="0">
+                <TabItem Header="Понедельник">
+                    <ListBox x:Name="MondayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteMondayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteMondayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Вторник">
+                    <ListBox x:Name="TuesdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteTuesdayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteTuesdayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Среда">
+                    <ListBox x:Name="WednesdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteWednesdayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteWednesdayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Четверг">
+                    <ListBox x:Name="ThursdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteThursdayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteThursdayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Пятница">
+                    <ListBox x:Name="FridayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteFridayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteFridayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Суббота">
+                    <ListBox x:Name="SaturdayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteSaturdayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteSaturdayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="Воскресенье">
+                    <ListBox x:Name="SundayLB"
+                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="DeleteSundayLessonMI"
+                                      Header="Удалить занятие"
+                                      Click="DeleteSundayLessonMI_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </TabItem>
+            </TabControl>
+            <Button x:Name="RefreshB"
+                    Grid.Row="1"
+                    Click="RefreshB_Click">
+                <TextBlock TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Text="Перезагрузить"/>
+            </Button>
+        </Grid>
         <Grid Grid.Column="1"
               Margin="5">
             <Grid.RowDefinitions>
@@ -76,24 +122,25 @@
                 <RowDefinition Height="50px"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBlock Text="Поиск по названию группы:"
+                <TextBlock Text="Выбор группы:"
                            FontSize="14"
                            Height="25px"/>
-                <TextBox x:Name="SearchGroupNameTB"
-                         Height="25px"
-                         VerticalContentAlignment="Center"
-                         FontSize="14"/>
-                <TextBlock Text="Поиск по фамилии преподавателя:"
+                <ComboBox x:Name="GroupsCB"
+                          Height="25px"
+                          FontSize="14"
+                          SelectionChanged="GroupsCB_SelectionChanged"/>
+                <TextBlock Text="Выбор преподавателя:"
                            FontSize="14"
                            Height="25px"/>
-                <TextBox x:Name="SearchTeacherNameTB"
-                         Height="25px"
-                         VerticalContentAlignment="Center"
-                         FontSize="14"/>
+                <ComboBox x:Name="TeachersCB"
+                          Height="25px"
+                          FontSize="14"
+                          SelectionChanged="TeachersCB_SelectionChanged"/>
             </StackPanel>
             <GroupBox Grid.Row="1"
                       Header="Конфликтующие занятия">
                 <ListBox x:Name="ConflictLessonsLB"
+                         Margin="5"
                          ItemContainerStyle="{StaticResource ConflictLesssonItemStyle}"/>
             </GroupBox>
             <Grid Grid.Row="2">
@@ -101,12 +148,12 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="AddCourseB"
+                <Button x:Name="AddLessonB"
                         Grid.Column="0"
                         Height="40px"
                         Width="130px"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom" Click="AddCourseB_Click">
+                        VerticalAlignment="Bottom" Click="AddLessonB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Добавить новое занятие"/>
@@ -116,7 +163,8 @@
                         Height="25px"
                         Width="60px"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
+                        VerticalAlignment="Bottom"
+                        Click="CloseB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Закрыть"/>

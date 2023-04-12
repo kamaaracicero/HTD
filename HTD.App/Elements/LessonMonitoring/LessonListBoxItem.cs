@@ -4,12 +4,12 @@ namespace HTD.App.Elements.LessonMonitoring
 {
     internal class LessonListBoxItem
     {
-        private const string TimeFormat = "{0}-{1}";
+        private const string TimeFormat = "{0:00}:{1:00}-{2:00}:{3:00}";
 
         public LessonListBoxItem(Lesson lesson, Course course, Teacher teacher, Group group)
             : base()
         {
-            LessonValue = lesson;
+            Instance = lesson;
             CourseValue = course;
             TeacherValue = teacher;
             GroupValue = group;
@@ -17,7 +17,7 @@ namespace HTD.App.Elements.LessonMonitoring
             Init();
         }
 
-        public Lesson LessonValue { get; set; }
+        public Lesson Instance { get; set; }
 
         public Course CourseValue { get; set; }
 
@@ -38,12 +38,27 @@ namespace HTD.App.Elements.LessonMonitoring
         private void Init()
         {
             Time = string.Format(TimeFormat,
-                LessonValue.Begin.ToShortDateString(),
-                LessonValue.End.ToShortTimeString());
-            Course = CourseValue.Name;
-            Teacher = TeacherValue.Name;
-            Group = GroupValue.Name;
-            Place = LessonValue.Place.ToString();
+                Instance.Begin.Hours,
+                Instance.Begin.Minutes,
+                Instance.End.Hours,
+                Instance.End.Minutes);
+
+            if (CourseValue == null)
+                Course = "Кружок архивирован. Занятие невозможно";
+            else
+                Course = CourseValue.Name;
+
+            if (TeacherValue == null)
+                Teacher = "Учитель удалён. Занятие невозможно";
+            else
+                Teacher = TeacherValue.Name;
+
+            if (GroupValue == null)
+                Group = "Группа архивирована. Занятие невозможно";
+            else
+                Group = GroupValue.Name;
+
+            Place = Instance.Place.ToString();
         }
     }
 }

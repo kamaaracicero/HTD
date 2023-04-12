@@ -36,16 +36,29 @@ namespace HTD.BusinessLogic.ModelConverters
             return (res, success);
         }
 
-        protected (DateTime res, bool success) GetTimeFromString(string value)
+        protected (TimeSpan res, bool success) GetTimeFromString(string value)
         {
-            DateTime res = new DateTime(1980, 1, 1, 1, 1, 1);
+            TimeSpan res = new TimeSpan(0, 0, 0);
             bool success = true;
             try
             {
-                var hours = int.Parse(value.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[0]);
-                var minutes = int.Parse(value.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                var hours = int.Parse(value
+                    .Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[0]);
+                var minutes = int.Parse(value
+                    .Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries)[1]);
 
-                res = new DateTime(1980, 1, 1, hours, minutes, 0);
+                if (hours < 0 || hours > 23)
+                {
+                    success = false;
+                    return (res, success);
+                }
+                if (minutes < 0 || minutes > 59)
+                {
+                    success = false;
+                    return (res, success);
+                }
+
+                res = new TimeSpan(hours, minutes, 0);
             }
             catch
             {

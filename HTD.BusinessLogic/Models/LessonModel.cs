@@ -4,9 +4,9 @@ namespace HTD.BusinessLogic.Models
 {
     internal class LessonModel : IModel
     {
-        public Group GroupCB { get; set; }
+        public Group Group { get; set; }
 
-        public Teacher TeacherCB { get; set; }
+        public Teacher Teacher { get; set; }
 
         public string StartTB { get; set; }
 
@@ -14,6 +14,6 @@ namespace HTD.BusinessLogic.Models
 
         public string PlaceTB { get; set; }
 
-        public Day DayCB { get; set; }
+        public Day Day { get; set; }
     }
 }

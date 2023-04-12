@@ -4,7 +4,7 @@ namespace HTD.DataEntities
 {
     public class Lesson : IDataEntity
     {
-        public Lesson(int id, int groupId, int teacherId, DateTime begin, DateTime end, int place, int date)
+        public Lesson(int id, int groupId, int teacherId, TimeSpan begin, TimeSpan end, int place, int date)
         {
             Id = id;
             GroupId = groupId;
@@ -16,7 +16,7 @@ namespace HTD.DataEntities
         }
 
         public Lesson()
-            : this(0, 0, 0, new DateTime(2000, 1, 1), new DateTime(2000, 1, 1), 0, 0)
+            : this(0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), 0, 0)
         {
         }
 
@@ -26,9 +26,9 @@ namespace HTD.DataEntities
 
         public int TeacherId { get; set; }
 
-        public DateTime Begin { get; set; }
+        public TimeSpan Begin { get; set; }
 
-        public DateTime End { get; set; }
+        public TimeSpan End { get; set; }
 
         public int Place { get; set; }
 
@@ -68,7 +68,7 @@ namespace HTD.DataEntities
         }
 
         public override string ToString() => nameof(Lesson)
-            + ": " + Begin.ToShortTimeString()
-            + "-" + End.ToShortTimeString();
+            + ": " + Begin.ToString()
+            + "-" + End.ToString();
     }
 }

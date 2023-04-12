@@ -125,10 +125,15 @@
     <Compile Include="Elements\AddCourseWindow\CourseTypeComboBoxItem.cs" />
     <Compile Include="Elements\AddCourseWindow\TeacherComboBoxItem.cs" />
     <Compile Include="Elements\AddCourseWindow\TeacherListBoxItem.cs" />
+    <Compile Include="Elements\AddLessonWindow\DayComboBoxItem.cs" />
+    <Compile Include="Elements\AddLessonWindow\GroupComboBoxItem.cs" />
+    <Compile Include="Elements\AddLessonWindow\TeacherComboBoxItem.cs" />
     <Compile Include="Elements\CourseMonitoring\CourseDataGridRow.cs" />
     <Compile Include="Elements\CourseMonitoring\TeacherListBoxItem.cs" />
     <Compile Include="Elements\GroupsMonitoring\GroupDataGridRow.cs" />
     <Compile Include="Elements\GroupsMonitoring\PupilListBoxItem.cs" />
+    <Compile Include="Elements\LessonMonitoring\GroupComboBoxItem.cs" />
+    <Compile Include="Elements\LessonMonitoring\TeacherComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\CourseListBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\CourseTypeComboBoxItem.cs" />
     <Compile Include="Elements\PupilMonitoring\GroupComboBoxItem.cs" />

@@ -8,7 +8,8 @@
         Title="Добавить занятие"
         Height="350" MinHeight="350"
         Width="300" MinWidth="300"
-        Icon="/Icons/logo.ico">
+        Icon="/Icons/logo.ico"
+        Initialized="Window_Initialized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.0*"/>
@@ -19,13 +20,13 @@
             <TextBlock Text="Преподаватель:"
                        FontSize="14"
                        Height="25px"/>
-            <ComboBox x:Name="TeacherCB"
+            <ComboBox x:Name="TeachersCB"
                       Height="25px"
                       FontSize="14"/>
             <TextBlock Text="Группа:"
                        FontSize="14"
                        Height="25px"/>
-            <ComboBox x:Name="GroupCB"
+            <ComboBox x:Name="GroupsCB"
                       Height="25px"
                       FontSize="14"/>
             <Grid Height="50px">
@@ -41,7 +42,8 @@
                     <TextBox x:Name="StartTB"
                              Height="25px"
                              VerticalContentAlignment="Center"
-                             FontSize="14"/>
+                             FontSize="14"
+                             KeyDown="StartTB_KeyDown"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Margin="5,0,0,0">
@@ -51,13 +53,14 @@
                     <TextBox x:Name="EndTB"
                              Height="25px"
                              VerticalContentAlignment="Center"
-                             FontSize="14"/>
+                             FontSize="14"
+                             KeyDown="EndTB_KeyDown"/>
                 </StackPanel>
             </Grid>
             <TextBlock Text="День недели:"
                        FontSize="14"
                        Height="25px"/>
-            <ComboBox x:Name="DayCB"
+            <ComboBox x:Name="DaysCB"
                       Height="25px"
                       FontSize="14"/>
             <TextBlock Text="Номер кабинета:"
@@ -66,7 +69,8 @@
             <TextBox x:Name="PlaceTB"
                      Height="25px"
                      VerticalContentAlignment="Center"
-                     FontSize="14"/>
+                     FontSize="14"
+                     KeyDown="PlaceTB_KeyDown"/>
         </StackPanel>
         <Grid Grid.Row="1"
               Margin="5">
@@ -79,7 +83,7 @@
                     Height="40px"
                     Width="130px"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Click="AddB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Добавить занятие"/>
@@ -89,7 +93,7 @@
                     Height="25px"
                     Width="60px"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom">
+                    VerticalAlignment="Bottom" Click="CloseB_Click">
                 <TextBlock TextAlignment="Center"
                            TextWrapping="Wrap"
                            Text="Закрыть"/>
