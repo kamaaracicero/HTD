@@ -148,7 +148,7 @@
                         Height="25px"
                         Width="60px"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
+                        VerticalAlignment="Bottom" Click="CloseB_Click">
                     <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Закрыть"/>

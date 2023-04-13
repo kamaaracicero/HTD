@@ -294,5 +294,10 @@ namespace HTD.App.MonitoringWindows
                 UpdateCoursesView();
             }
         }
+
+        private void CloseB_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
