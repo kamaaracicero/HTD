@@ -3,11 +3,13 @@ using HTD.App.Configuration;
 using HTD.App.Elements.PupilMonitoring;
 using HTD.App.UpdateWindows;
 using HTD.BusinessLogic.DataSearchs;
+using HTD.BusinessLogic.Excel;
 using HTD.BusinessLogic.Filters;
 using HTD.BusinessLogic.Filters.Settings;
 using HTD.BusinessLogic.Services;
 using HTD.DataEntities;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +29,8 @@ namespace HTD.App.MonitoringWindows
 
         private readonly IFilter<Pupil> _filter;
 
+        private readonly IExcelParser<Pupil> _excelParser;
+
         public PupilMonitoring()
         {
             _pupilService = AppConfiguration.PupilService;
@@ -38,6 +42,8 @@ namespace HTD.App.MonitoringWindows
             _teacherService = AppConfiguration.TeacherService;
 
             _filter = AppConfiguration.PupilFilter;
+
+            _excelParser = AppConfiguration.PupilExcelParser;
 
             InitializeComponent();
             PupilsDG.BeginningEdit += (s, ss) => ss.Cancel = true;
@@ -257,6 +263,9 @@ namespace HTD.App.MonitoringWindows
             AddPupilWindow window = new AddPupilWindow();
             if (window.ShowDialog().Value)
             {
+                if (СheckPupilRepetition(window.Value))
+                    return;
+
                 var res = await _pupilService.Insert(window.Value);
                 if (!res.Successfully)
                 {
@@ -344,6 +353,50 @@ namespace HTD.App.MonitoringWindows
             {
                 var temp = PupilsDG.SelectedItem as PupilDataGridRow;
                 UpdateDetailsView(temp.Instance);
+            }
+        }
+
+        private bool СheckPupilRepetition(Pupil check)
+        {
+            var flag = false;
+            foreach (var pupil in Pupils)
+            {
+                if (string.Compare(pupil.Name, check.Name, true) == 0)
+                {
+                    MessageBox.Show("Данный ученик уже занес в учет", "Ошибка");
+                    flag = true;
+
+                    break;
+                }
+            }
+
+            return flag;
+        }
+
+        private void SaveTableAsExcelB_Click(object sender, RoutedEventArgs e)
+        {
+            var folderBrowsingDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (folderBrowsingDialog.ShowDialog()
+                == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = folderBrowsingDialog.SelectedPath;
+                var temp = _filter.Filter(Pupils, new PupilFilterSettings
+                {
+                    PupilNameTB = SearchNameTB.Text,
+                    TeacherNameTB = SearchTeacherNameTB.Text,
+                    PaymentTrueCB = PaymentTrueCB.IsChecked.Value,
+                    PaymentFalseCB = PaymentFalseCB.IsChecked.Value,
+                    SelectedGroupCB = (GroupsCB.SelectedItem as GroupComboBoxItem).Instance,
+                    SelectedCourseTypeCB = (CourseTypesCB.SelectedItem as CourseTypeComboBoxItem).Instance,
+                    Teachers = Teachers,
+                    TeacherCourses = TeacherCourses,
+                    Courses = Courses,
+                    CourseTypes = CourseTypes,
+                    Groups = Groups,
+                    PupilGroups = PupilGroups,
+                });
+
+                _excelParser.Parse(temp, Path.Combine(path, "Ученики.xlsx"));
             }
         }
     }

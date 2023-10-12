@@ -11,7 +11,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace HTD.App.MonitoringWindows
 {
@@ -112,6 +111,7 @@ namespace HTD.App.MonitoringWindows
                 {
                     if (Lessons[i].Id != Lessons[j].Id
                         && Lessons[i].TeacherId == Lessons[j].TeacherId
+                        && Lessons[i].Day == Lessons[j].Day
                         && CheckTime(Lessons[i], Lessons[j]))
                     {
                         source.Add(new ConflictLessonListBoxItem(Lessons[i], Lessons[j],
@@ -120,9 +120,9 @@ namespace HTD.App.MonitoringWindows
                             Teachers.FirstOrDefault(t => Lessons[i].TeacherId == t.Id),
                             Teachers.FirstOrDefault(t => Lessons[j].TeacherId == t.Id)));
                     }
-
-                    if (Lessons[i].Id != Lessons[j].Id
+                    else if (Lessons[i].Id != Lessons[j].Id
                         && Lessons[i].GroupId == Lessons[j].GroupId
+                        && Lessons[i].Day == Lessons[j].Day
                         && CheckTime(Lessons[i], Lessons[j]))
                     {
                         source.Add(new ConflictLessonListBoxItem(Lessons[i], Lessons[j],

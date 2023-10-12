@@ -21,7 +21,13 @@
                 <RowDefinition Height="1.0*"/>
                 <RowDefinition Height="20px"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width=".5*"/>
+            </Grid.ColumnDefinitions>
             <DataGrid x:Name="PupilsDG"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
                       AutoGenerateColumns="False"
                       SelectionChanged="PupilsDG_SelectionChanged">
                 <DataGrid.Columns>
@@ -37,10 +43,20 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="RefreshTableB"
-                    Grid.Row="1" Click="RefreshTableB_Click">
+                    Grid.Row="1" Grid.Column="0"
+                    Grid.RowSpan="1" Grid.ColumnSpan="1"
+                    Click="RefreshTableB_Click">
                 <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Перезагрузить таблицу"/>
+            </Button>
+            <Button x:Name="SaveTableAsExcelB"
+                    Grid.Row="1" Grid.Column="1"
+                    Grid.RowSpan="1" Grid.ColumnSpan="1"
+                    Click="SaveTableAsExcelB_Click">
+                <TextBlock TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Сохранить в Excel"/>
             </Button>
         </Grid>
         <Grid Grid.Column="1"
