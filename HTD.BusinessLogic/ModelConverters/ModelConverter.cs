@@ -36,6 +36,18 @@ namespace HTD.BusinessLogic.ModelConverters
             return (res, success);
         }
 
+        protected bool CheckPhoneString(string value)
+        {
+            string check = string.Copy(value)
+                .Trim().Replace(" ", string.Empty)
+                .Replace("(", string.Empty)
+                .Replace(")", string.Empty)
+                .Replace("-", string.Empty)
+                .Replace("+", string.Empty);
+
+            return check.Length == 12;
+        }
+
         protected (TimeSpan res, bool success) GetTimeFromString(string value)
         {
             TimeSpan res = new TimeSpan(0, 0, 0);

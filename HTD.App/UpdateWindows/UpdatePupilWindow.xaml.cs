@@ -33,10 +33,12 @@ namespace HTD.App.UpdateWindows
         {
             PupilModel model = new PupilModel
             {
-                NameTB = NameTB.Text,
-                ParentNameTB = ParentNameTB.Text,
-                ContactPhoneTB = ContactPhoneTB.Text,
-                BirthDayDP = BirthDayDP.Text,
+                NameTB = NameTB.Text.Trim(),
+                ParentNameTB = ParentNameTB.Text.Trim(),
+                ContactPhoneTB = ContactPhoneTB.Text.Trim(),
+                BirthDayDP = BirthDayDP.Text.Trim(),
+                ClassTB = ClassTB.Text.Trim(),
+                GUOTB = GUOTB.Text.Trim(),
             };
 
             var res = _converter.ConvertModel(model);
@@ -44,6 +46,7 @@ namespace HTD.App.UpdateWindows
             {
                 Value = res.Value;
                 Value.Id = Original.Id;
+                Value.IsExpelled = Original.IsExpelled;
 
                 DialogResult = true;
                 Close();
@@ -61,6 +64,8 @@ namespace HTD.App.UpdateWindows
             ParentNameTB.Text = Original.ParentName;
             ContactPhoneTB.Text = Original.ContactPhone;
             BirthDayDP.Text = Original.BirthDay.ToShortDateString();
+            ClassTB.Text = Original.Class.ToString();
+            GUOTB.Text = Original.GUO;
         }
 
         private void BirthDayDP_Loaded(object sender, RoutedEventArgs e)
@@ -115,6 +120,16 @@ namespace HTD.App.UpdateWindows
         }
 
         private void BirthDayDP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) SetValue();
+        }
+
+        private void ClassTB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) SetValue();
+        }
+
+        private void GUOTB_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) SetValue();
         }

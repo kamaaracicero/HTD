@@ -10,6 +10,7 @@
         Width="800"
         Icon="/Icons/logo.ico" Initialized="Window_Initialized">
     <Grid>
+        <!--Добавить изменение типа кружка и сортировку по типу кружка-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".6*"/>
             <ColumnDefinition Width=".4*"/>

@@ -23,12 +23,12 @@
             <TabControl Grid.Row="0">
                 <TabItem Header="Понедельник">
                     <ListBox x:Name="MondayLB"
-                         ItemContainerStyle="{StaticResource ScheduleItemStyle}">
+                             ItemContainerStyle="{StaticResource ScheduleItemStyle}">
                         <ListBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem x:Name="DeleteMondayLessonMI"
-                                      Header="Удалить занятие"
-                                      Click="DeleteMondayLessonMI_Click"/>
+                                          Header="Удалить занятие"
+                                          Click="DeleteMondayLessonMI_Click"/>
                             </ContextMenu>
                         </ListBox.ContextMenu>
                     </ListBox>

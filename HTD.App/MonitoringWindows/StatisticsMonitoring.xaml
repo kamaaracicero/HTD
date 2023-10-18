@@ -51,6 +51,20 @@
                                    Text="Кол-во групп: "/>
                         <Border BorderBrush="Black"
                                 BorderThickness="0,1,0,0"/>
+                        <TextBlock TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="40px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во учеников в платных кружках: "/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock TextAlignment="Right"
+                                   TextWrapping="Wrap"
+                                   Height="40px"
+                                   Padding="0,2,5,0"
+                                   Text="Кол-во учеников в бесплатных кружках: "/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <TextBlock x:Name="TotalPupilCountTB"
@@ -74,6 +88,18 @@
                         <TextBlock x:Name="TotalGroupsCountTB"
                                    TextWrapping="Wrap"
                                    Height="25px"
+                                   Padding="0,2,0,0"/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock x:Name="PaymentPupilCountTB"
+                                   TextWrapping="Wrap"
+                                   Height="40px"
+                                   Padding="0,2,0,0"/>
+                        <Border BorderBrush="Black"
+                                BorderThickness="0,1,0,0"/>
+                        <TextBlock x:Name="NoPaymentPupilCountTB"
+                                   TextWrapping="Wrap"
+                                   Height="40px"
                                    Padding="0,2,0,0"/>
                         <Border BorderBrush="Black"
                                 BorderThickness="0,1,0,0"/>
@@ -350,6 +376,17 @@
                                    Text="Удалить тип кружка"/>
                     </Button>
                 </Grid>
+            </TabItem>
+            <TabItem Header="Статистика по школам">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                              VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <ItemsControl x:Name="SchoolsStatisticsIC"
+                                      Height="Auto"
+                                      ItemsSource="{Binding SchoolsTBCollection}">
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
         <Button x:Name="RefreshB"

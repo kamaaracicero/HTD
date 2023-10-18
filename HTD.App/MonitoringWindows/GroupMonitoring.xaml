@@ -34,7 +34,8 @@
             </Grid>
             <DataGrid x:Name="GroupsDG"
                       AutoGenerateColumns="False"
-                      Grid.Row="1" SelectionChanged="GroupsDG_SelectionChanged">
+                      Grid.Row="1"
+                      SelectionChanged="GroupsDG_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
                                         Width=".1*"
@@ -47,13 +48,26 @@
                                         Binding="{Binding Path=PupilCount}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="RefreshTableB"
-                    Grid.Row="2"
-                    Click="RefreshTableB_Click">
-                <TextBlock TextAlignment="Center"
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width=".5*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="RefreshTableB"
+                        Grid.Column="0"
+                        Click="RefreshTableB_Click">
+                    <TextBlock TextAlignment="Center"
                                TextWrapping="Wrap"
                                Text="Перезагрузить таблицу"/>
-            </Button>
+                </Button>
+                <Button x:Name="CreatePupilListB"
+                        Grid.Column="1"
+                        Click="CreatePupilListB_Click">
+                    <TextBlock TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Text="Создать список учеников"/>
+                </Button>
+            </Grid>
         </Grid>
         <Grid Grid.Column="1"
               Grid.Row="0"

@@ -14,6 +14,8 @@ namespace HTD.DataAccess.EntityTypeConfigurations
             Property(p => p.ParentName).IsRequired().HasMaxLength(500).HasColumnName(nameof(Pupil.ParentName));
             Property(p => p.ContactPhone).IsRequired().HasMaxLength(100).HasColumnName(nameof(Pupil.ContactPhone));
             Property(p => p.IsExpelled).IsRequired().HasColumnName(nameof(Pupil.IsExpelled));
+            Property(p => p.Class).IsOptional().HasColumnName(nameof(Pupil.Class));
+            Property(p => p.GUO).IsOptional().HasMaxLength(300).HasColumnName(nameof(Pupil.GUO));
         }
     }
 }

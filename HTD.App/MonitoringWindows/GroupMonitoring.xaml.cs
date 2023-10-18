@@ -4,9 +4,14 @@ using HTD.App.Elements.CourseMonitoring;
 using HTD.App.Elements.GroupsMonitoring;
 using HTD.App.UpdateWindows;
 using HTD.BusinessLogic.DataSearchs;
+using HTD.BusinessLogic.Normalization;
 using HTD.BusinessLogic.Services;
+using HTD.BusinessLogic.Word;
+using HTD.BusinessLogic.Word.Data;
 using HTD.DataEntities;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,11 +25,15 @@ namespace HTD.App.MonitoringWindows
         private readonly IService<PupilGroup> _pupilGroupService;
         private readonly IService<Group> _groupService;
 
+        private readonly IWordParser<PupilGroupWordData> _wordParser;
+
         public GroupMonitoring(Course course)
         {
             _pupilService = AppConfiguration.PupilService;
             _pupilGroupService = AppConfiguration.PupilGroupService;
             _groupService = AppConfiguration.GroupService;
+
+            _wordParser = AppConfiguration.PupilGroupWordParser;
 
             SelectedCourse = course;
 
@@ -193,6 +202,34 @@ namespace HTD.App.MonitoringWindows
                     MessageBox.Show("Не удалось архивировать группу", "Ошибка");
                     await LoadGroupsData();
                     UpdateGroupsView();
+                }
+            }
+        }
+
+        private void CreatePupilListB_Click(object sender, RoutedEventArgs e)
+        {
+            if (GroupsDG.SelectedItem == null)
+                return;
+
+            var group = (GroupsDG.SelectedItem as GroupDataGridRow).Instance;
+            var folderBrowsingDialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (folderBrowsingDialog.ShowDialog()
+                == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = folderBrowsingDialog.SelectedPath;
+                PupilGroupWordData data = new PupilGroupWordData()
+                {
+                    Pupils = DependencyHelper.FindGroupPupils(group, PupilGroups, Pupils),
+                    GroupName = group.Name,
+                    GroupYear = group.Year.ToString(),
+                };
+                try
+                {
+                    _wordParser.ParseWordDoc(data, Path.Combine(path, PathNormalizer.GetNormalPath(group.Name)));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

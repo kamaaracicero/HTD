@@ -373,6 +373,7 @@ namespace HTD.App.MonitoringWindows
             return flag;
         }
 
+
         private void SaveTableAsExcelB_Click(object sender, RoutedEventArgs e)
         {
             var folderBrowsingDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -396,7 +397,15 @@ namespace HTD.App.MonitoringWindows
                     PupilGroups = PupilGroups,
                 });
 
-                _excelParser.Parse(temp, Path.Combine(path, "Ученики.xlsx"));
+                try
+                {
+                    _excelParser.Parse(temp, Path.Combine(path, "Ученики.xlsx"));
+                }
+                catch
+                {
+                    MessageBox.Show("Закройте файл, прежде чем сохранять!", "Ошибка");
+                }
+                
             }
         }
     }

@@ -4,17 +4,20 @@ namespace HTD.DataEntities
 {
     public class Pupil : IDataEntity
     {
-        public Pupil(int id, string name, DateTime birthDay, string parentName, string contactPhone)
+        public Pupil(int id, string name, DateTime birthDay, string parentName, string contactPhone, int @class, string guo)
         {
             Id = id;
             Name = name;
             BirthDay = birthDay;
             ParentName = parentName;
             ContactPhone = contactPhone;
+            Class = @class;
+            GUO = guo;
+            IsExpelled = false;
         }
 
         public Pupil()
-            : this(0, string.Empty, new DateTime(2000, 1, 1), string.Empty, string.Empty)
+            : this(0, string.Empty, new DateTime(2000, 1, 1), string.Empty, string.Empty, 0, string.Empty)
         {
         }
 
@@ -30,6 +33,10 @@ namespace HTD.DataEntities
 
         public bool IsExpelled { get; set; }
 
+        public int? Class { get; set; }
+
+        public string GUO { get; set; }
+
         public void Update(object obj)
         {
             if (obj == null || !(obj is Pupil))
@@ -42,6 +49,8 @@ namespace HTD.DataEntities
                 BirthDay = temp.BirthDay;
                 ParentName = temp.ParentName;
                 ContactPhone = temp.ContactPhone;
+                Class = temp.Class;
+                GUO = temp.GUO;
                 IsExpelled = temp.IsExpelled;
             }
         }

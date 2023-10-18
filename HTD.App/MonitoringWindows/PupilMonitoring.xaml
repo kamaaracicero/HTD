@@ -32,14 +32,23 @@
                       SelectionChanged="PupilsDG_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
-                                        Width=".1*"
+                                        Width=".07*"
                                         Binding="{Binding Path=Id}"/>
                     <DataGridTextColumn Header="Ф.И.О."
-                                        Width=".5*"
+                                        Width=".25*"
                                         Binding="{Binding Path=Name}"/>
                     <DataGridTextColumn Header="Телефон представителя"
-                                        Width=".4*"
+                                        Width=".175*"
                                         Binding="{Binding Path=ContactPhone}"/>
+                    <DataGridTextColumn Header="Дата рождения"
+                                        Width=".115*"
+                                        Binding="{Binding Path=DateOfBirth}"/>
+                    <DataGridTextColumn Header="Класс"
+                                        Width=".06*"
+                                        Binding="{Binding Path=Class}"/>
+                    <DataGridTextColumn Header="ГУО"
+                                        Width=".33*"
+                                        Binding="{Binding Path=GUO}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="RefreshTableB"
@@ -127,7 +136,7 @@
                       Header="Подробности">
                 <Grid Margin="0,10,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="150px"/>
+                        <RowDefinition Height="170px"/>
                         <RowDefinition Height="1.0*"/>
                         <RowDefinition Height="50px"/>
                     </Grid.RowDefinitions>

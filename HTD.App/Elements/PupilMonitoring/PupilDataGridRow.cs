@@ -19,11 +19,20 @@ namespace HTD.App.Elements.PupilMonitoring
 
         public string ContactPhone { get; private set; }
 
+        public string DateOfBirth { get; private set; }
+
+        public string Class { get; private set; }
+
+        public string GUO {  get; private set; }
+
         public void Init()
         {
             Id = Instance.Id.ToString();
             Name = Instance.Name;
             ContactPhone = Instance.ContactPhone;
+            DateOfBirth = Instance.BirthDay.ToShortDateString();
+            Class = Instance.Class == null ? "---" : Instance.Class.ToString();
+            GUO = Instance.GUO ?? "---";
         }
     }
 }

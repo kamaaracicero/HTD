@@ -9,5 +9,9 @@
         public string ParentNameTB { get; set; }
 
         public string ContactPhoneTB { get; set; }
+
+        public string ClassTB { get; set; }
+
+        public string GUOTB { get; set; }
     }
 }

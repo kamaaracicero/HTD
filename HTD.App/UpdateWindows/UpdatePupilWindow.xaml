@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HTD.App.UpdateWindows"
         mc:Ignorable="d"
         Title="Редактировать ученика"
-        Height="310" MinHeight="310"
+        Height="410" MinHeight="410"
         Width="300" MinWidth="300"
         Icon="/Icons/logo.ico">
     <Grid>
@@ -49,6 +49,22 @@
                         FirstDayOfWeek="Monday"
                         Loaded="BirthDayDP_Loaded"
                         KeyDown="BirthDayDP_KeyDown"/>
+            <TextBlock Text="Класс:"
+                       FontSize="14"
+                       Height="25px"/>
+            <TextBox x:Name="ClassTB"
+                     Height="25px"
+                     VerticalContentAlignment="Center"
+                     FontSize="14"
+                     KeyDown="ClassTB_KeyDown"/>
+            <TextBlock Text="ГУО:"
+                       FontSize="14"
+                       Height="25px"/>
+            <TextBox x:Name="GUOTB"
+                     Height="25px"
+                     VerticalContentAlignment="Center"
+                     FontSize="14"
+                     KeyDown="GUOTB_KeyDown"/>
         </StackPanel>
         <Grid Grid.Row="1"
               Margin="5">

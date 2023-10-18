@@ -6,5 +6,7 @@
     [ParentName] NVARCHAR(500) NOT NULL,
     [ContactPhone] NVARCHAR(100) NOT NULL,
     [IsExpelled] BIT NOT NULL,
+    [Class] INT NULL,
+	[GUO] NVARCHAR(300) NULL,
     CONSTRAINT pk_Pupil PRIMARY KEY([Id]),
 )

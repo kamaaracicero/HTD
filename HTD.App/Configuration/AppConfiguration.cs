@@ -3,6 +3,8 @@ using HTD.BusinessLogic.Filters;
 using HTD.BusinessLogic.ModelConverters;
 using HTD.BusinessLogic.Models;
 using HTD.BusinessLogic.Services;
+using HTD.BusinessLogic.Word;
+using HTD.BusinessLogic.Word.Data;
 using HTD.DataEntities;
 using System.Configuration;
 
@@ -36,6 +38,7 @@ namespace HTD.App.Configuration
             CourseTypeService = new CourseTypeService(connectionString);
 
             PupilExcelParser = new PupilExcelParser();
+            PupilGroupWordParser = new PupilGroupWordParser();
         }
 
         public static IFilter<Course> CourseFilter { get; set; }
@@ -75,5 +78,7 @@ namespace HTD.App.Configuration
         public static IService<CourseType> CourseTypeService { get; }
 
         public static IExcelParser<Pupil> PupilExcelParser { get; }
+
+        public static IWordParser<PupilGroupWordData> PupilGroupWordParser { get; set; }
     }
 }

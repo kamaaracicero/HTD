@@ -37,6 +37,12 @@ namespace HTD.BusinessLogic.ModelConverters
                 result.Errors.Add("Номер телефона не должен быть пустым");
                 return;
             }
+            if (!CheckPhoneString(model.PhoneTB))
+            {
+                result.IsError = true;
+                result.Errors.Add("Номер телефона должен представлять формат из 12 цифр:\n    +375 (__) ___ __ __");
+                return;
+            }
 
             result.Value.Phone = model.PhoneTB;
         }

@@ -4,6 +4,7 @@ using HTD.BusinessLogic.DataSearchs;
 using HTD.BusinessLogic.Services;
 using HTD.DataEntities;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,6 +30,10 @@ namespace HTD.App.MonitoringWindows
             _courseTypeService = AppConfiguration.CourseTypeService;
             _teacherService = AppConfiguration.TeacherService;
 
+            SchoolsTBCollection = new ObservableCollection<TextBlock>();
+
+            DataContext = this;
+
             InitializeComponent();
         }
 
@@ -43,6 +48,8 @@ namespace HTD.App.MonitoringWindows
         public List<CourseType> CourseTypes { get; set; }
 
         public List<Teacher> Teachers { get; set; }
+
+        public ObservableCollection<TextBlock> SchoolsTBCollection { get; set; }
 
         private async void Window_Initialized(object sender, System.EventArgs e)
         {
@@ -61,6 +68,7 @@ namespace HTD.App.MonitoringWindows
             UpdateGroupInfoView();
             UpdateCoursesView();
             UpdateCourseInfoView();
+            UpdateSchoolsStatistics();
         }
 
         private async void RefreshB_Click(object sender, RoutedEventArgs e)
@@ -81,6 +89,7 @@ namespace HTD.App.MonitoringWindows
             UpdateGroupInfoView();
             UpdateCoursesView();
             UpdateCourseInfoView();
+            UpdateSchoolsStatistics();
         }
 
         public void UpdateTotalStatisticsView()
@@ -174,6 +183,25 @@ namespace HTD.App.MonitoringWindows
         {
             CourseTypeCoursesCountTB.Text = Courses
                 .Where(c => c.TypeId == courseType.Id).Count().ToString();
+        }
+
+        public void UpdateSchoolsStatistics()
+        {
+            var res = Pupils.Select(p => p.GUO).GroupBy(g => g ?? "---").ToList();
+
+            for (int i = 0; i < res.Count; i++)
+            {
+                SchoolsTBCollection.Add(new TextBlock()
+                {
+                    Text = string.Format("{0}. ГУО {1} - {2} Учеников", i + 1, res[i].Key, res[i].Count()),
+                    Padding = new Thickness(0, 2, 0, 0),
+                    TextWrapping = TextWrapping.NoWrap,
+                    Height = double.NaN,
+                    FontSize = 14,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                });
+            }
+            
         }
 
         private async Task LoadPupilsData()
@@ -501,6 +529,8 @@ namespace HTD.App.MonitoringWindows
                 MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
             {
+                // Добавить функционал переопределения всех кружков данного типа
+                // к типу "Временный"
                 var res = await _courseTypeService.Delete(courseType);
                 if (res.Successfully)
                 {

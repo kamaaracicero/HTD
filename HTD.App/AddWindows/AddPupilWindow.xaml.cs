@@ -32,6 +32,8 @@ namespace HTD.App.AddWindows
                 ParentNameTB = ParentNameTB.Text.Trim(),
                 ContactPhoneTB = ContactPhoneTB.Text.Trim(),
                 BirthDayDP = BirthDayDP.Text.Trim(),
+                ClassTB = ClassTB.Text.Trim(),
+                GUOTB = GUOTB.Text.Trim(),
             };
 
             var res = _converter.ConvertModel(model);
@@ -100,6 +102,16 @@ namespace HTD.App.AddWindows
         }
 
         private void BirthDayDP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) SetValue();
+        }
+
+        private void ClassTB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter) SetValue();
+        }
+
+        private void GUOTB_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) SetValue();
         }

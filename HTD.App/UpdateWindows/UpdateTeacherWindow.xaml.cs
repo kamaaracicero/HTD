@@ -33,9 +33,9 @@ namespace HTD.App.UpdateWindows
         {
             TeacherModel model = new TeacherModel
             {
-                NameTB = NameTB.Text,
-                PhoneTB = PhoneTB.Text,
-                StartWorkDateDP = StartWorkDateDP.Text,
+                NameTB = NameTB.Text.Trim(),
+                PhoneTB = PhoneTB.Text.Trim(),
+                StartWorkDateDP = StartWorkDateDP.Text.Trim(),
             };
 
             var res = _converter.ConvertModel(model);
@@ -43,6 +43,7 @@ namespace HTD.App.UpdateWindows
             {
                 Value = res.Value;
                 Value.Id = Original.Id;
+                Value.DateEndWork = Original.DateEndWork;
 
                 DialogResult = true;
                 Close();

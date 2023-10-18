@@ -13,6 +13,8 @@ namespace HTD.BusinessLogic.ModelConverters
             ConvertParentName(model, result);
             ConvertContactPhone(model, result);
             ConvertBirthDay(model, result);
+            ConvertClass(model, result);
+            ConvertGUO(model, result);
             InitStandardValues(result);
 
             return result;
@@ -50,6 +52,12 @@ namespace HTD.BusinessLogic.ModelConverters
                 result.Errors.Add("Номер телефона не должен быть пустым");
                 return;
             }
+            if (!CheckPhoneString(model.ContactPhoneTB))
+            {
+                result.IsError = true;
+                result.Errors.Add("Номер телефона должен представлять формат из 12 цифр:\n    +375 (__) ___ __ __");
+                return;
+            }
 
             result.Value.ContactPhone = model.ContactPhoneTB;
         }
@@ -71,6 +79,37 @@ namespace HTD.BusinessLogic.ModelConverters
             }
 
             result.Value.BirthDay = convertResult.res;
+        }
+
+        private void ConvertClass(PupilModel model, ModelConvertResult<Pupil> result)
+        {
+            if (string.IsNullOrEmpty(model.ClassTB))
+            {
+                result.IsError = true;
+                result.Errors.Add("Класс не должен быть пустым");
+                return;
+            }
+            var convertResult = GetIntFromString(model.ClassTB);
+            if (!convertResult.success)
+            {
+                result.IsError = true;
+                result.Errors.Add("Невозможно получить номер класса из введённого значения");
+                return;
+            }
+
+            result.Value.Class = convertResult.res;
+        }
+
+        private void ConvertGUO(PupilModel model, ModelConvertResult<Pupil> result)
+        {
+            if (string.IsNullOrEmpty(model.GUOTB))
+            {
+                result.IsError = true;
+                result.Errors.Add("ГУО не должно быть пустым");
+                return;
+            }
+
+            result.Value.GUO = model.GUOTB;
         }
 
         private void InitStandardValues(ModelConvertResult<Pupil> result)
