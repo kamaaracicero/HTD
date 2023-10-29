@@ -9,6 +9,8 @@ namespace HTD.BusinessLogic.Filters.Settings
 
         public string TeacherNameTB { get; set; }
 
+        public CourseType CourseType {  get; set; }
+
         public IEnumerable<TeacherCourse> TeacherCourses { get; set; }
 
         public IEnumerable<Teacher> Teachers { get; set; }

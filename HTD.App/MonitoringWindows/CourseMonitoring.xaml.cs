@@ -1,9 +1,6 @@
 ﻿using HTD.App.AddWindows;
 using HTD.App.Configuration;
 using HTD.App.Elements.CourseMonitoring;
-using HTD.App.Elements.GroupsMonitoring;
-using HTD.App.Elements.PupilMonitoring;
-using HTD.App.Elements.TeacherMonitoring;
 using HTD.App.UpdateWindows;
 using HTD.BusinessLogic.DataSearchs;
 using HTD.BusinessLogic.Filters;
@@ -20,6 +17,7 @@ namespace HTD.App.MonitoringWindows
 {
     public partial class CourseMonitoring : Window
     {
+        private readonly IService<CourseType> _courseTypeService;
         private readonly IService<Course> _courseService;
         private readonly IService<Group> _groupService;
         private readonly IService<Teacher> _teacherService;
@@ -31,6 +29,7 @@ namespace HTD.App.MonitoringWindows
 
         public CourseMonitoring()
         {
+            _courseTypeService = AppConfiguration.CourseTypeService;
             _courseService = AppConfiguration.CourseService;
             _groupService = AppConfiguration.GroupService;
             _teacherService = AppConfiguration.TeacherService;
@@ -44,6 +43,7 @@ namespace HTD.App.MonitoringWindows
             CoursesDG.BeginningEdit += (s, ss) => ss.Cancel = true;
         }
 
+        public List<CourseType> CourseTypes { get; set; }
         public List<Course> Courses { get; set; }
         public List<Group> Groups { get; set; }
         public List<Teacher> Teachers { get; set; }
@@ -53,6 +53,7 @@ namespace HTD.App.MonitoringWindows
 
         private async void Window_Initialized(object sender, System.EventArgs e)
         {
+            await LoadCourseTypesData();
             await LoadCoursesData();
             await LoadGroupsData();
             await LoadTeachersData();
@@ -60,11 +61,13 @@ namespace HTD.App.MonitoringWindows
             await LoadPupilsData();
             await LoadPupilGroupsData();
 
+            UpdateCourseTypesComboBoxView();
             UpdateCoursesView();
         }
 
         private async void RefreshTableB_Click(object sender, RoutedEventArgs e)
         {
+            await LoadCourseTypesData();
             await LoadCoursesData();
             await LoadGroupsData();
             await LoadTeachersData();
@@ -72,15 +75,20 @@ namespace HTD.App.MonitoringWindows
             await LoadPupilsData();
             await LoadPupilGroupsData();
 
+            UpdateCourseTypesComboBoxView();
             UpdateCoursesView();
         }
 
         private void UpdateCoursesView()
         {
+            if (CourseTypesCB.SelectedItem == null)
+                return;
+
             var temp = _filter.Filter(Courses, new CourseFilterSettings
             {
                 NameTB = SearchCourseNameTB.Text,
                 TeacherNameTB = SearchTeacherNameTB.Text,
+                CourseType = (CourseTypesCB.SelectedItem as CourseTypeComboBoxItem).Instance,
                 TeacherCourses = TeacherCourses,
                 Teachers = Teachers,
             }).ToList();
@@ -91,10 +99,24 @@ namespace HTD.App.MonitoringWindows
             CoursesDG.Items.Refresh();
         }
 
+        private void UpdateCourseTypesComboBoxView()
+        {
+            List<CourseTypeComboBoxItem> items = new List<CourseTypeComboBoxItem>
+            {
+                new CourseTypeComboBoxItem(null, "Без выбора"),
+            };
+            items.AddRange(CourseTypes.Select(c => new CourseTypeComboBoxItem(c)));
+
+            CourseTypesCB.ItemsSource = items;
+            CourseTypesCB.Items.Refresh();
+            CourseTypesCB.SelectedIndex = 0;
+        }
+
         private void UpdateDetailsView()
         {
             PupilCountTB.Text = string.Empty;
             GroupCountTB.Text = string.Empty;
+            CourseTypeTB.Text = string.Empty;
             CourseTeachersLB.ItemsSource = null;
             CourseTeachersLB.Items.Refresh();
         }
@@ -107,10 +129,27 @@ namespace HTD.App.MonitoringWindows
             GroupCountTB.Text = DependencyHelper
                 .FindCourseGroups(course, Groups)
                 .Count().ToString();
+            CourseTypeTB.Text = DependencyHelper
+                .FindCourseType(course, CourseTypes)
+                .Name;
             CourseTeachersLB.ItemsSource = DependencyHelper
                 .FindCourseTeachers(course, TeacherCourses, Teachers)
                 .Select(t => new TeacherListBoxItem(t));
             CourseTeachersLB.Items.Refresh();
+        }
+
+        private async Task LoadCourseTypesData()
+        {
+            var res = await _courseTypeService.Select();
+            if (!res.Successfully)
+            {
+                MessageBox.Show("Ошибка в загрузке данных групп", "Ошибка");
+                return;
+            }
+            else
+            {
+                CourseTypes = res.Value.ToList();
+            }
         }
 
         private async Task LoadGroupsData()
@@ -298,6 +337,32 @@ namespace HTD.App.MonitoringWindows
         private void CloseB_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void CourseTypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateCoursesView();
+
+        private async void EditCourseTypeB_Click(object sender, RoutedEventArgs e)
+        {
+            if (CoursesDG.SelectedItem == null)
+                return;
+
+            var course = (CoursesDG.SelectedItem as CourseDataGridRow).Instance;
+            UpdateCourseTypeWindow window = new UpdateCourseTypeWindow(course);
+            if (window.ShowDialog().Value)
+            {
+                var res = await _courseService.Update(window.Original);
+                if (res.Successfully)
+                {
+                    await LoadCoursesData();
+                    UpdateCoursesView();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось редактировать тип кружка", "Ошибка");
+                    await LoadCoursesData();
+                    UpdateCoursesView();
+                }
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace HTD.BusinessLogic.Filters
                 res = values.Where(p => p.IsActive == true);
                 res = FilterByName(config, res);
                 res = FilterByTeacherName(config, res);
+                res = FilterByType(config, res);
             }
             return res;
         }
@@ -28,6 +29,14 @@ namespace HTD.BusinessLogic.Filters
                 return courses;
             else
                 return courses.Where(c => c.Name.StartsWith(settings.NameTB, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private IEnumerable<Course> FilterByType(CourseFilterSettings settings, IEnumerable<Course> courses)
+        {
+            if (settings.CourseType == null)
+                return courses;
+            else
+                return courses.Where(c => c.TypeId == settings.CourseType.Id);
         }
 
         private IEnumerable<Course> FilterByTeacherName(CourseFilterSettings settings, IEnumerable<Course> courses)

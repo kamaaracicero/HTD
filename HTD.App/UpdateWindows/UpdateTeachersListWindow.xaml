@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="Обновить список преподавателей"
         Height="450"
-        Width="300" Initialized="Window_Initialized" Closing="Window_Closing">
+        Width="300"
+        Initialized="Window_Initialized"
+        Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".4*"/>

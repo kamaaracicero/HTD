@@ -29,7 +29,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -131,6 +131,7 @@
     <Compile Include="Elements\AddLessonWindow\GroupComboBoxItem.cs" />
     <Compile Include="Elements\AddLessonWindow\TeacherComboBoxItem.cs" />
     <Compile Include="Elements\CourseMonitoring\CourseDataGridRow.cs" />
+    <Compile Include="Elements\CourseMonitoring\CourseTypeComboBoxItem.cs" />
     <Compile Include="Elements\CourseMonitoring\TeacherListBoxItem.cs" />
     <Compile Include="Elements\GroupsMonitoring\GroupDataGridRow.cs" />
     <Compile Include="Elements\GroupsMonitoring\PupilListBoxItem.cs" />
@@ -144,10 +145,14 @@
     <Compile Include="Elements\StatisticsMonitoring\CourseTypeListBoxItem.cs" />
     <Compile Include="Elements\StatisticsMonitoring\GroupListBoxItem.cs" />
     <Compile Include="Elements\StatisticsMonitoring\PupilListBoxItem.cs" />
+    <Compile Include="Elements\UpdateCourseTypeWindow\CourseTypeComboBoxItem.cs" />
     <Compile Include="Elements\UpdatePupilsListWindow\PupilListBoxItem.cs" />
     <Compile Include="Elements\UpdateTeachersListWindow\TeacherListBoxItem.cs" />
     <Compile Include="MonitoringWindows\StatisticsMonitoring.xaml.cs">
       <DependentUpon>StatisticsMonitoring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateWindows\UpdateCourseTypeWindow.xaml.cs">
+      <DependentUpon>UpdateCourseTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UpdateWindows\UpdatePupilsListWindow.xaml.cs">
       <DependentUpon>UpdatePupilsListWindow.xaml</DependentUpon>
@@ -272,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MonitoringWindows\TeacherMonitoring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateWindows\UpdateCourseTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

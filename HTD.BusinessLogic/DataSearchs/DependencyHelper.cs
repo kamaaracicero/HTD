@@ -144,5 +144,10 @@ namespace HTD.BusinessLogic.DataSearchs
             var ids = dependencySearch.Select(d => d.TeacherId);
             return teachers.Where(t => ids.Contains(t.Id));
         }
+
+        public static CourseType FindCourseType(Course course, IEnumerable<CourseType> dependencies)
+        {
+            return dependencies.First(c => c.Id == course.TypeId);
+        }
     }
 }

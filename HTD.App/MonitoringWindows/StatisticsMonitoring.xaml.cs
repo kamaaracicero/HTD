@@ -98,6 +98,7 @@ namespace HTD.App.MonitoringWindows
             TotalTeachersCountTB.Text = Teachers.Count.ToString();
             TotalCoursesCountTB.Text = Courses.Count.ToString();
             TotalGroupsCountTB.Text = Groups.Count.ToString();
+            // Сюда функионал по подсчету платников и бесплатников
         }
 
         private void UpdateCoursesView()
